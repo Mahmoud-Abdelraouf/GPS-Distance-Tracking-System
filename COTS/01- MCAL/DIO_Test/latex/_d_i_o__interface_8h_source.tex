@@ -1,0 +1,74 @@
+\hypertarget{_d_i_o__interface_8h_source}{}\doxysection{DIO\+\_\+interface.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ **********************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ **********\ Name\ \ \ \ :\ ASU\_EMBEDDED\_TEAM\_3\ \ \ \ \ \ \ \ \ \ \ \ \ ***********}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ **********\ Date\ \ \ \ :\ 14/04/2023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ***********}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ **********\ SWC\ \ \ \ \ :\ DIO\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ***********}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ **********\ Version\ :\ 1.0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ***********}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ **********************************************************}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MCAL\_DIO\_INTERFACE\_C\_H\_\_}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ \_\_MCAL\_DIO\_INTERFACE\_C\_H\_\_}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Macros\ for\ PORTS}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PORTA\ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PORTB\ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PORTC\ \ \ \ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PORTD\ \ \ \ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PORTE\ \ \ \ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PORTF\ \ \ \ \ \ \ \ \ \ \ \ 5}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ Macros\ for\ PINS}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PIN0\ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PIN1\ \ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PIN2\ \ \ \ \ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PIN3\ \ \ \ \ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PIN4\ \ \ \ \ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PIN5\ \ \ \ \ \ \ \ \ \ \ \ \ 5}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PIN6\ \ \ \ \ \ \ \ \ \ \ \ \ 6}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ DIO\_u8\_PIN7\ \ \ \ \ \ \ \ \ \ \ \ \ 7}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ Macros\ for\ pin\ value}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ DIO\_u8\_OUTPUT\ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ DIO\_u8\_INPUT\ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ DIO\_u8\_HIGH\ \ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ DIO\_u8\_LOW\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ the\ functions\ of\ the\ DIO\ driver}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{00051\ u8\ DIO\_voidInit(u8\ copy\_u8PortId);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ u8\ DIO\_u8SetPinDirection\ (u8\ copy\_u8PortId,\ u8\ copy\_u8PinId,u8\ copy\_u8PinDirection);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00055\ u8\ DIO\_u8SetPinValue\ \ \ \ \ (u8\ copy\_u8PortId,\ u8\ copy\_u8PinId,u8\ copy\_u8PinValue);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ u8\ DIO\_u8GetPinValue\ \ \ \ \ (u8\ copy\_u8PortId,\ u8\ copy\_u8PinId,u32\ *copy\_pu8ReturnedPinValue);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ u8\ DIO\_u8SetPortDirection(u8\ copy\_u8PortId,\ u8\ copy\_u8PortDirection);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00061\ u8\ DIO\_u8SetPortValue\ \ \ \ (u8\ copy\_u8PortId,\ u8\ copy\_u8PortValue);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ u8\ DIO\_u8GetPortValue\ \ \ \ (u8\ copy\_u8PortId,\ u32\ *copy\_u8ReturnedPortValue);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{/*\ \_\_MCAL\_DIO\_INTERFACE\_C\_H\_\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00069\ }
+
+\end{DoxyCode}
