@@ -57,21 +57,24 @@ void STK_voidReset(void)
 }
 
 
-u32 STK_u32GetCurrentValue(void)
+void STK_voidGetCurrentValue(u32 *copy_pu32CurrVal)
 {
-    return NVIC_ST_CURRENT_R;
+  *copy_pu32CurrVal = NVIC_ST_CURRENT_R;
 }
 
-void STK_voidSetReloadValue(u32 copy_u32Ticks)
+u8 STK_voidSetReloadValue(u32 copy_u32Ticks)
 {
-	if(copy_u32Ticks<=0x00FFFFFF)
+	u8 Local_ErrorState = STD_TYPES_OK;
+	if(copy_u32Ticks<=STK_MAX_RELOAD_VAL)
 	{
 		NVIC_ST_RELOAD_R = copy_u32Ticks-1;
 	}
   else
 	{
 		/**< Return Error State */
+		Local_ErrorState = STD_TYPES_NOK;
 	}
+	return Local_ErrorState;
 }
 
 void STK_voidEnable(void)
@@ -81,13 +84,15 @@ void STK_voidEnable(void)
 	SET_BIT(NVIC_ST_CTRL_R,STK_CLK_SRC_B);
 	#elif STK_CLK_SRC == STK_SYS_CLOCK_4
 	CLR_BIT(NVIC_ST_CTRL_R,STK_CLK_SRC_B);
+	#else 
+	#error "Wrong Choice"
 	#endif
 }
 
 void STK_voidDisable(void)
 {
   CLR_BIT(NVIC_ST_CTRL_R,STK_ENABLE_B);
-	NVIC_ST_RELOAD_R = 0;
+	NVIC_ST_RELOAD_R  = 0;
 	NVIC_ST_CURRENT_R = 0;
 }
 
@@ -141,6 +146,6 @@ void STK_voidDelayTicks(u32 copy_u32Ticks)
     STK_voidSetReloadValue(copy_u32Ticks);
 		NVIC_ST_CURRENT_R = 0; /**< Clear the current value */
     STK_voidEnable();
-    while(!GET_BIT(NVIC_ST_CTRL_R,STK_COUNT_FLAG_B));
+    while(!GET_BIT(NVIC_ST_CTRL_R,STK_COUNT_FLAG_B));	
     STK_voidDisable();
 }

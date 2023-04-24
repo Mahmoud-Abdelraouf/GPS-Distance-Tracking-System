@@ -21,5 +21,6 @@
 
 #define STK_SYS_CLOCK_1					0
 #define STK_SYS_CLOCK_4					1
-	
+
+#define STK_MAX_RELOAD_VAL			0x00FFFFFF
 #endif // __STK_PRIVATE_H__

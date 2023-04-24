@@ -33,19 +33,19 @@ void STK_voidHandler(void);
 void STK_voidReset(void);
 /** \brief 	This function returns the current value of the SysTick timer, 
  *			which is the number of ticks remaining before it reaches 0 and generates an interrupt
- * \param 	void
+ * \param 	pointer of type u32 to return the current value in it
  * \return 	The current value of SysTick Timer as u32
  *
  */
-u32 STK_u32GetCurrentValue(void);
+void STK_voidGetCurrentValue(u32 *copy_pu32CurrVal);
 /** \brief 	This function sets the reload value for the SysTick timer, 
  *			which determines the initial value of the timer when it is enabled or reloaded
  *
  * \param 	copy_u32Ticks: value you want the SysTick start count down from it
- * \return 	void
+ * \return 	The state of the function as u8 if the funtion work properly it will return "STD_TYPES_OK" else "STD_TYPES_NOK"
  *
  */
-void STK_voidSetReloadValue(u32 copy_u32Ticks);
+u8 STK_voidSetReloadValue(u32 copy_u32Ticks);
 /** \brief 	This function enables the SysTick timer with the system clock as its clock source
  *
  * \param 	void

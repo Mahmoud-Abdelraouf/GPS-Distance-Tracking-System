@@ -25,7 +25,7 @@
  *                2) STK_SYS_CLOCK_4
  *
  */
-#define STK_CLK_SRC   STK_SYS_CLOCK_1
+#define STK_CLK_SRC   STK_SYS_CLOCK_4
 
 
 
