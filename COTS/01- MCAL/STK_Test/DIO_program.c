@@ -15,7 +15,7 @@
 
 
 
-SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
+
 
 
 
