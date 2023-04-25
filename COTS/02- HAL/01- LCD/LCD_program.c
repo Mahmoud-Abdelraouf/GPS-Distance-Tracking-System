@@ -1,99 +1,242 @@
+//***********************************************************
+//********** Name    : ASU_EMBEDDED_TEAM_3      *************
+//********** Date    : 25/04/2023               *************
+//********** SWC     : HAL_LCD                  *************
+//********** Version : 1.0                      *************
+//***********************************************************
+/**< LIB */
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "TM4C123GH6PM.h"
+/**< MCAL */
+#include "DIO_interface.h"
+#include "STK_interface.h"
+/**< HAL */
 #include "LCD_private.h"
-#include"STD_TYPES.h"
 #include "LCD_interface.h"
+#include "LCD_config.h"
 
-
-void LCD_VoidCommand(u8 command)
+void LCD_voidInit(void)
 {
-    GPIO_PORTB_DATA_R &= ~RS;  // set RS to 0 (command mode)
-    GPIO_PORTB_DATA_R &= ~RW; //set RW to 0
-    GPIO_PORTA_DATA_R &= ~DB_MASK;  // clear data pins
-    GPIO_PORTA_DATA_R |= (command & 0xF0) >> 0;  // send high nibble
-    GPIO_PORTB_DATA_R |= E;  // toggle E to latch high nibble
-    STK_voidDelay(1);
-    GPIO_PORTB_DATA_R &= ~E;  // toggle E to latch high nibble
-    STK_voidDelay(1);
-    GPIO_PORTA_DATA_R &= ~DB_MASK;  // clear data pins
-    GPIO_PORTA_DATA_R |= (command & 0x0F) << 4;  // send low nibble
-    GPIO_PORTB_DATA_R |= E;  // toggle E to latch low nibble
-    STK_voidDelay(1);
-    GPIO_PORTB_DATA_R &= ~E;  // toggle E to latch low nibble
-    STK_voidDelay(1);
+#if LCD_MODE == LCD_8_BIT_MODE
+#if LCD_DATA_PORT == LCD_CONTROL_PORT
+    DIO_voidInit(LCD_DATA_PORT);
+#elif LCD_DATA_PORT != LCD_CONTROL_PORT
+    DIO_voidInit(LCD_DATA_PORT);
+    DIO_voidInit(LCD_CONTROL_PORT);
+#else
+    #error "Wrong Choice"
+#endif
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D0_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D1_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D2_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D3_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D4_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D5_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D6_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D7_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_RS_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_EN_PIN, DIO_u8_OUTPUT);
+    STK_voidDelay(1000);
+    LCD_voidSendCommand(LCD_8_BIT_MODE_COMMAND);
+    LCD_voidSendCommand(LCD_CLEAR_COMMAND);
+    LCD_voidSendCommand(LCD_DISPLAY_ON_COMMAND);
+#elif LCD_MODE == LCD_4_BIT_MODE
+#if LCD_DATA_PORT == LCD_CONTROL_PORT
+    DIO_voidInit(LCD_DATA_PORT);
+#elif LCD_MODE != LCD_CONTROL_PORT
+    DIO_voidInit(LCD_DATA_PORT);
+    DIO_voidInit(LCD_CONTROL_PORT);
+#else
+    #error "Wrong Choice"
+#endif
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D4_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D5_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D6_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_D7_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_RS_PIN, DIO_u8_OUTPUT);
+    DIO_u8SetPinDirection(LCD_DATA_PORT, LCD_EN_PIN, DIO_u8_OUTPUT);
+    STK_voidDelay(1000);
+    LCD_voidSendCommand(LCD_4_BIT_MODE_COMMAND_1);
+    LCD_voidSendCommand(LCD_4_BIT_MODE_COMMAND_2);
+    LCD_voidSendCommand(LCD_4_BIT_MODE_COMMAND_3);
+    LCD_voidSendCommand(LCD_CLEAR_COMMAND);
+    LCD_voidSendCommand(LCD_DISPLAY_ON_COMMAND);
+#else
+    #error "Wrong Choice"
+#endif // LCD_MODE
+
+
 }
 
-void LCD_VoidChar(u8 data)
+void LCD_voidSendCommand(u8 copy_u8Command)
 {
-    GPIO_PORTB_DATA_R |= RS;  // set RS to 1 (data mode)
-    GPIO_PORTB_DATA_R &= ~RW; //set RW to 0
-    GPIO_PORTA_DATA_R &= ~DB_MASK;  // clear data pins
-    GPIO_PORTA_DATA_R |= (data & 0xF0) >> 0;  // send high nibble
-    GPIO_PORTB_DATA_R |= E;  // toggle E to latch high nibble
-    STK_voidDelay(1);
-    GPIO_PORTB_DATA_R &= ~E;  // toggle E to latch high nibble
-    STK_voidDelay(1);
-    GPIO_PORTA_DATA_R &= ~DB_MASK;  // clear data pins
-    GPIO_PORTA_DATA_R |= (data & 0x0F) << 4;  // send low nibble
-    GPIO_PORTB_DATA_R |= E;  // toggle E to latch low nibble
-    STK_voidDelay(1);
-    GPIO_PORTB_DATA_R &= ~E;  // toggle E to latch low nibble
-    STK_voidDelay(1);
+    /**< Set RS pin to low for command --> RS = 0 */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_RS_PIN, DIO_u8_LOW);
+    /**< Set RW pin to low for write  --> RW = 0 */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_RW_PIN, DIO_u8_LOW);
+#if LCD_MODE == LCD_8_BIT_MODE
+    /**< Set the command to data pins */
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D0_PIN, copy_u8Command >> 0 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D1_PIN, copy_u8Command >> 1 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D2_PIN, copy_u8Command >> 2 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D3_PIN, copy_u8Command >> 3 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D4_PIN, copy_u8Command >> 4 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D5_PIN, copy_u8Command >> 5 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D6_PIN, copy_u8Command >> 6 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D7_PIN, copy_u8Command >> 7 & 0x01);
+    /**< Set the enable pin to high */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN,DIO_u8_HIGH);
+    /**< The time of pulse delay */
+    STK_voidDelay(5);
+    /**< Set the enable pin to low */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN,DIO_u8_LOW);
+#elif LCD_MODE == LCD_4_BIT_MODE
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D4_PIN, copy_u8Command >> 4 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D5_PIN, copy_u8Command >> 5 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D6_PIN, copy_u8Command >> 6 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D7_PIN, copy_u8Command >> 7 & 0x01);
+    /**< Set the enable pin to high */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN,DIO_u8_HIGH);
+    /**< The time of pulse delay */
+    STK_voidDelay(5);
+    /**< Set the enable pin to low */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN,DIO_u8_LOW);
+    /**< Shift the 4-LSB command to the 4-MSB */
+    copy_u8Command = copy_u8Command << 4;
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D4_PIN, copy_u8Command >> 4 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D5_PIN, copy_u8Command >> 5 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D6_PIN, copy_u8Command >> 6 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D7_PIN, copy_u8Command >> 7 & 0x01);
+    /**< Set the enable pin to high */
+   DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN, DIO_u8_HIGH);
+   /**< The time of pulse delay */
+   STK_voidDelay(5);
+   /**< Set the enable pin to low */
+   DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN, DIO_u8_LOW);
+#else
+    #error "Wrong Choice"
+#endif // LCD_MODE
 }
 
-void LCD_VoidInit(void)
+void LCD_voidSendChar(u8 copy_u8Char)
 {
-    SYSCTL_RCGCGPIO_R |= 0x03;  // enable clock for Port A and Port B
-
-    GPIO_PORTA_DIR_R |= DB_MASK;  // set data pins as output
-    GPIO_PORTA_DEN_R |= DB_MASK;  // enable digital function for data pins
-    GPIO_PORTB_DIR_R |= (RS | E);  // set RS and E pins as output
-    GPIO_PORTB_DEN_R |= (RS | E);  // enable digital function for RS and E pins
-
-    STK_voidDelay(20);  // wait for LCD to power up
-    LCD_VoidCommand(0x20);  // function set command: 4-bit mode, 1-line display, 5x7 dot font
-    LCD_VoidCommand(0x0C);  // display ON/OFF command: display on, cursor off, blinking off
-    LCD_VoidCommand(0x01);  //   clear display command
-    LCD_VoidCommand(0x06);  // entry mode set command: cursor moves to right after writing a character
+    /**< Set RS pin to high for data --> RS = 1 */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_RS_PIN, DIO_u8_HIGH);
+    /**< Set RW pin to low for write  --> RW = 0 */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_RW_PIN, DIO_u8_LOW);
+#if LCD_MODE == LCD_8_BIT_MODE
+    /**< Set the data to data pins */
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D0_PIN, copy_u8Char >> 0 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D1_PIN, copy_u8Char >> 1 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D2_PIN, copy_u8Char >> 2 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D3_PIN, copy_u8Char >> 3 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D4_PIN, copy_u8Char >> 4 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D5_PIN, copy_u8Char >> 5 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D6_PIN, copy_u8Char >> 6 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D7_PIN, copy_u8Char >> 7 & 0x01);
+    /**< Set the enable pin to high */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN, DIO_u8_HIGH);
+    /**< The time of pulse delay */
+    STK_voidDelay(5);
+    /**< Set the enable pin to low */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN, DIO_u8_LOW);
+#elif LCD_MODE == LCD_4_BIT_MODE
+    /**< Set the 4-MSB to data pins */
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D4_PIN, copy_u8Char >> 4 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D5_PIN, copy_u8Char >> 5 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D6_PIN, copy_u8Char >> 6 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D7_PIN, copy_u8Char >> 7 & 0x01);
+    /**< Set the enable pin to high */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN, DIO_u8_HIGH);
+    /**< The time of pulse delay */
+    STK_voidDelay(5);
+    /**< Set the enable pin to low */
+    DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN, DIO_u8_LOW);
+    /**< Shift the 4-LSB data to the 4-MSB */
+    copy_u8Char = copy_u8Char << 4;
+    /**< Set the 4-LSB to data pins */
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D4_PIN, copy_u8Char >> 4 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D5_PIN, copy_u8Char >> 5 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D6_PIN, copy_u8Char >> 6 & 0x01);
+    DIO_u8SetPinValue(LCD_DATA_PORT, LCD_D7_PIN, copy_u8Char >> 7 & 0x01);
+    /**< Set the enable pin to high */
+   DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN, DIO_u8_HIGH);
+   /**< The time of pulse delay */
+   STK_voidDelay(5);
+   /**< Set the enable pin to low */
+   DIO_u8SetPinValue(LCD_CONTROL_PORT, LCD_EN_PIN, DIO_u8_LOW);
+#else
+    #error "Wrong Choice"
+#endif // LCD_MODE
 }
 
-
-void lcd_check_BF(void)
+void LCD_voidClear(void)
 {
-    u8 BF_copy;                         // busy flag 'mirror'
-    GPIO_PORTA_DIR_R &= ~BusyFlag; // set D7 data direction to input
-    GPIO_PORTB_DATA_R &= ~RS;                // select the Instruction Register (RS low)
-    GPIO_PORTB_DATA_R |= RW;                 // read from LCD module (RW high)
+    LCD_voidSendCommand(LCD_CLEAR_COMMAND);
+}
 
+void LCD_voidSendString(u8 *copy_pu8String)
+{
+    u8 Local_u8Counter = 0;
+    while(copy_pu8String[Local_u8Counter]!='\0')
+    {
+        LCD_voidSendChar(copy_pu8String[Local_u8Counter]);
+        Local_u8Counter++;
+    }
+
+}
+
+void LCD_voidSendNumber(f64 copy_f64Number)
+{
+
+    u8 Local_u8Integer[11]={0};
+    s8 Local_u8Counter = 0;
+    if(((s32)copy_f64Number)<0)
+    {
+        LCD_voidSendChar('-');
+        copy_f64Number*=-1;
+    }
     do
     {
-        BF_copy = 0;                         // initialize busy flag 'mirror'
-        GPIO_PORTB_DATA_R |= E;               // Enable pin high
-        STK_voidDelay(1);
-
-        BF_copy |= BusyFlag;  // get actual busy flag status
-
-        GPIO_PORTB_DATA_R &= ~E;              // Enable pin low
-        STK_voidDelay(1);
-
-    } while (BusyFlag);                   // check again if busy flag was high
-
-// arrive here if busy flag is clear -  clean up and return
-    GPIO_PORTB_DATA_R &= ~RW;                // write to LCD module (RW low)       <-- (not really necessary)
-    GPIO_PORTA_DIR_R |=BusyFlag;                  // reset D7 data direction to output
+        Local_u8Integer[Local_u8Counter] = (u32)copy_f64Number%10;
+        copy_f64Number/=10;
+        Local_u8Counter++;
+    }while((u32)copy_f64Number !=0);
+    Local_u8Counter--;
+    for(;Local_u8Counter>=0;Local_u8Counter--)
+    {
+        LCD_voidSendChar(Local_u8Integer[Local_u8Counter]+48);
+    }
 }
-void LCD_VoidString (u8 *str) /* Send string to LCD function */
+
+void LCD_voidGoToXYPos(u8 copy_u8XPos,u8 copy_u8YPos)
 {
-	u32 i;
-	for(i=0;str[i]!='\0';i++)  /* Send each char of string till the NULL */
-	{
-		LCD_VoidChar (str[i]);  /* Call LCD data write */
-	}
+    u8 Local_u8Address = 0;
+    if((copy_u8XPos==0||copy_u8XPos==1) && (copy_u8YPos >= 0 && copy_u8YPos<=16))
+    {
+        switch(copy_u8XPos)
+        {
+        case 0:
+            Local_u8Address = copy_u8YPos;
+            break;
+        case 1:
+            Local_u8Address = copy_u8XPos+0x40;
+            break;
+        default: /**< Return Error state */break;
+        }
+        /**
+         *  To move the LCD to the calculated address you should SET_BIT(DDRAM,DB7)
+         *  There are many way to do this :
+         *      1)Local_u8Address + 128
+         *      2)Local_u8Address|(1<<8)
+         *      3)SET_BIT(Local_u8Address,8)
+         *  */
+        LCD_voidSendCommand(Local_u8Address+128);
+    }
+    else
+    {
+        /**< Return Error state */
+    }
+
 }
-
-
-int main(void)
-{
-LCD_VoidInit();
-    while (1)
-        ;  // do nothing
-}
-

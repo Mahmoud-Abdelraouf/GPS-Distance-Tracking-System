@@ -8,7 +8,7 @@
 #define __MCAL_DIO_PRIVATE_C_H__
 
 
-#define GPIO_LOCK_KEY					0x4C4F434B	
+#define GPIO_LOCK_KEY				0x4C4F434B
 #define GPIO_ENABLE_7_BIT			0x000000FF	
 #define GPIO_PCTL_VALUE				0x00000000
 

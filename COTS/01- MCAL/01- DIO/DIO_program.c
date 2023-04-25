@@ -1,22 +1,17 @@
-// **********************************************************
-// ********** Name    : ASU_EMBEDDED_TEAM_3				***********
-// ********** Date    : 14/04/2023              	***********
-// ********** SWC     : DIO                     	***********
-// ********** Version : 1.0                    		***********
-// **********************************************************
+// ************************************************************
+// ********** Name    : ASU_EMBEDDED_TEAM_3		    ***********
+// ********** Date    : 25/04/2023              	***********
+// ********** SWC     : MCAL_DIO                    ***********
+// ********** Version : 2.0                    		***********
+// ************************************************************
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 
-#include "TM4C123.h"
+
 #include "TM4C123GH6PM.h"
 #include "DIO_private.h"
 #include "DIO_interface.h"
 #include "DIO_config.h"
-
-
-
-SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
-
 
 
 
@@ -136,26 +131,40 @@ u8 DIO_u8SetPinDirection (u8 copy_u8PortId, u8 copy_u8PinId,u8 copy_u8PinDirecti
 				}
 			break;
 			case DIO_u8_PORTE:
-				switch(copy_u8PinDirection)
-				{
-					case DIO_u8_OUTPUT:
-						SET_BIT(GPIO_PORTE_DIR_R,copy_u8PinId);		// Set the direction of pin to be output
-					break;
-					case DIO_u8_INPUT:
-						CLR_BIT(GPIO_PORTE_DIR_R,copy_u8PinId);		// Set the direction of pin to be input
-					break;
-				}
+			    if(copy_u8PinId<=DIO_u8_PIN4)
+			    {
+			        switch(copy_u8PinDirection)
+                    {
+                        case DIO_u8_OUTPUT:
+                            SET_BIT(GPIO_PORTE_DIR_R,copy_u8PinId);     // Set the direction of pin to be output
+                        break;
+                        case DIO_u8_INPUT:
+                            CLR_BIT(GPIO_PORTE_DIR_R,copy_u8PinId);     // Set the direction of pin to be input
+                        break;
+                    }
+			    }
+			    else
+			    {
+			        Local_u8ErrorState = STD_TYPES_NOK;
+			    }
 			break;
-			case DIO_u8_PORTF: 	
-				switch(copy_u8PinDirection)
-				{
-					case DIO_u8_OUTPUT:
-						SET_BIT(GPIO_PORTF_DIR_R,copy_u8PinId);		// Set the direction of pin to be output
-					break;
-					case DIO_u8_LOW:
-						CLR_BIT(GPIO_PORTF_DIR_R,copy_u8PinId);		// Set the direction of pin to be input
-					break;
-				}
+			case DIO_u8_PORTF:
+			    if(copy_u8PinId<=DIO_u8_PIN4)
+			    {
+			        switch(copy_u8PinDirection)
+                    {
+                        case DIO_u8_OUTPUT:
+                            SET_BIT(GPIO_PORTF_DIR_R,copy_u8PinId);     // Set the direction of pin to be output
+                        break;
+                        case DIO_u8_LOW:
+                            CLR_BIT(GPIO_PORTF_DIR_R,copy_u8PinId);     // Set the direction of pin to be input
+                        break;
+                    }
+			    }
+			    else
+			    {
+			        Local_u8ErrorState = STD_TYPES_NOK;
+			    }
 			break;
 			default:Local_u8ErrorState = STD_TYPES_NOK; break;
 		}
@@ -219,6 +228,8 @@ u8 DIO_u8SetPinValue     (u8 copy_u8PortId, u8 copy_u8PinId,u8 copy_u8PinValue)
 				}
 			break;
 			case DIO_u8_PORTE:
+			if(copy_u8PinId<=DIO_u8_PIN4)
+			{
 				switch(copy_u8PinValue)
 				{
 					case DIO_u8_HIGH:
@@ -228,8 +239,15 @@ u8 DIO_u8SetPinValue     (u8 copy_u8PortId, u8 copy_u8PinId,u8 copy_u8PinValue)
 						CLR_BIT(GPIO_PORTE_DATA_R,copy_u8PinId);		// Set the direction of pin to be input
 					break;
 				}
+			}
+			else
+			{
+				Local_u8ErrorState = STD_TYPES_NOK;
+			}
 			break;
 			case DIO_u8_PORTF:
+			if(copy_u8PinId<=DIO_u8_PIN4)
+			{
 				switch(copy_u8PinValue)
 				{
 					case DIO_u8_HIGH:
@@ -239,6 +257,11 @@ u8 DIO_u8SetPinValue     (u8 copy_u8PortId, u8 copy_u8PinId,u8 copy_u8PinValue)
 						CLR_BIT(GPIO_PORTF_DATA_R,copy_u8PinId);		// Set the direction of pin to be input
 					break;
 				}
+			}
+			else
+			{
+				Local_u8ErrorState = STD_TYPES_NOK;
+			}
 			break;
 			default:Local_u8ErrorState = STD_TYPES_NOK; break;
 		}
