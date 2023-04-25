@@ -1,3 +1,4 @@
+#include "GPS.h"
 /*
  * Description :
  * Receive a complete NMEA sentence from GPS module
