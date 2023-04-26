@@ -4,17 +4,17 @@
  * Receive a complete NMEA sentence from GPS module
  */
  
-void gps_receive_sentence(char* sentence) {
+void gps_receive_sentence(u8* sentence) {
 
 
   
-  char c = UART_recieveByte();
+  u8 c = UART_recieveByte();
   while(c != '$') { 
    // Ignore characters until start of sentence
     c =  UART_recieveByte();
   }
   
   
-UART_receiveString(uint8 *Str);
+UART_receiveString(u8 *Str);
 
 }
