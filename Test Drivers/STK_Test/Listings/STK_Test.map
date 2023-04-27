@@ -11,6 +11,11 @@ Section Cross References
     dio_program.o(.ARM.exidx.text.DIO_u8SetPortDirection) refers to dio_program.o(.text.DIO_u8SetPortDirection) for [Anonymous Symbol]
     dio_program.o(.ARM.exidx.text.DIO_u8SetPortValue) refers to dio_program.o(.text.DIO_u8SetPortValue) for [Anonymous Symbol]
     dio_program.o(.ARM.exidx.text.DIO_u8GetPortValue) refers to dio_program.o(.text.DIO_u8GetPortValue) for [Anonymous Symbol]
+    main.o(.text.main) refers to dio_program.o(.text.DIO_voidInit) for DIO_voidInit
+    main.o(.text.main) refers to dio_program.o(.text.DIO_u8SetPinDirection) for DIO_u8SetPinDirection
+    main.o(.text.main) refers to dio_program.o(.text.DIO_u8SetPinValue) for DIO_u8SetPinValue
+    main.o(.text.main) refers to stk_program.o(.text.STK_voidDelay) for STK_voidDelay
+    main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
     stk_program.o(.ARM.exidx.text.STK_voidConfig) refers to stk_program.o(.text.STK_voidConfig) for [Anonymous Symbol]
     stk_program.o(.ARM.exidx.text.STK_voidHandler) refers to stk_program.o(.text.STK_voidHandler) for [Anonymous Symbol]
     stk_program.o(.ARM.exidx.text.STK_voidReset) refers to stk_program.o(.text.STK_voidReset) for [Anonymous Symbol]
@@ -32,11 +37,6 @@ Section Cross References
     stk_program.o(.text.STK_voidDelayTicks) refers to stk_program.o(.text.STK_voidEnable) for STK_voidEnable
     stk_program.o(.text.STK_voidDelayTicks) refers to stk_program.o(.text.STK_voidDisable) for STK_voidDisable
     stk_program.o(.ARM.exidx.text.STK_voidDelayTicks) refers to stk_program.o(.text.STK_voidDelayTicks) for [Anonymous Symbol]
-    main.o(.text.main) refers to dio_program.o(.text.DIO_voidInit) for DIO_voidInit
-    main.o(.text.main) refers to dio_program.o(.text.DIO_u8SetPinDirection) for DIO_u8SetPinDirection
-    main.o(.text.main) refers to dio_program.o(.text.DIO_u8SetPinValue) for DIO_u8SetPinValue
-    main.o(.text.main) refers to stk_program.o(.text.STK_voidDelay) for STK_voidDelay
-    main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
     startup_tm4c123.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_tm4c123.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_tm4c123.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
@@ -176,6 +176,9 @@ Removing Unused input sections from the image.
     Removing dio_program.o(.ARM.exidx.text.DIO_u8SetPortValue), (8 bytes).
     Removing dio_program.o(.text.DIO_u8GetPortValue), (188 bytes).
     Removing dio_program.o(.ARM.exidx.text.DIO_u8GetPortValue), (8 bytes).
+    Removing main.o(.text), (0 bytes).
+    Removing main.o(.ARM.exidx.text.main), (8 bytes).
+    Removing main.o(.ARM.use_no_argv), (4 bytes).
     Removing stk_program.o(.text), (0 bytes).
     Removing stk_program.o(.text.STK_voidConfig), (74 bytes).
     Removing stk_program.o(.ARM.exidx.text.STK_voidConfig), (8 bytes).
@@ -197,9 +200,6 @@ Removing Unused input sections from the image.
     Removing stk_program.o(.ARM.exidx.text.STK_voidDelayUs), (8 bytes).
     Removing stk_program.o(.text.STK_voidDelayTicks), (64 bytes).
     Removing stk_program.o(.ARM.exidx.text.STK_voidDelayTicks), (8 bytes).
-    Removing main.o(.text), (0 bytes).
-    Removing main.o(.ARM.exidx.text.main), (8 bytes).
-    Removing main.o(.ARM.use_no_argv), (4 bytes).
     Removing system_tm4c123.o(.text), (0 bytes).
     Removing system_tm4c123.o(.text.SystemCoreClockUpdate), (326 bytes).
     Removing system_tm4c123.o(.ARM.exidx.text.SystemCoreClockUpdate), (8 bytes).
@@ -331,15 +331,15 @@ Image Symbol Table
     .text                                    0x0000047e   Section        0  indicate_semi.o(.text)
     [Anonymous Symbol]                       0x00000480   Section        0  dio_program.o(.text.DIO_u8SetPinDirection)
     [Anonymous Symbol]                       0x000006e4   Section        0  dio_program.o(.text.DIO_u8SetPinValue)
-    [Anonymous Symbol]                       0x00000924   Section        0  dio_program.o(.text.DIO_voidInit)
-    [Anonymous Symbol]                       0x00000b34   Section        0  stk_program.o(.text.STK_voidDelay)
-    [Anonymous Symbol]                       0x00000b80   Section        0  stk_program.o(.text.STK_voidDisable)
-    [Anonymous Symbol]                       0x00000ba8   Section        0  stk_program.o(.text.STK_voidEnable)
-    [Anonymous Symbol]                       0x00000bc4   Section        0  stk_program.o(.text.STK_voidSetReloadValue)
-    [Anonymous Symbol]                       0x00000bf8   Section        0  system_tm4c123.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x00000d04   Section        0  main.o(.text.main)
-    $v0                                      0x00000d4a   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$fpinit                             0x00000d4a   Section       26  fpinit.o(x$fpl$fpinit)
+    [Anonymous Symbol]                       0x0000094c   Section        0  dio_program.o(.text.DIO_voidInit)
+    [Anonymous Symbol]                       0x00000b5c   Section        0  stk_program.o(.text.STK_voidDelay)
+    [Anonymous Symbol]                       0x00000ba8   Section        0  stk_program.o(.text.STK_voidDisable)
+    [Anonymous Symbol]                       0x00000bd0   Section        0  stk_program.o(.text.STK_voidEnable)
+    [Anonymous Symbol]                       0x00000bec   Section        0  stk_program.o(.text.STK_voidSetReloadValue)
+    [Anonymous Symbol]                       0x00000c20   Section        0  system_tm4c123.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x00000d2c   Section        0  main.o(.text.main)
+    $v0                                      0x00000d72   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$fpinit                             0x00000d72   Section       26  fpinit.o(x$fpl$fpinit)
     .bss                                     0x20000000   Section       96  libspace.o(.bss)
     Heap_Mem                                 0x20000060   Data           0  startup_tm4c123.o(HEAP)
     Stack_Mem                                0x20000060   Data         512  startup_tm4c123.o(STACK)
@@ -564,19 +564,19 @@ Image Symbol Table
     __use_no_semihosting_swi                 0x0000047d   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x0000047f   Thumb Code     0  indicate_semi.o(.text)
     DIO_u8SetPinDirection                    0x00000481   Thumb Code   612  dio_program.o(.text.DIO_u8SetPinDirection)
-    DIO_u8SetPinValue                        0x000006e5   Thumb Code   574  dio_program.o(.text.DIO_u8SetPinValue)
-    DIO_voidInit                             0x00000925   Thumb Code   526  dio_program.o(.text.DIO_voidInit)
-    STK_voidDelay                            0x00000b35   Thumb Code    74  stk_program.o(.text.STK_voidDelay)
-    STK_voidDisable                          0x00000b81   Thumb Code    40  stk_program.o(.text.STK_voidDisable)
-    STK_voidEnable                           0x00000ba9   Thumb Code    26  stk_program.o(.text.STK_voidEnable)
-    STK_voidSetReloadValue                   0x00000bc5   Thumb Code    50  stk_program.o(.text.STK_voidSetReloadValue)
-    SystemInit                               0x00000bf9   Thumb Code   268  system_tm4c123.o(.text.SystemInit)
-    main                                     0x00000d05   Thumb Code    70  main.o(.text.main)
-    _fp_init                                 0x00000d4b   Thumb Code    26  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x00000d63   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x00000d63   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    Region$$Table$$Base                      0x00000d64   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000d74   Number         0  anon$$obj.o(Region$$Table)
+    DIO_u8SetPinValue                        0x000006e5   Thumb Code   614  dio_program.o(.text.DIO_u8SetPinValue)
+    DIO_voidInit                             0x0000094d   Thumb Code   526  dio_program.o(.text.DIO_voidInit)
+    STK_voidDelay                            0x00000b5d   Thumb Code    74  stk_program.o(.text.STK_voidDelay)
+    STK_voidDisable                          0x00000ba9   Thumb Code    40  stk_program.o(.text.STK_voidDisable)
+    STK_voidEnable                           0x00000bd1   Thumb Code    26  stk_program.o(.text.STK_voidEnable)
+    STK_voidSetReloadValue                   0x00000bed   Thumb Code    50  stk_program.o(.text.STK_voidSetReloadValue)
+    SystemInit                               0x00000c21   Thumb Code   268  system_tm4c123.o(.text.SystemInit)
+    main                                     0x00000d2d   Thumb Code    70  main.o(.text.main)
+    _fp_init                                 0x00000d73   Thumb Code    26  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x00000d8b   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x00000d8b   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    Region$$Table$$Base                      0x00000d8c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00000d9c   Number         0  anon$$obj.o(Region$$Table)
     __libspace_start                         0x20000000   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x20000060   Data           0  libspace.o(.bss)
 
@@ -588,9 +588,9 @@ Memory Map of the image
 
   Image Entry point : 0x000002f1
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00000d74, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000d9c, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000d74, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000d9c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -652,29 +652,29 @@ Memory Map of the image
     0x0000047e   0x0000047e   0x00000000   Code   RO          197    .text               c_w.l(indicate_semi.o)
     0x0000047e   0x0000047e   0x00000002   PAD
     0x00000480   0x00000480   0x00000264   Code   RO            4    .text.DIO_u8SetPinDirection  dio_program.o
-    0x000006e4   0x000006e4   0x0000023e   Code   RO            6    .text.DIO_u8SetPinValue  dio_program.o
-    0x00000922   0x00000922   0x00000002   PAD
-    0x00000924   0x00000924   0x0000020e   Code   RO            2    .text.DIO_voidInit  dio_program.o
-    0x00000b32   0x00000b32   0x00000002   PAD
-    0x00000b34   0x00000b34   0x0000004a   Code   RO           41    .text.STK_voidDelay  stk_program.o
-    0x00000b7e   0x00000b7e   0x00000002   PAD
-    0x00000b80   0x00000b80   0x00000028   Code   RO           35    .text.STK_voidDisable  stk_program.o
-    0x00000ba8   0x00000ba8   0x0000001a   Code   RO           33    .text.STK_voidEnable  stk_program.o
-    0x00000bc2   0x00000bc2   0x00000002   PAD
-    0x00000bc4   0x00000bc4   0x00000032   Code   RO           31    .text.STK_voidSetReloadValue  stk_program.o
-    0x00000bf6   0x00000bf6   0x00000002   PAD
-    0x00000bf8   0x00000bf8   0x0000010c   Code   RO           76    .text.SystemInit    system_tm4c123.o
-    0x00000d04   0x00000d04   0x00000046   Code   RO           54    .text.main          main.o
-    0x00000d4a   0x00000d4a   0x0000001a   Code   RO          178    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x00000d64   0x00000d64   0x00000010   Data   RO          253    Region$$Table       anon$$obj.o
+    0x000006e4   0x000006e4   0x00000266   Code   RO            6    .text.DIO_u8SetPinValue  dio_program.o
+    0x0000094a   0x0000094a   0x00000002   PAD
+    0x0000094c   0x0000094c   0x0000020e   Code   RO            2    .text.DIO_voidInit  dio_program.o
+    0x00000b5a   0x00000b5a   0x00000002   PAD
+    0x00000b5c   0x00000b5c   0x0000004a   Code   RO           50    .text.STK_voidDelay  stk_program.o
+    0x00000ba6   0x00000ba6   0x00000002   PAD
+    0x00000ba8   0x00000ba8   0x00000028   Code   RO           44    .text.STK_voidDisable  stk_program.o
+    0x00000bd0   0x00000bd0   0x0000001a   Code   RO           42    .text.STK_voidEnable  stk_program.o
+    0x00000bea   0x00000bea   0x00000002   PAD
+    0x00000bec   0x00000bec   0x00000032   Code   RO           40    .text.STK_voidSetReloadValue  stk_program.o
+    0x00000c1e   0x00000c1e   0x00000002   PAD
+    0x00000c20   0x00000c20   0x0000010c   Code   RO           76    .text.SystemInit    system_tm4c123.o
+    0x00000d2c   0x00000d2c   0x00000046   Code   RO           23    .text.main          main.o
+    0x00000d72   0x00000d72   0x0000001a   Code   RO          178    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x00000d8c   0x00000d8c   0x00000010   Data   RO          253    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00000d74, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00000d9c, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region ER_ZI (Exec base: 0x20000000, Load base: 0x00000d74, Size: 0x00000260, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000000, Load base: 0x00000d9c, Size: 0x00000260, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -690,14 +690,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1712         18          0          0          0       3580   dio_program.o
+      1752         18          0          0          0       3622   dio_program.o
         70          0          0          0          0        421   main.o
        276         24        620          0        512       5520   startup_tm4c123.o
        190          0          0          0          0       2027   stk_program.o
        268          0          0          0          0       6781   system_tm4c123.o
 
     ----------------------------------------------------------------------
-      2526         42        636          0        512      18329   Object Totals
+      2566         42        636          0        512      18371   Object Totals
          0          0         16          0          0          0   (incl. Generated)
         10          0          0          0          0          0   (incl. Padding)
 
@@ -747,15 +747,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      2808         58        636          0        608      18745   Grand Totals
-      2808         58        636          0        608      18745   ELF Image Totals
-      2808         58        636          0          0          0   ROM Totals
+      2848         58        636          0        608      18787   Grand Totals
+      2848         58        636          0        608      18787   ELF Image Totals
+      2848         58        636          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 3444 (   3.36kB)
+    Total RO  Size (Code + RO Data)                 3484 (   3.40kB)
     Total RW  Size (RW Data + ZI Data)               608 (   0.59kB)
-    Total ROM Size (Code + RO Data + RW Data)       3444 (   3.36kB)
+    Total ROM Size (Code + RO Data + RW Data)       3484 (   3.40kB)
 
 ==============================================================================
 

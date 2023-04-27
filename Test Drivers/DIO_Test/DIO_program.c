@@ -8,7 +8,7 @@
 #include "BIT_MATH.h"
 
 
-#include "TM4C123GH6PM.h"
+#include "tm4c123gh6pm.h"
 #include "DIO_private.h"
 #include "DIO_interface.h"
 #include "DIO_config.h"

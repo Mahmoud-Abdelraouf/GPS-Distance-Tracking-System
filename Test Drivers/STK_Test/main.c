@@ -6,8 +6,10 @@
 #include "STK_interface.h"
 #include <stdio.h>
 
+
 int main(void)
 {
+	
 	DIO_voidInit(DIO_u8_PORTF);
 	DIO_u8SetPinDirection(DIO_u8_PORTF,DIO_u8_PIN2,DIO_u8_OUTPUT);
 	while(1)

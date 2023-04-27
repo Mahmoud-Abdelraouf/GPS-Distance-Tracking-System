@@ -420,9 +420,9 @@
               <FilePath>.\STD_TYPES.h</FilePath>
             </File>
             <File>
-              <FileName>TM4C123GH6PM.h</FileName>
+              <FileName>tm4c123gh6pm.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\TM4C123GH6PM.h</FilePath>
+              <FilePath>.\tm4c123gh6pm.h</FilePath>
             </File>
           </Files>
         </Group>
