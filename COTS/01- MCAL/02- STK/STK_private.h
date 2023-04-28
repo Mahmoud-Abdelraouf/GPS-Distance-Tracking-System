@@ -5,8 +5,8 @@
 // ********** Version : 1.0                    		*************
 // **************************************************************
 
-#ifndef __STK_PRIVATE_H__
-#define __STK_PRIVATE_H__
+#ifndef __MCAL_STK_PRIVATE_H__
+#define __MCAL_STK_PRIVATE_H__
 
 /**<  SysTick Control and Status Register (STCTRL)--> NVIC_ST_CTRL_R: Page 138 */
 #define STK_ENABLE_B            0

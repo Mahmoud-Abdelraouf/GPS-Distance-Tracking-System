@@ -4,8 +4,8 @@
 // ********** SWC     : MCAL_STK                   	***********
 // ********** Version : 1.0                    		***********
 // ************************************************************
-#ifndef __STK_INTERFACE_H__
-#define __STK_INTERFACE_H__
+#ifndef __MCAL_STK_INTERFACE_H__
+#define __MCAL_STK_INTERFACE_H__
 
 
 

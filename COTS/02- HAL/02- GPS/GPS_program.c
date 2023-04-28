@@ -4,7 +4,17 @@
 //********** SWC     : HAL_GPS                  *************
 //********** Version : 1.0                      *************
 //***********************************************************
-#include "GPS.h"
+/**< LIB */
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+/**< MCAL */
+
+
+/**< HAL */
+#include "GPS_private.h"
+#include "GPS_interface.h"
+#include "GPS_config.h"
+
 /**
  * Description :
  * Receive a complete NMEA sentence from GPS module

@@ -5,8 +5,8 @@
 // ********** Version : 1.0                    		***********
 // ************************************************************
 
-#ifndef __STK_CONFIG_H__
-#define __STK_CONFIG_H__
+#ifndef __MCAL_STK_CONFIG_H__
+#define __MCAL_STK_CONFIG_H__
 
 
 /**
