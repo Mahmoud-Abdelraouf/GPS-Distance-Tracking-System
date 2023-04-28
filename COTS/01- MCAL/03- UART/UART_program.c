@@ -38,12 +38,13 @@ void UART_voidInit(void)
 }
 
 
+
 /**
  * Description :
  * Function to send byte using UART0 
  */
 
-void UART_voidSendByte(const uint8 data)
+void UART_voidSendByte(const u8 data)
 {
 	while ((UART0_FR_R & 0X0020) !=0); //check if the buffer is full
 	UART0_DR_R =data;  // wait until Tx buffer not full, before giving it another byte 
@@ -63,34 +64,34 @@ u8 UART_u8RecieveByte(void)
  * This function is designed to send a string of characters over UART (Universal Asynchronous Receiver/Transmitter)
  * communication protocol.
  */
-void UART_voidSendString(const u8 *Str)
+void UART_voidSendString(const u8 *copy_pu8String)
 {
-	u32 string_length = strlen(str);
+	u32 string_length = strlen(copy_pu8String);
 	for(u32 i = 0; i<string_length; i++)
 	{
-		UART_sendByte(Str[i]);
+		UART_sendByte(copy_pu8String[i]);
 	}
 }
 /**
  * Description :
  * Receive the required string until the '*' symbol through UART from the other UART device.
  */
-void UART_voidReceiveString(uint8 *Str)
+void UART_voidReceiveString(uint8 *copy_pu8String)
 {
 	uint8 i = 0;
 
 	/* Receive the first byte */
-	Str[i] = UART_recieveByte();
+	copy_pu8String[i] = UART_recieveByte();
 
 	/* Receive the whole string until the '#' */
-	while(Str[i] != '*')
+	while(copy_pu8String[i] != '*')
 	{
 		i++;
-		Str[i] = UART_recieveByte();
+		copy_pu8String[i] = UART_recieveByte();
 	}
 
 	/* After receiving the whole string plus the '', replace the '' with '\0' */
-	Str[i] = '\0';
+	copy_pu8String[i] = '\0';
 }
 
 

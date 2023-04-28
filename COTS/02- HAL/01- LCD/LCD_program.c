@@ -11,7 +11,7 @@
 /**< MCAL */
 #include "DIO_interface.h"
 #include "STK_interface.h"
-/**< HAL */
+/**< LCD_HAL */
 #include "LCD_private.h"
 #include "LCD_interface.h"
 #include "LCD_config.h"
@@ -195,7 +195,7 @@ void LCD_voidSendNumber(f64 copy_f64Number)
     if(((s32)copy_f64Number)<0)
     {
         LCD_voidSendChar('-');
-        copy_f64Number*=-1;
+        copy_f64Number*=-1; 
     }
     do
     {

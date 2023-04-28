@@ -20,7 +20,7 @@ void UART_voidInit(void);
  * \return 	
  *
  */ 
-void UART_voidSendByte(const u8 data);
+void UART_voidSendByte(const u8 copy_cu8Data);
 /** \brief 	
  *			
  * \param 	
@@ -34,14 +34,14 @@ u8 UART_u8RecieveByte(void);
  * \return 	
  *
  */ 
-void UART_voidSendString(const u8 *Str);
+void UART_voidSendString(const u8 *copy_pu8String);
 /** \brief 	
  *			
  * \param 	
  * \return 	
  *
  */ 
-void UART_voidReceiveString(u8 *Str);
+void UART_voidReceiveString(u8 *copy_pu8String);
 
 
 

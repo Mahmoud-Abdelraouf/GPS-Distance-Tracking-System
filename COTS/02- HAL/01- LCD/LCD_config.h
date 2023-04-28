@@ -39,9 +39,9 @@
  *
  * */
 //*************************CONTROL PORT*************************
-#define LCD_CONTROL_PORT                DIO_u8_PORTA
+#define LCD_CONTROL_PORT                DIO_u8_PORTR
 #define LCD_RS_PIN                      DIO_u8_PIN1
-#define LCD_RW_PIN                      DIO_u8_PIN0
+#define LCD_RW_PIN                      DIO_u8_PINX
 #define LCD_EN_PIN                      DIO_u8_PIN2
 //*************************DATA PORT****************************
 #define LCD_DATA_PORT                   DIO_u8_PORTA
@@ -49,10 +49,10 @@
 #define LCD_D1_PIN                      DIO_u8_PIN1
 #define LCD_D2_PIN                      DIO_u8_PIN2
 #define LCD_D3_PIN                      DIO_u8_PIN3
-#define LCD_D4_PIN                      DIO_u8_PIN3
-#define LCD_D5_PIN                      DIO_u8_PIN4
-#define LCD_D6_PIN                      DIO_u8_PIN5
-#define LCD_D7_PIN                      DIO_u8_PIN6
+#define LCD_D4_PIN                      DIO_u8_PIN4
+#define LCD_D5_PIN                      DIO_u8_PIN5
+#define LCD_D6_PIN                      DIO_u8_PIN6
+#define LCD_D7_PIN                      DIO_u8_PIN7
 //*************************************************************
 
 
