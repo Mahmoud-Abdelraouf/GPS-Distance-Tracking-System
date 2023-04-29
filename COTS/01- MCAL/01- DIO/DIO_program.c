@@ -4,11 +4,11 @@
 // ********** SWC     : MCAL_DIO                    ***********
 // ********** Version : 2.0                    		***********
 // ************************************************************
+/**< LIB */
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
-
-
 #include "tm4c123gh6pm.h"
+/**< MCAL_DIO */
 #include "DIO_private.h"
 #include "DIO_interface.h"
 #include "DIO_config.h"
