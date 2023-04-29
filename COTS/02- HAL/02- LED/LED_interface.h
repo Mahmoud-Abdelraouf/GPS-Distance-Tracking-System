@@ -9,13 +9,10 @@
 
 
 /********************************< MACROS for colours ********************************/
-
 #define LED_RED  	 	1
 #define LED_BLUE 		2
 #define LED_GREEN	    3
-
 /********************************< functions for LEDs *********************************/
-
 /** \brief
  *
  * \param
