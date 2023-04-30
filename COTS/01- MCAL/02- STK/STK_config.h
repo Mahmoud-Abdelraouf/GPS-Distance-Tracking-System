@@ -17,7 +17,6 @@
  *
  */
 #define STK_SET_INTERRUPT   STK_INTERRUPT_DISABLE
-
 /**
  *
  *  Choose The Clock Sourse of the SysTick timer
