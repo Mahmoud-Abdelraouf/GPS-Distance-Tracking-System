@@ -4,14 +4,15 @@
 // ********** SWC     : MCAL_UART                   ***********
 // ********** Version : 1.0                    		***********
 // ************************************************************
+#include <string.h>
 /**< LIB */
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 #include "tm4c123gh6pm.h"
 /**< HAL_UART */
-#include "UAR_interface.h"
-#include "UAR_private.h"
-#include "UAR_config.h"
+#include "UART_interface.h"
+#include "UART_private.h"
+#include "UART_config.h"
 
 
 
@@ -19,7 +20,7 @@
  * Description :
  * Function to initials the UART0 driver for tiva c
  */
-void UART_voidInit(void)
+void UART0_Init(void)
 {
   SYSCTL_RCGCUART_R |= 0x01;            // activate UART0
   SYSCTL_RCGCGPIO_R |= 0x01;            // activate port A //gpio team might provide a function for that
@@ -44,9 +45,9 @@ void UART_voidInit(void)
  * Function to send byte using UART0 
  */
 
-void UART_voidSendByte(const u8 data)
+void UART_SendByte(const u8 data)
 {
-	while ((UART0_FR_R & 0X0020) !=0); //check if the buffer is full
+	while ((UART0_FR_R & 0x0020) !=0); //check if the buffer is full
 	UART0_DR_R =data;  // wait until Tx buffer not full, before giving it another byte 
 }
 
@@ -54,40 +55,41 @@ void UART_voidSendByte(const u8 data)
  * Description :
  * Function to receive byte using UART0 
  */
-u8 UART_u8RecieveByte(void)
+u8 UART_RecieveByte(void)
 {
-	while (UARTO_FR_R & 0x0010 != 0); //check if the buffor is empty 
-	return (UARTO_DR_R & OxFF);
+	while (UART0_FR_R & 0x0010 != 0); //check if the buffor is empty
+	return (UART0_DR_R & 0xFF);
 }
 /**
  * Description :
  * This function is designed to send a string of characters over UART (Universal Asynchronous Receiver/Transmitter)
  * communication protocol.
  */
-void UART_voidSendString(const u8 *copy_pu8String)
+void UART_SendString(u8 copy_pu8String[])
 {
-	u32 string_length = strlen(copy_pu8String);
-	for(u32 i = 0; i<string_length; i++)
+    u32 i = 0;
+	while(* copy_pu8String != "\0")
 	{
-		UART_sendByte(copy_pu8String[i]);
+	    UART_SendByte(copy_pu8String[i]);
+	    i++;
 	}
 }
 /**
  * Description :
  * Receive the required string until the '*' symbol through UART from the other UART device.
  */
-void UART_voidReceiveString(uint8 *copy_pu8String)
+void UART_ReceiveString(u8 *copy_pu8String)
 {
-	uint8 i = 0;
+	u8 i = 0;
 
 	/* Receive the first byte */
-	copy_pu8String[i] = UART_recieveByte();
+	copy_pu8String[i] = UART_RecieveByte();
 
 	/* Receive the whole string until the '#' */
 	while(copy_pu8String[i] != '*')
 	{
 		i++;
-		copy_pu8String[i] = UART_recieveByte();
+		copy_pu8String[i] = UART_RecieveByte();
 	}
 
 	/* After receiving the whole string plus the '', replace the '' with '\0' */
