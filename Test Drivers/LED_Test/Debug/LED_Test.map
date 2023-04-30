@@ -1,0 +1,190 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.7                     
+******************************************************************************
+>> Linked Sun Apr 30 23:07:29 2023
+
+OUTPUT FILE NAME:   <LED_Test.out>
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 0000112d
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  0000116c  0003ee94  R  X
+  SRAM                  20000000   00008000  00000200  00007e00  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    0000116c   0000116c    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00000f00   00000f00    r-x .text
+20000000    20000000    00000200   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00000f00     
+                  0000026c    00000b38     DIO_program.obj (.text)
+                  00000da4    000001a4     STK_program.obj (.text)
+                  00000f48    00000196     LED_program.obj (.text)
+                  000010de    0000004c     main.obj (.text)
+                  0000112a    00000002     --HOLE-- [fill = 0]
+                  0000112c    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  00001158    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00001164    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00001168    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00000000    00000000     UNINITIALIZED
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       DIO_program.obj                2872   0         0      
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       STK_program.obj                420    0         0      
+       LED_program.obj                406    0         0      
+       main.obj                       76     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         3786   620       0      
+                                                              
+    C:\ti\ccs1220\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       boot_cortex_m.c.obj            44     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         52     0         0      
+                                                              
+       Stack:                         0      0         512    
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   3838   620       512    
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                    
+-------   ----                    
+00001169  C$$EXIT                 
+000007ed  DIO_u8GetPinValue       
+00000be9  DIO_u8GetPortValue      
+000003ab  DIO_u8SetPinDirection   
+00000611  DIO_u8SetPinValue       
+000009fd  DIO_u8SetPortDirection  
+00000b47  DIO_u8SetPortValue      
+00000c89  DIO_u8TogglePinValue    
+0000026d  DIO_voidInit            
+00001049  LED_voidLedBlinkOnce    
+000010bf  LED_voidLedBlinkTwice   
+00000f49  LED_voidLedInit         
+00000fcf  LED_voidLedOff          
+00000f8f  LED_voidLedOn           
+0000100f  LED_voidLedTog          
+00001159  ResetISR                
+00000da5  STK_voidConfig          
+00000ea5  STK_voidDelay           
+00000f09  STK_voidDelayTicks      
+00000ed5  STK_voidDelayUs         
+00000e5f  STK_voidDisable         
+00000e8d  STK_voidDisableInterrupt
+00000e49  STK_voidEnable          
+00000e77  STK_voidEnableInterrupt 
+00000e09  STK_voidGetCurrentValue 
+00000de5  STK_voidHandler         
+00000de7  STK_voidReset           
+00000e1b  STK_voidSetReloadValue  
+20000200  __STACK_END             
+00000200  __STACK_SIZE            
+20000200  __STACK_TOP             
+ffffffff  __TI_pprof_out_hndl     
+ffffffff  __TI_prof_data_size     
+ffffffff  __TI_prof_data_start    
+00000000  __TI_static_base__      
+ffffffff  __binit__               
+ffffffff  __c_args__              
+UNDEFED   __mpu_init              
+20000000  __stack                 
+20000000  __start___llvm_prf_cnts 
+20000000  __stop___llvm_prf_cnts  
+0000112d  _c_int00_noinit_noargs  
+00001165  _system_pre_init        
+00001169  abort                   
+ffffffff  binit                   
+00000000  g_pfnVectors            
+000010df  main                    
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                    
+-------   ----                    
+00000000  __TI_static_base__      
+00000000  g_pfnVectors            
+00000200  __STACK_SIZE            
+0000026d  DIO_voidInit            
+000003ab  DIO_u8SetPinDirection   
+00000611  DIO_u8SetPinValue       
+000007ed  DIO_u8GetPinValue       
+000009fd  DIO_u8SetPortDirection  
+00000b47  DIO_u8SetPortValue      
+00000be9  DIO_u8GetPortValue      
+00000c89  DIO_u8TogglePinValue    
+00000da5  STK_voidConfig          
+00000de5  STK_voidHandler         
+00000de7  STK_voidReset           
+00000e09  STK_voidGetCurrentValue 
+00000e1b  STK_voidSetReloadValue  
+00000e49  STK_voidEnable          
+00000e5f  STK_voidDisable         
+00000e77  STK_voidEnableInterrupt 
+00000e8d  STK_voidDisableInterrupt
+00000ea5  STK_voidDelay           
+00000ed5  STK_voidDelayUs         
+00000f09  STK_voidDelayTicks      
+00000f49  LED_voidLedInit         
+00000f8f  LED_voidLedOn           
+00000fcf  LED_voidLedOff          
+0000100f  LED_voidLedTog          
+00001049  LED_voidLedBlinkOnce    
+000010bf  LED_voidLedBlinkTwice   
+000010df  main                    
+0000112d  _c_int00_noinit_noargs  
+00001159  ResetISR                
+00001165  _system_pre_init        
+00001169  C$$EXIT                 
+00001169  abort                   
+20000000  __stack                 
+20000000  __start___llvm_prf_cnts 
+20000000  __stop___llvm_prf_cnts  
+20000200  __STACK_END             
+20000200  __STACK_TOP             
+ffffffff  __TI_pprof_out_hndl     
+ffffffff  __TI_prof_data_size     
+ffffffff  __TI_prof_data_start    
+ffffffff  __binit__               
+ffffffff  __c_args__              
+ffffffff  binit                   
+UNDEFED   __mpu_init              
+
+[47 symbols]

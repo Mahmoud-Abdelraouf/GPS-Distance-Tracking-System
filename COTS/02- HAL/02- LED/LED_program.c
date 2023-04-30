@@ -11,7 +11,7 @@
 /**< MCAL_DIO */
 #include "DIO_interface.h"
 /**< MCAL_STK */
-#include "STK_interface"
+#include "STK_interface.h"
 /**< LED_HAL */
 #include "LED_private.h"
 #include "LED_interface.h"
@@ -40,7 +40,7 @@ void LED_voidLedTog(u8 copy_u8LedColour)
 	DIO_u8GetPinValue (DIO_u8_PORTF, copy_u8LedColour ,&Local_u32LedState); //this will put the pin value in LedState variable
 	if (Local_u32LedState == DIO_u8_HIGH)
 	{
-		LED_voidLedOff(u8 copy_u8LedColour);  // turns LED off if it was on
+		LED_voidLedOff(copy_u8LedColour);  // turns LED off if it was on
 	}
 	else
 	{
