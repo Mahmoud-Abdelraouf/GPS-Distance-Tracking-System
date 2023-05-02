@@ -128,17 +128,66 @@
 // the functions of the DIO driver
 //
 //*****************************************************************************
+
+/** \brief
+ *
+ * \param
+ * \return
+ *
+ */
 u8 DIO_voidInit(u8 copy_u8PortId);
 
+/** \brief
+ *
+ * \param
+ * \return
+ *
+ */
+
 u8 DIO_u8SetPinDirection (u8 copy_u8PortId, u8 copy_u8PinId,u8 copy_u8PinDirection);
+
+/** \brief
+ *
+ * \param
+ * \return
+ *
+ */
 													  
 u8 DIO_u8SetPinValue     (u8 copy_u8PortId, u8 copy_u8PinId,u8 copy_u8PinValue);
+
+/** \brief
+ *
+ * \param
+ * \return
+ *
+ */
 												  
 u8 DIO_u8GetPinValue     (u8 copy_u8PortId, u8 copy_u8PinId,u32 *copy_pu8ReturnedPinValue);
+
+/** \brief
+ *
+ * \param
+ * \return
+ *
+ */
 												  
 u8 DIO_u8SetPortDirection(u8 copy_u8PortId, u8 copy_u8PortDirection);
+
+/** \brief
+ *
+ * \param
+ * \return
+ *
+ */
 												  
 u8 DIO_u8SetPortValue    (u8 copy_u8PortId, u8 copy_u8PortValue);
+
+/** \brief
+ *
+ * \param
+ * \return
+ *
+ */
 									
 u8 DIO_u8GetPortValue    (u8 copy_u8PortId, u32 *copy_u8ReturnedPortValue);
 

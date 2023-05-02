@@ -11,8 +11,8 @@
  * LCD_MODES
  *
  * */
-#define LCD_8_BIT_MODE          				8
-#define LCD_4_BIT_MODE          				4
+#define LCD_8_BIT_MODE          8
+#define LCD_4_BIT_MODE          4
 /**
  *
  * LCD_COMMANDS

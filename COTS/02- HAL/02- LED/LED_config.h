@@ -11,6 +11,6 @@
 #define LED_BLUE_PIN 		2
 #define LED_GREEN_PIN	    3
 /**********************************< _SELECT_LED_TIME_ON_ **********************************/
-#define LED_TIME_ON			120
+#define LED_TIME_ON			1000
 
 #endif // __HAL_LED_CONFIG_H__

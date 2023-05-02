@@ -7,11 +7,11 @@
 /**< LIB */
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
-#include "tm4c123gh6pm.h"
+#include "TM4C123GH6PM.h"
 /**< MCAL */
 #include "DIO_interface.h"
 #include "STK_interface.h"
-/**< LCD_HAL */
+/**< HAL */
 #include "LCD_private.h"
 #include "LCD_interface.h"
 #include "LCD_config.h"
@@ -195,7 +195,7 @@ void LCD_voidSendNumber(f64 copy_f64Number)
     if(((s32)copy_f64Number)<0)
     {
         LCD_voidSendChar('-');
-        copy_f64Number*=-1; 
+        copy_f64Number*=-1;
     }
     do
     {
@@ -213,7 +213,7 @@ void LCD_voidSendNumber(f64 copy_f64Number)
 void LCD_voidGoToXYPos(u8 copy_u8XPos,u8 copy_u8YPos)
 {
     u8 Local_u8Address = 0;
-    if((copy_u8XPos==0||copy_u8XPos==1) && (copy_u8YPos >= 0 && copy_u8YPos<=16))
+    if((copy_u8XPos== 0 || copy_u8XPos== 1) && (copy_u8YPos >= 0 && copy_u8YPos<=15))
     {
         switch(copy_u8XPos)
         {
@@ -221,7 +221,7 @@ void LCD_voidGoToXYPos(u8 copy_u8XPos,u8 copy_u8YPos)
             Local_u8Address = copy_u8YPos;
             break;
         case 1:
-            Local_u8Address = copy_u8XPos+0x40;
+            Local_u8Address = copy_u8YPos+0x40;
             break;
         default: /**< Return Error state */break;
         }
