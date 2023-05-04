@@ -1,2 +1,2 @@
-# Embedded-GPS
+# GPS Tracking System
 Embedded GPS Project

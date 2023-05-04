@@ -79,7 +79,7 @@ u8 STK_voidSetReloadValue(u32 copy_u32Ticks)
 
 void STK_voidEnable(void)
 {
-  SET_BIT(NVIC_ST_CTRL_R,STK_ENABLE_B);
+    SET_BIT(NVIC_ST_CTRL_R,STK_ENABLE_B);
 	#if 	STK_CLK_SRC == STK_SYS_CLOCK_1
 	SET_BIT(NVIC_ST_CTRL_R,STK_CLK_SRC_B);
 	#elif STK_CLK_SRC == STK_SYS_CLOCK_4

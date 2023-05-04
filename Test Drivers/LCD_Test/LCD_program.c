@@ -213,7 +213,7 @@ void LCD_voidSendNumber(f64 copy_f64Number)
 void LCD_voidGoToXYPos(u8 copy_u8XPos,u8 copy_u8YPos)
 {
     u8 Local_u8Address = 0;
-    if((copy_u8XPos==0||copy_u8XPos==1) && (copy_u8YPos >= 0 && copy_u8YPos<=16))
+    if((copy_u8XPos== 0 || copy_u8XPos== 1) && (copy_u8YPos >= 0 && copy_u8YPos<=15))
     {
         switch(copy_u8XPos)
         {
@@ -221,7 +221,7 @@ void LCD_voidGoToXYPos(u8 copy_u8XPos,u8 copy_u8YPos)
             Local_u8Address = copy_u8YPos;
             break;
         case 1:
-            Local_u8Address = copy_u8XPos+0x40;
+            Local_u8Address = copy_u8YPos+0x40;
             break;
         default: /**< Return Error state */break;
         }
