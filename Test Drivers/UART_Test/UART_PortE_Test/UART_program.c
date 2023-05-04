@@ -1,19 +1,18 @@
 // ************************************************************
 // ********** Name    : ASU_EMBEDDED_TEAM_NO?!		***********
-// ********** Date    : 14/04/2023              	***********
+// ********** Date    : 5/05/2023              	***********
 // ********** SWC     : MCAL_UART                   ***********
-// ********** Version : 1.0                    		***********
+// ********** Version : 2.0                    		***********
 // ************************************************************
 #include <string.h>
 /**< LIB */
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
-#include "TM4C123GH6PM.h"
+#include "tm4c123gh6pm.h"
 /**< MCAL_UART */
 #include "UART_interface.h"
-//#include "UART_private.h"
-//#include "UART_config.h"
-
+#include "UART_private.h"
+#include "UART_config.h"
 
 
 /**
@@ -68,7 +67,7 @@ void UART_voidSendByte(u8 copy_u8Data)
 
 /**
  * Description :
- * Function to receive byte using UART0
+ * Function to receive byte using UART5
  */
 
 
@@ -136,7 +135,7 @@ void GPS_voidReceiveString(u8 *copy_pu8String)
     copy_pu8String[i] = UART_u8RecieveByte();
 
     /* Receive the whole string until the '*' */
-    while(copy_pu8String[i] != '\*')
+    while(copy_pu8String[i] != '*')
     {
         i++;
         copy_pu8String[i] = UART_u8RecieveByte();
