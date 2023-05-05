@@ -27,7 +27,7 @@ To use this system, you will need to connect the TM4C123G LaunchPad to a GPS mod
 
 Here is a random Google Maps image of the start and end points:
 
-![Google Maps Image](https://www.google.com/search?q=google+map&sxsrf=APwXEdcVx-sLbo-1bHXBEctGBJylLiYsRQ:1683326064020&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiW3dignt_-AhWY7rsIHXWEDnsQ_AUoAnoECAMQBA&biw=1707&bih=793&dpr=1.13#imgrc=3JbGeeUh7nAQvM)
+![Google Maps Image](https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png)
 
 ## Credits
 
