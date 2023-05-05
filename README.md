@@ -23,6 +23,12 @@ The trajectory of the distance traveled should satisfy the following criteria:
 
 To use this system, you will need to connect the TM4C123G LaunchPad to a GPS module and configure it to receive GPS coordinates. Once the system is set up, you can use it to track your distance traveled and receive visual feedback using the built-in LEDs.
 
+### Programming Language Used
+
+This project was developed using C programming language.
+
+![C Language Icon](https://img.icons8.com/color/48/000000/c-programming.png)
+
 ## Credits
 
 This project was developed by [Mahmoud Abdelraouf] as part of [Introduction to Embedded
