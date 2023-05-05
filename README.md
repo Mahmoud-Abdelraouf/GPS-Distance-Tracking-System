@@ -28,8 +28,7 @@ To use this system, you will need to connect the TM4C123G LaunchPad to a GPS mod
 This project was developed using C programming language.
 
 ![C Language Icon](https://img.icons8.com/color/48/000000/c-programming.png)
-![Code Composer Studio Icon](https://www.ti.com/diagrams/ccstudio_ccs_256.jpg)
-
+![Code Composer Studio Icon](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxfjytrYFZKdlshCZ3lnHbHP14VHeQ0Dd5Ja5vvD4PEHOGtDUqm1LMToPvV9dIyzIb&usqp=CAU)
 ## Credits
 
 This project was developed by [Mahmoud Abdelraouf] as part of [Introduction to Embedded
