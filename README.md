@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>GPS Distance Tracking System</title>
-  </head>
-  <body>
-    <h1>GPS Distance Tracking System</h1>
+<project>
+  <title>GPS Distance Tracking System</title>
+  <description>
     <p>This project involves developing a system using the TM4C123G LaunchPad that tracks the distance a user travels between two points using GPS coordinates. The system will also provide visual feedback to the user using built-in LEDs, indicating when they are close to their destination or have reached it.</p>
-
-    <h2>Features</h2>
-    <ol>
+  </description>
+  <features>
+    <ul>
       <li>Store the coordinates of the starting point.</li>
       <li>Store the coordinates of the end point and calculate the total distance traveled by the user.</li>
       <li>Provide visual feedback to the user using built-in LEDs:
@@ -18,24 +14,19 @@
           <li>Stage 3: Turn on the red LED when the target destination is far away by more than 5 meters.</li>
         </ol>
       </li>
-    </ol>
-
+    </ul>
     <p>The trajectory of the distance traveled should satisfy the following criteria:</p>
     <ol>
       <li>The total distance between the start and end point should be greater than 100 meters.</li>
       <li>The path from the start point to the end point should form a non-straight line similar to the provided baseline path.</li>
       <li>The calculated distance should be compared with the distance obtained from Google Maps, and the error margin should be less than or equal to 5%.</li>
     </ol>
-
-    <h2>Usage</h2>
+  </features>
+  <usage>
     <p>To use this system, you will need to connect the TM4C123G LaunchPad to a GPS module and configure it to receive GPS coordinates. Once the system is set up, you can use it to track your distance traveled and receive visual feedback using the built-in LEDs.</p>
-
-    <h3>Programming Language Used</h3>
-    <p>This project was developed using C programming language.</p>
-    <img src="https://img.icons8.com/color/48/000000/c-programming.png" alt="C Language Icon">
-
-    <h2>Credits</h2>
+  </usage>
+  <programming-language>C</programming-language>
+  <credits>
     <p>This project was developed by Mahmoud Abdelraouf as part of Introduction to Embedded Systems/GPS Tracking System.</p>
-    <img src="https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png" alt="Google Maps Image">
-  </body>
-</html>
+  </credits>
+</project>
