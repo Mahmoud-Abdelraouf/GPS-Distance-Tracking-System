@@ -23,12 +23,8 @@ The trajectory of the distance traveled should satisfy the following criteria:
 
 To use this system, you will need to connect the TM4C123G LaunchPad to a GPS module and configure it to receive GPS coordinates. Once the system is set up, you can use it to track your distance traveled and receive visual feedback using the built-in LEDs.
 
-## Random Google Maps Image
-
-Here is a random Google Maps image of the start and end points:
-
-![Google Maps Image](https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png)
-
 ## Credits
 
 This project was developed by [Your Name Here] as part of [Course Name/Project Name].
+
+![Google Maps Image](https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png)
