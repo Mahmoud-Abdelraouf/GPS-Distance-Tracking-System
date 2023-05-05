@@ -1,6 +1,6 @@
 # GPS Distance Tracking System
 
-This project involves developing a system using the TM4C123G LaunchPad that tracks the distance a user travels between two points using GPS coordinates. The system will also provide visual feedback to the user using built-in LEDs, indicating when they are close to their destination or have reached it.
+This project involves developing a system using the TM4C123G LaunchPad from Texas Instruments that tracks the distance a user travels between two points using GPS coordinates. The system will also provide visual feedback to the user using built-in LEDs, indicating when they are close to their destination or have reached it.
 
 ## Features
 
@@ -29,9 +29,18 @@ This project was developed using C programming language.
 
 ![C Language Icon](https://img.icons8.com/color/48/000000/c-programming.png)
 
+### Vendor of the TM4C123G LaunchPad
+
+The TM4C123G LaunchPad used in this project was developed by Texas Instruments.
+
+![TI Logo](https://www.ti.com/content/dam/ticom/images/logo/TI-Logo-Red-RGB.svg)
+
 ## Credits
 
-This project was developed by [Mahmoud Abdelraouf] as part of [Introduction to Embedded
-Systems/GPS Tracking System].
+This project was developed by [Mahmoud Abdelraouf] as part of [Introduction to Embedded Systems/GPS Tracking System].
 
-![Google Maps Image](https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png)
+### Contribution
+
+Here is a photo demonstrating the contribution made by this project:
+
+![Contribution Photo](https://www.parsintl.com/wp-content/uploads/2018/05/PARS-Intl-Logo-1.png)
