@@ -28,6 +28,19 @@
 /*************************************< UART STOPBIT *******************************************/
 #define UART_STOP_BIT_1			1
 #define UART_STOP_BIT_2			2
+/*************************************< UART BAUDRATE ******************************************/
+#define UART_BDR_2400			2400
+#define UART_BDR_4800			4800	
+#define UART_BDR_9600			9600
+#define UART_BDR_14400			14400
+#define UART_BDR_19200			19200
+#define UART_BDR_28800			28800
+#define UART_BDR_38400			38400
+#define UART_BDR_57600			57600
+#define UART_BDR_76800			76800
+#define UART_BDR_115200			115200
+#define UART_BDR_230400			230400
+#define UART_BDR_250000			250000
 /************************************< FUNCTIONS ***********************************************/
 /** \brief 	This function UART_voidInit initializes a UART (Universal Asynchronous Receiver/Transmitter) 
  *			module for a specified UART number, with the specified baud rate, data bits, 
@@ -54,6 +67,19 @@
  *										7) UART6
  *										8) UART7
  *			copy_u32BaudRate: YOUR_OPTIONS:
+ *										1) UART_BDR_2400
+ *										2) UART_BDR_4800
+ *										3) UART_BDR_9600
+ *										4) UART_BDR_14400
+ *										5) UART_BDR_19200
+ *										6) UART_BDR_28800
+ *										7) UART_BDR_38400
+ *										8) UART_BDR_57600
+ *										9) UART_BDR_76800
+ *										10)UART_BDR_115200
+ *										11)UART_BDR_230400
+ *										12)UART_BDR_250000
+ *			copy_u8DataBits: YOUR_OPTIONS:
  *										1) UART_DATA_5
  *										2) UART_DATA_6
  *										3) UART_DATA_7
