@@ -25,6 +25,7 @@ To use this system, you will need to connect the TM4C123G LaunchPad to a GPS mod
 
 ## Credits
 
-This project was developed by [Your Name Here] as part of [Course Name/Project Name].
+This project was developed by [Mahmoud Abdelraouf] as part of [Introduction to Embedded
+Systems/GPS Tracking System].
 
 ![Google Maps Image](https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png)
