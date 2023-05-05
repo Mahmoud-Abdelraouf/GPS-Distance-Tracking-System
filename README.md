@@ -27,7 +27,7 @@ To use this system, you will need to connect the TM4C123G LaunchPad to a GPS mod
 
 Here is a random Google Maps image of the start and end points:
 
-![Google Maps Image](https://maps.googleapis.com/maps/api/staticmap?center=37.7749,-122.4194&zoom=13&size=600x300&maptype=roadmap&markers=color:red%7Clabel:S%7C37.7749,-122.4194&markers=color:green%7Clabel:E%7C37.7749,-122.5294&key=YOUR_API_KEY)
+![Google Maps Image](https://developers.google.com/maps/documentation center=37.7749,-122.4194&zoom=13&size=600x300&maptype=roadmap&markers=color:red%7Clabel:S%7C37.7749,-122.4194&markers=color:green%7Clabel:E%7C37.7749,-122.5294&key=YOUR_API_KEY)
 
 ## Credits
 
