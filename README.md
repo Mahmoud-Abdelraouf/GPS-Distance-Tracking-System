@@ -34,8 +34,10 @@
 
 <p>This project was developed using C programming language.</p>
 
-<img src="https://img.icons8.com/color/48/000000/c-programming.png" alt="C Language Icon">
-<img src="https://www.ti.com/diagrams/ccstudio_ccs_256.jpg" alt="Code Composer Studio Icon" width="48" height="48">
+<div style="display: flex;">
+  <img src="https://img.icons8.com/color/48/000000/c-programming.png" alt="C Language Icon">
+  <img src="https://www.ti.com/diagrams/ccstudio_ccs_256.jpg" alt="Code Composer Studio Icon" width="48" height="48">
+</div>
 
 <h2>Credits</h2>
 
