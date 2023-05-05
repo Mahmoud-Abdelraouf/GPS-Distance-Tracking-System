@@ -23,4 +23,3 @@ typedef long double  		f96;
 
 
 #endif /*the end of STD_TYPES_H */
-

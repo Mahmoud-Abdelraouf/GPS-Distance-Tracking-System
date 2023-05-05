@@ -4,11 +4,11 @@
 // ********** SWC     : MCAL_DIO                    ***********
 // ********** Version : 2.0                    		***********
 // ************************************************************
+/**< LIB */
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
-
-
 #include "tm4c123gh6pm.h"
+/**< MCAL_DIO */
 #include "DIO_private.h"
 #include "DIO_interface.h"
 #include "DIO_config.h"
@@ -449,4 +449,52 @@ u8 DIO_u8GetPortValue    (u8 copy_u8PortId, u32 *copy_u8ReturnedPortValue)
 	return Local_u8ErrorState;
 }
 
+u8 DIO_u8TogglePinValue(u8 copy_u8PortId, u8 copy_u8PinId)
+{
+    u8 Local_u8ErrorState = STD_TYPES_OK;
+    if((copy_u8PortId<=DIO_u8_PORTF && copy_u8PortId>=DIO_u8_PORTA) && (copy_u8PinId<=DIO_u8_PIN7 && copy_u8PinId>=DIO_u8_PIN0))
+    {
+        switch(copy_u8PortId)
+        {
+        case DIO_u8_PORTA:
+            TOG_BIT(GPIO_PORTA_DATA_R,copy_u8PinId);
+            break;
+        case DIO_u8_PORTB:
+            TOG_BIT(GPIO_PORTB_DATA_R,copy_u8PinId);
+            break;
+        case DIO_u8_PORTC:
+            TOG_BIT(GPIO_PORTC_DATA_R,copy_u8PinId);
+            break;
+        case DIO_u8_PORTD:
+            TOG_BIT(GPIO_PORTD_DATA_R,copy_u8PinId);
+            break;
+        case DIO_u8_PORTE:
+            if(copy_u8PinId<=DIO_u8_PIN4)
+            {
+                TOG_BIT(GPIO_PORTE_DATA_R,copy_u8PinId);
+            }
+            else
+            {
+                Local_u8ErrorState = STD_TYPES_NOK;
+            }
+            break;
+        case DIO_u8_PORTF:
+            if(copy_u8PinId<=DIO_u8_PIN4)
+            {
+                TOG_BIT(GPIO_PORTF_DATA_R,copy_u8PinId);
+            }
+            else
+            {
+                Local_u8ErrorState = STD_TYPES_NOK;
+            }
+            break;
+        default :Local_u8ErrorState = STD_TYPES_NOK;
+        }
+    }
+    else
+    {
+        Local_u8ErrorState = STD_TYPES_NOK;
+    }
+    return Local_u8ErrorState;
+}
 

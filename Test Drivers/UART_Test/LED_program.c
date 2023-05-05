@@ -1,9 +1,9 @@
-// ***********************************************************
-// ********** Name    : ASU_EMBEDDED_TEAM_3		*************
-// ********** Date    : 26/04/2023              	*************
-// ********** SWC     : HAL_LED                  *************
-// ********** Version : 1.0                    	*************
-// ***********************************************************
+//***********************************************************
+//********** Name    : ASU_EMBEDDED_TEAM_3		*************
+//********** Date    : 26/04/2023              	*************
+//********** SWC     : HAL_LED                  *************
+//********** Version : 1.0                    	*************
+//***********************************************************
 /**< LIB */
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
@@ -20,45 +20,99 @@
 
 void LED_voidLedInit(u8 copy_u8LedColour)
 {
-    DIO_voidInit(DIO_u8_PORTF);  											//first initialize PORTF itself
-	DIO_u8SetPinDirection(DIO_u8_PORTF, copy_u8LedColour ,DIO_u8_OUTPUT);  	//then initialize the LED direction	
+    DIO_voidInit(DIO_u8_PORTF);
+    switch(copy_u8LedColour)
+    {
+    case LED_BLUE:
+        DIO_u8SetPinDirection(DIO_u8_PORTF, LED_BLUE_PIN ,DIO_u8_OUTPUT);   //then initialize the LED direction
+        break;
+    case LED_GREEN:
+        DIO_u8SetPinDirection(DIO_u8_PORTF, LED_GREEN_PIN ,DIO_u8_OUTPUT);   //then initialize the LED direction
+        break;
+    case LED_RED:
+        DIO_u8SetPinDirection(DIO_u8_PORTF, LED_RED_PIN ,DIO_u8_OUTPUT);   //then initialize the LED direction
+        break;
+    default : /**< Error State */ break;
+    }
 }
 
 void LED_voidLedOn(u8 copy_u8LedColour)
 {
-	DIO_u8SetPinValue(DIO_u8_PORTF, copy_u8LedColour ,DIO_u8_HIGH);
+    switch(copy_u8LedColour)
+    {
+    case LED_BLUE:
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_BLUE_PIN ,DIO_u8_HIGH);
+        break;
+    case LED_GREEN:
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_GREEN_PIN ,DIO_u8_HIGH);
+        break;
+    case LED_RED:
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_RED_PIN ,DIO_u8_HIGH);
+        break;
+    default :/**< Error State */ break;
+    }
 }
 
 void LED_voidLedOff(u8 copy_u8LedColour)
 {
-	DIO_u8SetPinValue(DIO_u8_PORTF, copy_u8LedColour ,DIO_u8_LOW);
+    switch(copy_u8LedColour)
+    {
+    case LED_BLUE:
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_BLUE_PIN ,DIO_u8_LOW);
+        break;
+    case LED_GREEN:
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_GREEN_PIN ,DIO_u8_LOW);
+        break;
+    case LED_RED:
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_RED_PIN ,DIO_u8_LOW);
+        break;
+    default :/**< Error State */ break;
+    }
 }
 
 void LED_voidLedTog(u8 copy_u8LedColour)
 {
-	u32 Local_u32LedState;
-	DIO_u8GetPinValue (DIO_u8_PORTF, copy_u8LedColour ,&Local_u32LedState); //this will put the pin value in LedState variable
-	if (Local_u32LedState == DIO_u8_HIGH)
+	switch(copy_u8LedColour)
 	{
-		LED_voidLedOff(copy_u8LedColour);  // turns LED off if it was on
-	}
-	else
-	{
-		LED_voidLedOn(copy_u8LedColour); // turns LED on if it was off
+	case LED_BLUE:
+	    DIO_u8TogglePinValue(DIO_u8_PORTF, LED_BLUE_PIN);
+	    break;
+	case LED_GREEN:
+	    DIO_u8TogglePinValue(DIO_u8_PORTF, LED_GREEN_PIN);
+	    break;
+	case LED_RED:
+	    DIO_u8TogglePinValue(DIO_u8_PORTF, LED_RED_PIN);
+	    break;
+	default : /**< Error State */ break;
 	}
 }
 
 void LED_voidLedBlinkOnce(u8 copy_u8LedColour)
 {
-	LED_voidLedTog(copy_u8LedColour);
-	STK_voidDelay(1000);              //delay of 1 sec
-	LED_voidLedTog(copy_u8LedColour);
-	
+    switch(copy_u8LedColour)
+    {
+    case LED_BLUE:
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_BLUE_PIN, DIO_u8_HIGH);
+        STK_voidDelay(LED_TIME_ON);
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_BLUE_PIN, DIO_u8_LOW);
+        break;
+    case LED_GREEN:
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_GREEN_PIN, DIO_u8_HIGH);
+        STK_voidDelay(LED_TIME_ON);
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_GREEN_PIN, DIO_u8_LOW);
+        break;
+    case LED_RED:
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_RED_PIN, DIO_u8_HIGH);
+        STK_voidDelay(LED_TIME_ON);
+        DIO_u8SetPinValue(DIO_u8_PORTF, LED_RED_PIN, DIO_u8_LOW);
+        break;
+    default :/**< Error State */ break;
+    }
 }
 
 void LED_voidLedBlinkTwice(u8 copy_u8LedColour)
 {
-	LED_voidLedBlinkOnce(copy_u8LedColour);
-	STK_voidDelay(1000);              //delay of 1 sec
+    LED_voidLedBlinkOnce(copy_u8LedColour);
+	STK_voidDelay(LED_TIME_ON);
 	LED_voidLedBlinkOnce(copy_u8LedColour);
 }
