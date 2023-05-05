@@ -29,7 +29,7 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		while(!GET_BIT(SYSCTL_PRGPIO_R,UART_POARTA));
 		/**< Configure UART pins */
 		GPIO_PORTA_AFSEL_R |= GPIO_PA0_U0RX | GPIO_PA1_U0TX; /**< Set the PA0 and PA1 to operate in alternative mode */
-		GPIO_PORTA_PCTL_R  = (GPIO_PORTA_PCTL_R&=~0xFF) | (GPIO_PCTL_PA0_U0RX | GPIO_PCTL_PA1_U0TX); /**< Select the alternative mode to be UART */
+		GPIO_PORTA_PCTL_R  |= GPIO_PCTL_PA0_U0RX | GPIO_PCTL_PA1_U0TX; /**< Select the alternative mode to be UART */
 		GPIO_PORTA_DIR_R   |= GPIO_PA1_U0TX;						/**< TX OUTPUT */
 		GPIO_PORTA_DIR_R   &=~ GPIO_PA0_U0RX;                       /**< RX INPUT */			
 		GPIO_PORTA_DEN_R   |= GPIO_PA0_U0RX | GPIO_PA1_U0TX;
