@@ -13,7 +13,6 @@
 #include "UART_private.h"
 #include "UART_config.h"
 
-
 void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8 copy_u8Parity, u8 copy_u8StopBits)
 {
 	f32 Local_u32Divisor = UART_CLOCK / (copy_u32BaudRate * 16);
