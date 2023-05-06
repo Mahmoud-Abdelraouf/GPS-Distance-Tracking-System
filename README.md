@@ -37,7 +37,7 @@
 <div style="display: flex;">
  <a href="https://www.cprogramming.com"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C Programming Language Icon" width="48" height="48"></a>
 <a href="https://cmake.org"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Cmake.svg/1200px-Cmake.svg.png" alt="CMAKE" width="48" height="48"></a>
-<a href="https://raw.githubusercontent.com/MahmoudHamdy02/Embedded-GPS/726afd5229371b2960079ea2bf452a6d2626186e/icons/ccstudio_ccs.svg" alt="Code Composer Studio Icon" width="48" height="48"></a>
+<a href="https://www.ti.com/tool/CCSTUDIO"><img src="https://raw.githubusercontent.com/MahmoudHamdy02/Embedded-GPS/726afd5229371b2960079ea2bf452a6d2626186e/icons/ccstudio_ccs.svg" alt="Code Composer Studio Icon" width="48" height="48"></a>
 </div>
 
 <h2>Credits</h2>
