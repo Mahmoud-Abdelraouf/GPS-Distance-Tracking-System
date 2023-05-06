@@ -35,9 +35,9 @@
 <p>This project was developed using C programming language.</p>
 
 <div style="display: flex;">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C Programming Language Icon" width="48" height="48">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Cmake.svg/1200px-Cmake.svg.png" alt="CMAKE" width="48" height="48">
-  <img src="https://www.ti.com/diagrams/ccstudio_ccs_256.jpg" alt="Code Composer Studio Icon" width="48" height="48">
+ <a href="https://www.google.com"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C Programming Language Icon" width="48" height="48"></a>
+<a href="https://www.google.com"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Cmake.svg/1200px-Cmake.svg.png" alt="CMAKE" width="48" height="48"></a>
+<a href="https://www.google.com"><img src="https://www.ti.com/diagrams/ccstudio_ccs_256.jpg" alt="Code Composer Studio Icon" width="48" height="48"></a>
 </div>
 
 <h2>Credits</h2>
