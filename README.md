@@ -43,7 +43,7 @@
 
 <h2>Credits</h2>
 
-<p>This project was developed by [.........] as part of [Introduction to Embedded
+<p>This project was developed by [Team Work] as part of [Introduction to Embedded
 Systems/GPS Tracking System].</p>
 
 <img src="https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png" alt="Google Maps Image">
