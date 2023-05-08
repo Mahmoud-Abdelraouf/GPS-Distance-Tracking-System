@@ -35,4 +35,4 @@
  * \return
  *
  */
- void APP_u8lightLED(f32 copy_f32startLatitude, f32 copy_f32startLogitude, f32 copy_f32endLatitude, f32 copy_f32endLongitude);
+ void APP_u8lightLED(f32 copy_f32startLatitude, f32 copy_f32startLongitude, f32 copy_f32endLatitude, f32 copy_f32endLongitude);
