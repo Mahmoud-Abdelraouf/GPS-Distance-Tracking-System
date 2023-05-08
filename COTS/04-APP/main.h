@@ -19,7 +19,7 @@
  * \return 	
  *
  */ 
- APP_u8getDistance(f32 copy_f32startLatitude, f32 copy_f32startLongitude,f32 copy_f32endLatitude, f32 copy_f32endLongitude, f32* copy_pf32distance);
+ void APP_u8getDistance(f32 copy_f32startLatitude, f32 copy_f32startLongitude,f32 copy_f32endLatitude, f32 copy_f32endLongitude, f32* copy_pf32distance);
  
  /** \brief 	
  *			
@@ -27,7 +27,7 @@
  * \return 	
  *
  */ 
- APP_u8getTotalDistance(f32 copy_f32latitude, f32 copy_f32longitude, f32* copy_pf32distance);
+ void APP_u8getTotalDistance(f32 copy_f32latitude, f32 copy_f32longitude, f32* copy_pf32distance);
 
  /** \brief
  *

@@ -9,7 +9,7 @@ int main(void){
 	
 }
 
-APP_u8getDistance(f32 copy_f32startLatitude, f32 copy_f32startLongitude,f32 copy_f32endLatitude, f32 copy_f32endLongitude, f32* copy_pf32distance){
+void APP_u8getDistance(f32 copy_f32startLatitude, f32 copy_f32startLongitude,f32 copy_f32endLatitude, f32 copy_f32endLongitude, f32* copy_pf32distance){
 	// convert all coordinates from Degrees into Radians
 	f32 Local_f32startLat = copy_f32startLatitude* M_PI/180;
 	f32 Local_f32startLong = copy_f32startLongitude* M_PI/180;
