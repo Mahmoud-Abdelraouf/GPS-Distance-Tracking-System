@@ -1,5 +1,6 @@
 "./tm4c123gh6pm_startup_ccs.obj"
 "./APP/main.obj"
+"./HAL/GPS/GPS_program.obj"
 "./HAL/LCD/LCD_program.obj"
 "./HAL/LED/LED_program.obj"
 "./MCAL/DIO/DIO_program.obj"

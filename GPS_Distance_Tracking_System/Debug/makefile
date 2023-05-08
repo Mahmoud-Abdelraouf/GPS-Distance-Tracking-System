@@ -12,6 +12,7 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./tm4c123gh6pm_startup_ccs.obj" \
 "./APP/main.obj" \
+"./HAL/GPS/GPS_program.obj" \
 "./HAL/LCD/LCD_program.obj" \
 "./HAL/LED/LED_program.obj" \
 "./MCAL/DIO/DIO_program.obj" \
@@ -31,6 +32,7 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include APP/subdir_vars.mk
+-include HAL/GPS/subdir_vars.mk
 -include HAL/LCD/subdir_vars.mk
 -include HAL/LED/subdir_vars.mk
 -include MCAL/DIO/subdir_vars.mk
@@ -38,6 +40,7 @@ RMDIR := RMDIR /S/Q
 -include MCAL/UART/subdir_vars.mk
 -include subdir_rules.mk
 -include APP/subdir_rules.mk
+-include HAL/GPS/subdir_rules.mk
 -include HAL/LCD/subdir_rules.mk
 -include HAL/LED/subdir_rules.mk
 -include MCAL/DIO/subdir_rules.mk
@@ -160,8 +163,8 @@ GPS_Distance_Tracking_System.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "tm4c123gh6pm_startup_ccs.obj" "APP\main.obj" "HAL\LCD\LCD_program.obj" "HAL\LED\LED_program.obj" "MCAL\DIO\DIO_program.obj" "MCAL\STK\STK_program.obj" "MCAL\UART\UART_program.obj" 
-	-$(RM) "tm4c123gh6pm_startup_ccs.d" "APP\main.d" "HAL\LCD\LCD_program.d" "HAL\LED\LED_program.d" "MCAL\DIO\DIO_program.d" "MCAL\STK\STK_program.d" "MCAL\UART\UART_program.d" 
+	-$(RM) "tm4c123gh6pm_startup_ccs.obj" "APP\main.obj" "HAL\GPS\GPS_program.obj" "HAL\LCD\LCD_program.obj" "HAL\LED\LED_program.obj" "MCAL\DIO\DIO_program.obj" "MCAL\STK\STK_program.obj" "MCAL\UART\UART_program.obj" 
+	-$(RM) "tm4c123gh6pm_startup_ccs.d" "APP\main.d" "HAL\GPS\GPS_program.d" "HAL\LCD\LCD_program.d" "HAL\LED\LED_program.d" "MCAL\DIO\DIO_program.d" "MCAL\STK\STK_program.d" "MCAL\UART\UART_program.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
