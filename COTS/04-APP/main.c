@@ -28,19 +28,19 @@ void APP_u8getDistance(f32 copy_f32startLatitude, f32 copy_f32startLongitude,f32
 	//Multipy by Earth's Radius to get the distance
 	*copy_pf32distance = Local_f32c * Earth_Radius;
 }
-void APP_u8lightLED(f32 copy_f32startLatitude, f32 copy_f32startLogitude, f32 copy_f32endLatitude, f32 copy_f32endLongitude)
+void APP_u8lightLED(f32 copy_f32startLatitude, f32 copy_f32startLongitude, f32 copy_f32endLatitude, f32 copy_f32endLongitude)
 {
 	//calc distance to endpoint
 	f32 Local_f32distanceToEndPoint = 0;
-	APP_u8getDistance(copy_f32startLatitude, copy_f32startLogitude, copy_f32endLatitude, copy_f32endLongitude, Local_f32distanceToEndPoint);
-	//assuming args are in meters
-	if (Local_f32distanceToEndPoint > 5){//red
+	APP_u8getDistance(copy_f32startLatitude, copy_f32startLongitude, copy_f32endLatitude, copy_f32endLongitude, Local_f32distanceToEndPoint);
+
+	if (Local_f32distanceToEndPoint > 0.005){//red
 		LED_voidLedInit();//assuming this call is needed
 		LED_voidLedOn(LED_RED);
-	} else if (Local_f32distanceToEndPoint < 5){//yellow
+	} else if (Local_f32distanceToEndPoint < 0.005){//yellow
 		LED_voidLedInit();//assuming this call is needed
 		LED_voidLedOn(LED_BLUE);
-	} else if (Local_f32distanceToEndPoint < 2){//green
+	} else if (Local_f32distanceToEndPoint < 0.002){//green
 		LED_voidLedInit();//assuming this call is needed
 		LED_voidLedOn(LED_GREEN);
 	}
