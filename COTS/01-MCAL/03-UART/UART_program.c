@@ -5,14 +5,14 @@
 // ********** Version : 1.0                    		***********
 // ************************************************************
 /**< LIB */
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
-#include "tm4c123gh6pm.h"
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+#include "../../LIB/tm4c123gh6pm.h"
 /**< HAL_UART */
-#include "UART_interface.h"
-#include "UART_private.h"
-#include "UART_config.h"
-
+#include "../../MCAL/UART/UART_private.h"
+#include "../../MCAL/UART/UART_interface.h"
+#include "../../MCAL/UART/UART_config.h"
+/****************************************< UART_FUNCTIONS_IMPLEMENTATION ****************************************/
 void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8 copy_u8Parity, u8 copy_u8StopBits)
 {
 	f32 Local_u32Divisor = UART_CLOCK / (copy_u32BaudRate * 16);
@@ -442,72 +442,134 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 }
 
 
-void UART_voidSendByte(u8 copy_u8Data)
+void UART_voidSendByte(u8 copy_u8UARTNo,u8 copy_u8Data)
 {
-    /**< Wait until transmit buffer is not full */
-	/** 	
-	 *	pause the transmission process until there is space available in the buffer 
-	 *  to send more data. This indicates that the buffer currently has data in it, 
-	 *  and the transmission cannot continue until some of that data has been sent and 
-	 *  space has been freed up in the buffer		
-	 *
-     */ 
-    while(UART0_FR_R & UART_FR_TXFF);
-    /**< Send byte */
-    UART0_DR_R = copy_u8Data;
+/** Wait until transmit buffer is not full that's mean:
+ *	pause the transmission process until there is space available in the buffer 
+ *  to send more data. This indicates that the buffer currently has data in it, 
+ *  and the transmission cannot continue until some of that data has been sent and 
+ *  space has been freed up in the buffer		
+ */ 
+	switch(copy_u8UARTNo)
+	{
+		case UART0:
+		while(UART0_FR_R & UART_FR_TXFF);
+		/**< Send byte */
+		UART0_DR_R = copy_u8Data;
+		break;
+		case UART1:
+		while(UART1_FR_R & UART_FR_TXFF);
+		/**< Send byte */
+		UART1_DR_R = copy_u8Data;
+		break;
+		case UART2:
+		while(UART2_FR_R & UART_FR_TXFF);
+		/**< Send byte */
+		UART2_DR_R = copy_u8Data;
+		break;
+		case UART3:
+		while(UART3_FR_R & UART_FR_TXFF);
+		/**< Send byte */
+		UART3_DR_R = copy_u8Data;
+		break;
+		case UART4:
+		while(UART4_FR_R & UART_FR_TXFF);
+		/**< Send byte */
+		UART4_DR_R = copy_u8Data;
+		break;
+		case UART5:
+		while(UART5_FR_R & UART_FR_TXFF);
+		/**< Send byte */
+		UART5_DR_R = copy_u8Data;
+		break;
+		case UART6:
+		while(UART6_FR_R & UART_FR_TXFF);
+		/**< Send byte */
+		UART6_DR_R = copy_u8Data;
+		break;
+		case UART7:
+		while(UART7_FR_R & UART_FR_TXFF);
+		/**< Send byte */
+		UART7_DR_R = copy_u8Data;
+		break;
+		default : /**< ERROR_STATE */ break;
+	}
 }
 
-
-u8 UART_u8ReceiveByte(void)
+void UART_voidReceiveByte(u8 copy_u8UARTNo,u8 *copy_pu8ReceivedData)
 {
-    /**< Wait until receive buffer is not empty */
-	/**
-	 * means to pause the process of reading or receiving data until there is data 
-	 * available in the buffer to be read. This indicates that the buffer is currently 
-	 * empty and there is no new data to be read
-	 *
-	 */
-    while(UART0_FR_R & UART_FR_RXFE);
-    /**< Receive byte */
-    return UART0_DR_R;
+/** Wait until receive buffer is not empty that's mean:
+ *  means to pause the process of reading or receiving data until there is data 
+ *  available in the buffer to be read. This indicates that the buffer is currently 
+ *  empty and there is no new data to be read
+ *
+ */
+	switch(copy_u8UARTNo)
+	{
+		case UART0:
+		while(UART0_FR_R & UART_FR_RXFE);
+		/**< Receive byte */
+		*copy_pu8ReceivedData = UART0_DR_R;
+		break;
+		case UART1:
+		while(UART1_FR_R & UART_FR_RXFE);
+		/**< Receive byte */
+		*copy_pu8ReceivedData = UART1_DR_R;
+		break;
+		case UART2:
+		while(UART2_FR_R & UART_FR_RXFE);
+		/**< Receive byte */
+		*copy_pu8ReceivedData = UART2_DR_R;
+		break;
+		case UART3:
+		while(UART3_FR_R & UART_FR_RXFE);
+		/**< Receive byte */
+		*copy_pu8ReceivedData = UART3_DR_R;
+		break;
+		case UART4:
+		while(UART4_FR_R & UART_FR_RXFE);
+		/**< Receive byte */
+		*copy_pu8ReceivedData = UART4_DR_R;
+		break;
+		case UART5:
+		while(UART5_FR_R & UART_FR_RXFE);
+		/**< Receive byte */
+		*copy_pu8ReceivedData = UART5_DR_R;
+		break;
+		case UART6:
+		while(UART6_FR_R & UART_FR_RXFE);
+		/**< Receive byte */
+		*copy_pu8ReceivedData = UART6_DR_R;
+		break;
+		case UART7:
+		while(UART7_FR_R & UART_FR_RXFE);
+		/**< Receive byte */
+		*copy_pu8ReceivedData = UART7_DR_R;
+		break;
+		default : /**< ERROR_STATE */ break;
+	} 
 }
 
-
-void UART_voidSendString(u8 *copy_pu8Str)
+void UART_voidSendString(u8 copy_u8UARTNo,u8 *copy_pu8SentString)
 {
-    while(*copy_pu8Str != '\0')
+    while(*copy_pu8SentString != '\0')
     {
-        UART_voidSendByte(*copy_pu8Str);
-        copy_pu8Str++;
+        UART_voidSendByte(copy_u8UARTNo,*copy_pu8SentString);
+        copy_pu8SentString++;
     }
 }
 
-void UART_voidReceiveString(u8 *copy_pu8Buffer)
+void UART_voidReceiveString(u8 copy_u8UARTNo,u8 *copy_pu8Buffer)
 {
     u32 i = 0;
-	copy_pu8Buffer[i] = UART_u8ReceiveByte();
-	while(copy_pu8Buffer[i] != '\0')
-	{
-		i++;
-		copy_pu8Buffer[i] = UART_u8ReceiveByte();
-	}
+    UART_voidReceiveByte(copy_u8UARTNo,copy_pu8Buffer);
+    while(copy_pu8Buffer[i] != '\0')
+    {
+        i++;
+        copy_pu8Buffer++;
+        UART_voidReceiveByte(copy_u8UARTNo,copy_pu8Buffer);
+    }
 }
 
-void GPS_voidReceiveString(u8 *copy_pu8String)
-{
-	u8 i = 0;
-
-	/**< Receive the first byte */
-	copy_pu8String[i] = UART_u8ReceiveByte();
-	/**< Receive the whole string until the '#' */
-	while(copy_pu8String[i] != '*')
-	{
-		i++;
-		copy_pu8String[i] = UART_u8ReceiveByte();
-	}
-
-	/* After receiving the whole string plus the '', replace the '' with '\0' */
-	copy_pu8String[i] = '\0';
-}
 
 

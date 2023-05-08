@@ -4,6 +4,7 @@
     <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROGRAM.Tiva_C_TM4C123GH6PM.ccxml.Stellaris In-Circuit Debug Interface/CORTEX_M4_0" value="${build_artifact:GPS_Distance_Tracking_System}"/>
     <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROJECT.Tiva_C_TM4C123GH6PM.ccxml.Stellaris In-Circuit Debug Interface/CORTEX_M4_0" value="GPS_Distance_Tracking_System"/>
     <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_TARGET_CONFIG" value="${target_config_active_default:GPS_Distance_Tracking_System}"/>
+    <stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Tiva_C_TM4C123GH6PM.ccxml.Stellaris In-Circuit Debug Interface/CORTEX_M4_0" value="${build_artifact:GPS_Distance_Tracking_System}"/>
     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
         <listEntry value="/GPS_Distance_Tracking_System"/>
     </listAttribute>

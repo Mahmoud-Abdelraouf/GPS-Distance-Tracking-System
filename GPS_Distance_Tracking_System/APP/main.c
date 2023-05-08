@@ -16,11 +16,11 @@
 #include "../HAL/GPS/GPS_interface.h"
 int main()
 {
-
-    LCD_voidInit();
-    LCD_voidSendString("Somay Ayman");
-    LCD_voidGoToXYPos(1,0);
-    LCD_voidSendString("Sara ashraf");
+   UART_voidInit(UART0, UART_BDR_9600, UART_DATA_8, UART_PARITY_NONE, UART_STOP_BIT_1);
+   for(int i = 0;i< 5;i++)
+   {
+       UART_voidSendString(UART0, "Mahmoud abdelraouf");
+   }
     while(1);
 
     return 0;
