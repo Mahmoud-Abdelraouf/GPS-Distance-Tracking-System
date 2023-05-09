@@ -34,6 +34,7 @@
 #define GPIO_PE1_U7TX			0x00000002
 /**<  */
 #define UART_POARTA				0
+#define UART_POARTB				1
 #define UART_POARTC				2
 #define UART_POARTD				3
 #define UART_POARTE				4

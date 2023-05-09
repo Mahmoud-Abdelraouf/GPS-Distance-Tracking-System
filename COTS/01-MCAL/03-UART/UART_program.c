@@ -5,13 +5,13 @@
 // ********** Version : 1.0                    		***********
 // ************************************************************
 /**< LIB */
-#include "../../LIB/STD_TYPES.h"
-#include "../../LIB/BIT_MATH.h"
-#include "../../LIB/tm4c123gh6pm.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "tm4c123gh6pm.h"
 /**< HAL_UART */
-#include "../../MCAL/UART/UART_private.h"
-#include "../../MCAL/UART/UART_interface.h"
-#include "../../MCAL/UART/UART_config.h"
+#include "UART_private.h"
+#include "UART_interface.h"
+#include "UART_config.h"
 /****************************************< UART_FUNCTIONS_IMPLEMENTATION ****************************************/
 void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8 copy_u8Parity, u8 copy_u8StopBits)
 {
@@ -71,19 +71,20 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Enable UART */ 
 		UART0_CTL_R |= UART_CTL_UARTEN;
 		break;
+		/*************************************************< THE_END_OF_UART0 *************************************************/
 		case UART1:
 		/**< Enable UART clock */ 
 		SET_BIT(SYSCTL_RCGCUART_R,copy_u8UARTNo);
 		/**< Enable GPIO clock for UART pins */
-		SET_BIT(SYSCTL_RCGCGPIO_R,UART_POARTC);
+		SET_BIT(SYSCTL_RCGCGPIO_R,UART_POARTB);
 		/** Wait for clock stabilization */ 
-		while(!GET_BIT(SYSCTL_PRGPIO_R,UART_POARTC));
+		while(!GET_BIT(SYSCTL_PRGPIO_R,UART_POARTB));
 		/**< Configure UART pins */
-		GPIO_PORTC_AFSEL_R |= GPIO_PB0_U1RX | GPIO_PB1_U1TX;
-		GPIO_PORTC_PCTL_R  |= GPIO_PCTL_PB0_U1RX | GPIO_PCTL_PB1_U1TX;
-		GPIO_PORTA_DIR_R   |= GPIO_PB1_U1TX;
-		GPIO_PORTA_DIR_R   &=~ GPIO_PB0_U1RX;
-		GPIO_PORTC_DEN_R   |= GPIO_PB0_U1RX | GPIO_PB1_U1TX;
+		GPIO_PORTB_AFSEL_R |= GPIO_PB0_U1RX | GPIO_PB1_U1TX;
+		GPIO_PORTB_PCTL_R  |= GPIO_PCTL_PB0_U1RX | GPIO_PCTL_PB1_U1TX;
+		GPIO_PORTB_DIR_R   |= GPIO_PB1_U1TX;
+		GPIO_PORTB_DIR_R   &=~ GPIO_PB0_U1RX;
+		GPIO_PORTB_DEN_R   |= GPIO_PB0_U1RX | GPIO_PB1_U1TX;
 		/**< Disable UART */ 
 		UART1_CTL_R &= ~UART_CTL_UARTEN;
 		/**< Configure baud rate */
@@ -125,6 +126,7 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Enable UART */ 
 		UART1_CTL_R |= UART_CTL_UARTEN;
 		break;
+		/*************************************************< THE_END_OF_UART1 *************************************************/
 		case UART2:
 		/**< Enable UART clock */ 
 		SET_BIT(SYSCTL_RCGCUART_R,copy_u8UARTNo);
@@ -135,8 +137,8 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Configure UART pins */
 		GPIO_PORTD_AFSEL_R |= GPIO_PD6_U2RX | GPIO_PD7_U2TX;
 		GPIO_PORTD_PCTL_R  |= GPIO_PCTL_PD6_U2RX | GPIO_PCTL_PD7_U2TX;
-		GPIO_PORTA_DIR_R   |= GPIO_PD7_U2TX;						/**< TX OUTPUT */
-		GPIO_PORTA_DIR_R   &=~ GPIO_PD6_U2RX;   					/**< RX INPUT */              
+		GPIO_PORTD_DIR_R   |= GPIO_PD7_U2TX;						/**< TX OUTPUT */
+		GPIO_PORTD_DIR_R   &=~ GPIO_PD6_U2RX;   					/**< RX INPUT */              
 		GPIO_PORTD_DEN_R   |= GPIO_PD6_U2RX | GPIO_PD7_U2TX;
 		/**< Disable UART */ 
 		UART2_CTL_R &= ~UART_CTL_UARTEN;
@@ -177,6 +179,7 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Enable UART */ 
 		UART2_CTL_R |= UART_CTL_UARTEN;
 		break;
+		/*************************************************< THE_END_OF_UART2 *************************************************/
 		case UART3:
 		/**< Enable UART clock */ 
 		SET_BIT(SYSCTL_RCGCUART_R,copy_u8UARTNo);
@@ -187,8 +190,8 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Configure UART pins */
 		GPIO_PORTC_AFSEL_R |= GPIO_PC6_U3RX | GPIO_PC7_U3TX;
 		GPIO_PORTC_PCTL_R  |= GPIO_PCTL_PC6_U3RX | GPIO_PCTL_PC7_U3TX;
-		GPIO_PORTA_DIR_R   |= GPIO_PC7_U3TX;			/**< TX OUTPUT */
-		GPIO_PORTA_DIR_R   &=~ GPIO_PC6_U3RX;   		/**< RX INPUT */			    
+		GPIO_PORTC_DIR_R   |= GPIO_PC7_U3TX;			/**< TX OUTPUT */
+		GPIO_PORTC_DIR_R   &=~ GPIO_PC6_U3RX;   		/**< RX INPUT */			    
 		GPIO_PORTC_DEN_R   |= GPIO_PC6_U3RX | GPIO_PC7_U3TX;
 		/**< Disable UART */ 
 		UART3_CTL_R &= ~UART_CTL_UARTEN;
@@ -229,6 +232,7 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Enable UART */ 
 		UART3_CTL_R |= UART_CTL_UARTEN;
 		break;
+		/*************************************************< THE_END_OF_UART3 *************************************************/
 		case UART4:
 		/**< Enable UART clock */ 
 		SET_BIT(SYSCTL_RCGCUART_R,copy_u8UARTNo);
@@ -239,8 +243,8 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Configure UART pins */
 		GPIO_PORTC_AFSEL_R |= GPIO_PC4_U4RX | GPIO_PC5_U4TX;
 		GPIO_PORTC_PCTL_R  |= GPIO_PCTL_PC4_U4RX | GPIO_PCTL_PC5_U4TX;
-		GPIO_PORTA_DIR_R   |= GPIO_PC5_U4TX;			/**< TX OUTPUT */
-		GPIO_PORTA_DIR_R   &=~ GPIO_PC4_U4RX;           /**< RX INPUT */               
+		GPIO_PORTC_DIR_R   |= GPIO_PC5_U4TX;			/**< TX OUTPUT */
+		GPIO_PORTC_DIR_R   &=~ GPIO_PC4_U4RX;           /**< RX INPUT */               
 		GPIO_PORTC_DEN_R   |= GPIO_PC4_U4RX | GPIO_PC5_U4TX;
 		/**< Disable UART */ 
 		UART4_CTL_R &= ~UART_CTL_UARTEN;
@@ -281,6 +285,7 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Enable UART */ 
 		UART4_CTL_R |= UART_CTL_UARTEN;
 		break;
+		/*************************************************< THE_END_OF_UART4 *************************************************/
 		case UART5:
 		/**< Enable UART clock */ 
 		SET_BIT(SYSCTL_RCGCUART_R,copy_u8UARTNo);
@@ -291,8 +296,8 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Configure UART pins */
 		GPIO_PORTE_AFSEL_R |= GPIO_PE4_U5RX | GPIO_PE5_U5TX;
 		GPIO_PORTE_PCTL_R  |= GPIO_PCTL_PE4_U5RX | GPIO_PCTL_PE5_U5TX;
-		GPIO_PORTA_DIR_R   |= GPIO_PE5_U5TX;				/**< TX OUTPUT */
-		GPIO_PORTA_DIR_R   &=~ GPIO_PE4_U5RX;               /**< RX INPUT */	            
+		GPIO_PORTE_DIR_R   |= GPIO_PE5_U5TX;				/**< TX OUTPUT */
+		GPIO_PORTE_DIR_R   &=~ GPIO_PE4_U5RX;               /**< RX INPUT */	            
 		GPIO_PORTE_DEN_R   |= GPIO_PE4_U5RX | GPIO_PE5_U5TX;
 		/**< Disable UART */ 
 		UART5_CTL_R &= ~UART_CTL_UARTEN;
@@ -333,6 +338,7 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Enable UART */ 
 		UART5_CTL_R |= UART_CTL_UARTEN;
 		break;
+		/*************************************************< THE_END_OF_UART5 *************************************************/
 		case UART6:
 		/**< Enable UART clock */ 
 		SET_BIT(SYSCTL_RCGCUART_R,copy_u8UARTNo);
@@ -343,8 +349,8 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Configure UART pins */
 		GPIO_PORTD_AFSEL_R |= GPIO_PD4_U6RX | GPIO_PD5_U6TX;
 		GPIO_PORTD_PCTL_R  |= GPIO_PCTL_PD4_U6RX | GPIO_PCTL_PD5_U6TX;
-		GPIO_PORTA_DIR_R   |= GPIO_PD5_U6TX;				/**< TX OUTPUT */
-		GPIO_PORTA_DIR_R   &=~ GPIO_PD4_U6RX;               /**< RX INPUT */              
+		GPIO_PORTD_DIR_R   |= GPIO_PD5_U6TX;				/**< TX OUTPUT */
+		GPIO_PORTD_DIR_R   &=~ GPIO_PD4_U6RX;               /**< RX INPUT */              
 		GPIO_PORTD_DEN_R   |= GPIO_PD4_U6RX | GPIO_PD5_U6TX;
 		/**< Disable UART */ 
 		UART6_CTL_R &= ~UART_CTL_UARTEN;
@@ -385,6 +391,7 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Enable UART */ 
 		UART6_CTL_R |= UART_CTL_UARTEN;
 		break;
+		/*************************************************< THE_END_OF_UART6 *************************************************/
 		case UART7:
 		/**< Enable UART clock */ 
 		SET_BIT(SYSCTL_RCGCUART_R,copy_u8UARTNo);
@@ -395,8 +402,8 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Configure UART pins */
 		GPIO_PORTE_AFSEL_R |= GPIO_PE0_U7RX | GPIO_PE1_U7TX;
 		GPIO_PORTE_PCTL_R  |= GPIO_PCTL_PE0_U7RX | GPIO_PCTL_PE1_U7TX;
-		GPIO_PORTA_DIR_R   |= GPIO_PA1_U0TX;				/**< TX OUTPUT */
-		GPIO_PORTA_DIR_R   &=~ GPIO_PA0_U0RX;               /**< RX INPUT */		        
+		GPIO_PORTE_DIR_R   |= GPIO_PA1_U0TX;				/**< TX OUTPUT */
+		GPIO_PORTE_DIR_R   &=~ GPIO_PA0_U0RX;               /**< RX INPUT */		        
 		GPIO_PORTE_DEN_R   |= GPIO_PE0_U7RX | GPIO_PE1_U7TX;
 		/**< Disable UART */ 
 		UART7_CTL_R &= ~UART_CTL_UARTEN;
@@ -437,6 +444,7 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
 		/**< Enable UART */ 
 		UART7_CTL_R |= UART_CTL_UARTEN;
 		break;
+		/*************************************************< THE_END_OF_UART7 *************************************************/
 		default : /**<  ERROR_STATE */ break;
 	}
 }
