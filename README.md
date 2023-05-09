@@ -45,5 +45,4 @@
 
 <p>This project was developed by [Team Work] as part of [Introduction to Embedded
 Systems/GPS Tracking System].</p>
-
 <a href="https://www.linkedin.com/in/mahmoud-abdelraouf-mahmoud-80b908222/"><img src="https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png" alt="Google Maps Image"></a>
