@@ -32,6 +32,7 @@ void APP_u8lightLED(f32 copy_f32startLatitude, f32 copy_f32startLongitude, f32 c
 {
 	//calc distance to endpoint
 	f32 Local_f32distanceToEndPoint = 0;
+	// function to get distance has been moved so we need to update this
 	APP_u8getDistance(copy_f32startLatitude, copy_f32startLongitude, copy_f32endLatitude, copy_f32endLongitude, Local_f32distanceToEndPoint);
 
 	if (Local_f32distanceToEndPoint > 0.005){//red
