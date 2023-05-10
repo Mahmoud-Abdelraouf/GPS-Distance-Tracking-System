@@ -30,7 +30,7 @@
 
 <p>To use this system, you will need to connect the TM4C123G LaunchPad to a GPS module and configure it to receive GPS coordinates. Once the system is set up, you can use it to track your distance traveled and receive visual feedback using the built-in LEDs.</p>
 
-<h3>Tools and Technologies Used</h3>
+<h2>Tools and Technologies Used</h2>
 
 <p>This project was developed using C programming language.</p>
 
