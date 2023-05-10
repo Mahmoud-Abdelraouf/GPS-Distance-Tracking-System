@@ -14,13 +14,14 @@
 #include "LED_interface.h"
 int main(void)
 {
-    UART_voidInit(UART0, 9600, UART_DATA_8, UART_PARITY_NONE, UART_STOP_BIT_1);
+    u8 Local_u8Test = 0;
+    UART_voidInit(UART7, 9600, UART_DATA_8, UART_PARITY_NONE, UART_STOP_BIT_1);
     LED_voidLedInit(LED_BLUE);
     LED_voidLedInit(LED_GREEN);
     LED_voidLedInit(LED_RED);
     while(1)
     {
-        u8 Local_u8Test = UART_u8ReceiveByte();
+        UART_voidReceiveByte(UART7, &Local_u8Test);
         if(Local_u8Test=='r')
         {
             LED_voidLedOn(LED_RED);

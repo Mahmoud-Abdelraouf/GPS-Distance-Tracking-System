@@ -1,17 +1,17 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.7                     
 ******************************************************************************
->> Linked Fri May  5 03:45:01 2023
+>> Linked Tue May  9 21:34:42 2023
 
 OUTPUT FILE NAME:   <UART_Test.out>
-ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00001e49
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00001fd9
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  00001e88  0003e178  R  X
+  FLASH                 00000000   00040000  00002018  0003dfe8  R  X
   SRAM                  20000000   00008000  00000200  00007e00  RW X
 
 
@@ -19,9 +19,9 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00001e88   00001e88    r-x
+00000000    00000000    00002018   00002018    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    00001c1c   00001c1c    r-x .text
+  0000026c    0000026c    00001dac   00001dac    r-x .text
 20000000    20000000    00000200   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
 
@@ -34,20 +34,21 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    0000026c     
                   00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
 
-.text      0    0000026c    00001c1c     
-                  0000026c    00000b38     DIO_program.obj (.text)
-                  00000da4    00000ad8     UART_program.obj (.text)
-                  0000187c    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.asm.obj (.text)
-                  00001a32    00000002     --HOLE-- [fill = 0]
-                  00001a34    000001a4     STK_program.obj (.text)
-                  00001bd8    00000196     LED_program.obj (.text)
-                  00001d6e    0000005e     main.obj (.text)
-                  00001dcc    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_tou_t2.asm.obj (.text)
-                  00001e10    00000038                                   : fs_tod_t2.asm.obj (.text)
-                  00001e48    0000002c                                   : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
-                  00001e74    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  00001e80    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  00001e84    00000004                                   : exit.c.obj (.text:abort:abort)
+.text      0    0000026c    00001dac     
+                  0000026c    00000c4c     UART_program.obj (.text)
+                  00000eb8    00000b38     DIO_program.obj (.text)
+                  000019f0    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.asm.obj (.text)
+                  00001ba6    00000002     --HOLE-- [fill = 0]
+                  00001ba8    000001a4     STK_program.obj (.text)
+                  00001d4c    00000196     LED_program.obj (.text)
+                  00001ee2    00000078     main.obj (.text)
+                  00001f5a    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_tou_t2.asm.obj (.text)
+                  00001f9e    00000038                                   : fs_tod_t2.asm.obj (.text)
+                  00001fd6    00000002     --HOLE-- [fill = 0]
+                  00001fd8    0000002c                                   : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  00002004    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00002010    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00002014    00000004                                   : exit.c.obj (.text:abort:abort)
 
 .cinit     0    00000000    00000000     UNINITIALIZED
 
@@ -66,14 +67,14 @@ MODULE SUMMARY
        Module                         code   ro data   rw data
        ------                         ----   -------   -------
     .\
+       UART_program.obj               3148   0         0      
        DIO_program.obj                2872   0         0      
-       UART_program.obj               2776   0         0      
        tm4c123gh6pm_startup_ccs.obj   12     620       0      
        STK_program.obj                420    0         0      
        LED_program.obj                406    0         0      
-       main.obj                       94     0         0      
+       main.obj                       120    0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         6580   620       0      
+       Total:                         6978   620       0      
                                                               
     C:\ti\ccs1220\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        fd_add_t2.asm.obj              438    0         0      
@@ -87,47 +88,46 @@ MODULE SUMMARY
                                                               
        Stack:                         0      0         512    
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   7194   620       512    
+       Grand Total:                   7592   620       512    
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
 address   name                    
 -------   ----                    
-00001e85  C$$EXIT                 
-000007ed  DIO_u8GetPinValue       
-00000be9  DIO_u8GetPortValue      
-000003ab  DIO_u8SetPinDirection   
-00000611  DIO_u8SetPinValue       
-000009fd  DIO_u8SetPortDirection  
-00000b47  DIO_u8SetPortValue      
-00000c89  DIO_u8TogglePinValue    
-0000026d  DIO_voidInit            
-000017ed  GPS_voidReceiveString   
-00001cd9  LED_voidLedBlinkOnce    
-00001d4f  LED_voidLedBlinkTwice   
-00001bd9  LED_voidLedInit         
-00001c5f  LED_voidLedOff          
-00001c1f  LED_voidLedOn           
-00001c9f  LED_voidLedTog          
-00001e75  ResetISR                
-00001a35  STK_voidConfig          
-00001b35  STK_voidDelay           
-00001b99  STK_voidDelayTicks      
-00001b65  STK_voidDelayUs         
-00001aef  STK_voidDisable         
-00001b1d  STK_voidDisableInterrupt
-00001ad9  STK_voidEnable          
-00001b07  STK_voidEnableInterrupt 
-00001a99  STK_voidGetCurrentValue 
-00001a75  STK_voidHandler         
-00001a77  STK_voidReset           
-00001aab  STK_voidSetReloadValue  
-0000177d  UART_u8ReceiveByte      
-00000da5  UART_voidInit           
-000017b3  UART_voidReceiveString  
-0000175d  UART_voidSendByte       
-00001795  UART_voidSendString     
+00002015  C$$EXIT                 
+00001439  DIO_u8GetPinValue       
+00001835  DIO_u8GetPortValue      
+00000ff7  DIO_u8SetPinDirection   
+0000125d  DIO_u8SetPinValue       
+00001649  DIO_u8SetPortDirection  
+00001793  DIO_u8SetPortValue      
+000018d5  DIO_u8TogglePinValue    
+00000eb9  DIO_voidInit            
+00001e4d  LED_voidLedBlinkOnce    
+00001ec3  LED_voidLedBlinkTwice   
+00001d4d  LED_voidLedInit         
+00001dd3  LED_voidLedOff          
+00001d93  LED_voidLedOn           
+00001e13  LED_voidLedTog          
+00002005  ResetISR                
+00001ba9  STK_voidConfig          
+00001ca9  STK_voidDelay           
+00001d0d  STK_voidDelayTicks      
+00001cd9  STK_voidDelayUs         
+00001c63  STK_voidDisable         
+00001c91  STK_voidDisableInterrupt
+00001c4d  STK_voidEnable          
+00001c7b  STK_voidEnableInterrupt 
+00001c0d  STK_voidGetCurrentValue 
+00001be9  STK_voidHandler         
+00001beb  STK_voidReset           
+00001c1f  STK_voidSetReloadValue  
+0000026d  UART_voidInit           
+00000d1d  UART_voidReceiveByte    
+00000e25  UART_voidReceiveString  
+00000c29  UART_voidSendByte       
+00000df5  UART_voidSendString     
 20000200  __STACK_END             
 00000200  __STACK_SIZE            
 20000200  __STACK_TOP             
@@ -135,22 +135,22 @@ ffffffff  __TI_pprof_out_hndl
 ffffffff  __TI_prof_data_size     
 ffffffff  __TI_prof_data_start    
 00000000  __TI_static_base__      
-00001dcd  __aeabi_d2uiz           
-00001887  __aeabi_dadd            
-0000187d  __aeabi_dsub            
-00001e11  __aeabi_f2d             
+00001f5b  __aeabi_d2uiz           
+000019fb  __aeabi_dadd            
+000019f1  __aeabi_dsub            
+00001f9f  __aeabi_f2d             
 ffffffff  __binit__               
 ffffffff  __c_args__              
 UNDEFED   __mpu_init              
 20000000  __stack                 
 20000000  __start___llvm_prf_cnts 
 20000000  __stop___llvm_prf_cnts  
-00001e49  _c_int00_noinit_noargs  
-00001e81  _system_pre_init        
-00001e85  abort                   
+00001fd9  _c_int00_noinit_noargs  
+00002011  _system_pre_init        
+00002015  abort                   
 ffffffff  binit                   
 00000000  g_pfnVectors            
-00001d6f  main                    
+00001ee3  main                    
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -160,48 +160,47 @@ address   name
 00000000  __TI_static_base__      
 00000000  g_pfnVectors            
 00000200  __STACK_SIZE            
-0000026d  DIO_voidInit            
-000003ab  DIO_u8SetPinDirection   
-00000611  DIO_u8SetPinValue       
-000007ed  DIO_u8GetPinValue       
-000009fd  DIO_u8SetPortDirection  
-00000b47  DIO_u8SetPortValue      
-00000be9  DIO_u8GetPortValue      
-00000c89  DIO_u8TogglePinValue    
-00000da5  UART_voidInit           
-0000175d  UART_voidSendByte       
-0000177d  UART_u8ReceiveByte      
-00001795  UART_voidSendString     
-000017b3  UART_voidReceiveString  
-000017ed  GPS_voidReceiveString   
-0000187d  __aeabi_dsub            
-00001887  __aeabi_dadd            
-00001a35  STK_voidConfig          
-00001a75  STK_voidHandler         
-00001a77  STK_voidReset           
-00001a99  STK_voidGetCurrentValue 
-00001aab  STK_voidSetReloadValue  
-00001ad9  STK_voidEnable          
-00001aef  STK_voidDisable         
-00001b07  STK_voidEnableInterrupt 
-00001b1d  STK_voidDisableInterrupt
-00001b35  STK_voidDelay           
-00001b65  STK_voidDelayUs         
-00001b99  STK_voidDelayTicks      
-00001bd9  LED_voidLedInit         
-00001c1f  LED_voidLedOn           
-00001c5f  LED_voidLedOff          
-00001c9f  LED_voidLedTog          
-00001cd9  LED_voidLedBlinkOnce    
-00001d4f  LED_voidLedBlinkTwice   
-00001d6f  main                    
-00001dcd  __aeabi_d2uiz           
-00001e11  __aeabi_f2d             
-00001e49  _c_int00_noinit_noargs  
-00001e75  ResetISR                
-00001e81  _system_pre_init        
-00001e85  C$$EXIT                 
-00001e85  abort                   
+0000026d  UART_voidInit           
+00000c29  UART_voidSendByte       
+00000d1d  UART_voidReceiveByte    
+00000df5  UART_voidSendString     
+00000e25  UART_voidReceiveString  
+00000eb9  DIO_voidInit            
+00000ff7  DIO_u8SetPinDirection   
+0000125d  DIO_u8SetPinValue       
+00001439  DIO_u8GetPinValue       
+00001649  DIO_u8SetPortDirection  
+00001793  DIO_u8SetPortValue      
+00001835  DIO_u8GetPortValue      
+000018d5  DIO_u8TogglePinValue    
+000019f1  __aeabi_dsub            
+000019fb  __aeabi_dadd            
+00001ba9  STK_voidConfig          
+00001be9  STK_voidHandler         
+00001beb  STK_voidReset           
+00001c0d  STK_voidGetCurrentValue 
+00001c1f  STK_voidSetReloadValue  
+00001c4d  STK_voidEnable          
+00001c63  STK_voidDisable         
+00001c7b  STK_voidEnableInterrupt 
+00001c91  STK_voidDisableInterrupt
+00001ca9  STK_voidDelay           
+00001cd9  STK_voidDelayUs         
+00001d0d  STK_voidDelayTicks      
+00001d4d  LED_voidLedInit         
+00001d93  LED_voidLedOn           
+00001dd3  LED_voidLedOff          
+00001e13  LED_voidLedTog          
+00001e4d  LED_voidLedBlinkOnce    
+00001ec3  LED_voidLedBlinkTwice   
+00001ee3  main                    
+00001f5b  __aeabi_d2uiz           
+00001f9f  __aeabi_f2d             
+00001fd9  _c_int00_noinit_noargs  
+00002005  ResetISR                
+00002011  _system_pre_init        
+00002015  C$$EXIT                 
+00002015  abort                   
 20000000  __stack                 
 20000000  __start___llvm_prf_cnts 
 20000000  __stop___llvm_prf_cnts  
@@ -215,4 +214,4 @@ ffffffff  __c_args__
 ffffffff  binit                   
 UNDEFED   __mpu_init              
 
-[57 symbols]
+[56 symbols]
