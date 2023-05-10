@@ -5,11 +5,11 @@
  *      Author: somay
  */
 
-#ifndef GPS_PRIVATE_H_
-#define GPS_PRIVATE_H_
+#ifndef __GPS_PRIVATE_H__
+#define __GPS_PRIVATE_H__
 
 #define M_PI            3.1415926
 #define Earth_Radius    6371000
 
 
-#endif /* GPS_PRIVATE_H_ */
+#endif /* __GPS_PRIVATE_H__ */
