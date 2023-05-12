@@ -4,7 +4,8 @@
 //
 //*****************************************************************************
 
-#define Earth_Radius
+#define M_PI            3.1415926
+#define Earth_Radius    6371000
 
 
 //*****************************************************************************
@@ -35,4 +36,4 @@
  * \return
  *
  */
- void APP_u8lightLED(f32 copy_f32startLatitude, f32 copy_f32startLongitude, f32 copy_f32endLatitude, f32 copy_f32endLongitude);
+ u8 APP_u8lightLED(f32 copy_f32startLatitude, f32 copy_f32startLongitude, f32 copy_f32endLatitude, f32 copy_f32endLongitude);
