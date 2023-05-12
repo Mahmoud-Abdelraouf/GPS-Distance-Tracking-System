@@ -18,9 +18,8 @@ HAL/GPS/GPS_program.obj: ../LIB/STD_TYPES.h
 HAL/GPS/GPS_program.obj: ../LIB/BIT_MATH.h
 HAL/GPS/GPS_program.obj: ../MCAL/UART/UART_interface.h
 HAL/GPS/GPS_program.obj: ../HAL/GPS/GPS_private.h
-HAL/GPS/GPS_program.obj: ../HAL/GPS/GPS_config.h
 HAL/GPS/GPS_program.obj: ../HAL/GPS/GPS_interface.h
-HAL/GPS/GPS_program.obj: ../HAL/GPS/GPS_ERROR_STATE.h
+HAL/GPS/GPS_program.obj: ../HAL/GPS/GPS_config.h
 HAL/GPS/GPS_program.obj: ../HAL/LCD/LCD_interface.h
 
 ../HAL/GPS/GPS_program.c:
@@ -59,11 +58,9 @@ C:/ti/ccs1220/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdlib.h:
 
 ../HAL/GPS/GPS_private.h:
 
-../HAL/GPS/GPS_config.h:
-
 ../HAL/GPS/GPS_interface.h:
 
-../HAL/GPS/GPS_ERROR_STATE.h:
+../HAL/GPS/GPS_config.h:
 
 ../HAL/LCD/LCD_interface.h:
 

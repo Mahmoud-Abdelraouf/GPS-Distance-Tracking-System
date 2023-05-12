@@ -7,16 +7,12 @@
 
 #ifndef __HAL_GPS_INTERFACE_H__
 #define __HAL_GPS_INTERFACE_H__
-
-#include "GPS_ERROR_STATE.h"
-
 /** \brief
  *
  * \param
  * \return
  *
  */
-
 void GPS_voidReceiveSentence(void);
 
 /** \brief

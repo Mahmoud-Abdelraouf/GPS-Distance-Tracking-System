@@ -7,8 +7,21 @@
 
 #ifndef __HAL_GPS_INTERFACE_H__
 #define __HAL_GPS_INTERFACE_H__
+/** \brief
+ *
+ * \param
+ * \return
+ *
+ */
+void GPS_voidReceiveSentence(void);
 
-#include "GPS_ERROR_STATE.h"
+/** \brief
+ *
+ * \param
+ * \return
+ *
+ */
+void GPS_voidExtractCoordinates(u8* sentence);
 
 /** \brief
  *
@@ -17,24 +30,7 @@
  *
  */
 
-GPS_ERROR_State_t GPS_voidReceiveSentence(void);
-
-/** \brief
- *
- * \param
- * \return
- *
- */
-GPS_ERROR_State_t GPS_voidExtractCoordinates(u8* sentence);
-
-/** \brief
- *
- * \param
- * \return
- *
- */
-
-f64 GPS_f64getDistance(void);
+//f64 GPS_f64getDistance(void);
 
 /** \brief
  *

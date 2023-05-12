@@ -2,7 +2,8 @@
  * GPS_private.h
  *
  *  Created on: May 10, 2023
- *      Author: somay
+ *      Author: somay Ayman
+ *      Modifier: Mahmoud Abdelraouf
  */
 
 #ifndef __GPS_PRIVATE_H__

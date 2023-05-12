@@ -8,7 +8,6 @@ APP/main.obj: ../MCAL/UART/UART_interface.h
 APP/main.obj: ../HAL/LED/LED_interface.h
 APP/main.obj: ../HAL/LCD/LCD_interface.h
 APP/main.obj: ../HAL/GPS/GPS_interface.h
-APP/main.obj: ../HAL/GPS/GPS_ERROR_STATE.h
 APP/main.obj: ../APP/main.h
 
 ../APP/main.c:
@@ -26,8 +25,6 @@ APP/main.obj: ../APP/main.h
 ../HAL/LCD/LCD_interface.h:
 
 ../HAL/GPS/GPS_interface.h:
-
-../HAL/GPS/GPS_ERROR_STATE.h:
 
 ../APP/main.h:
 
