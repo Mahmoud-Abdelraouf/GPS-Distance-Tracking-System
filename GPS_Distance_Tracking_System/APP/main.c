@@ -16,33 +16,38 @@
 /******************************< APP ******************************/
 #include "../APP/APP.h"
 /******************************< Global Variables *****************/
-f32 GPS_f32Latitude,GPS_f32Longitude;
-f32 GPS_f32EndLatitude, GPS_f32EndLongitude;
+
+
 /******************************< main *****************************/
 int main(void)
 {
-    /******************************< Init *************************/
-    LCD_voidInit();
-    GPS_voidReceiveSentence();
-    /******************************< Variables ********************/
-    f32 Local_f32OldLongitude = GPS_f32Longitude;
-    f32 Lcoal_f32OldLatitude = GPS_f32Latitude;
-    f32 Local_f32CurrentLongitude = 0;
-    f32 Lcoal_f32CurrentLatitude = 0;
+
+    /******************************< Local Variables:Exceptional variables *******************/
+    f64 Local_f64Latitude = 0;
+    f64 Local_f64Longitude = 0;
+    /******************************< functions which define the variables ********************/
+    GPS_voidReceiveSentence(&Local_f64Latitude,&Local_f64Longitude);
+    /******************************< Local Variables *****************************************/
+    f64 Local_f32OldLongitude = Local_f64Longitude;
+    f64 Lcoal_f32OldLatitude = Local_f64Latitude;
+    f64 Local_f32CurrentLongitude = 0;
+    f64 Lcoal_f32CurrentLatitude = 0;
     f32 Local_f32TotalDistance = 0;
     f32 Lcoal_f32DeltaDistance = 0;
-    /****************************** Setup *****************************/
+    /******************************< Init ****************************************************/
+    LCD_voidInit();
+    /****************************** Setup ****************************************************/
     LCD_voidSendString("Total Distance:");
     LCD_voidGoToXYPos(1, 0);
-    /******************************< Super loop ***********************/
+    /******************************< Super loop **********************************************/
     while(1)
     {
-        GPS_voidReceiveSentence();
-        Lcoal_f32CurrentLatitude = GPS_f32Latitude;
-        Local_f32CurrentLongitude = GPS_f32Longitude;
+        GPS_voidReceiveSentence(&Local_f64Latitude,&Local_f64Longitude);
+        Lcoal_f32CurrentLatitude = Local_f64Latitude;
+        Local_f32CurrentLongitude = Local_f64Longitude;
         STK_voidDelay(4000);
         APP_voidGetDistance(Lcoal_f32OldLatitude, Local_f32OldLongitude,Lcoal_f32CurrentLatitude, Local_f32CurrentLongitude, &Lcoal_f32DeltaDistance);
-        Local_f32TotalDistance += Lcoal_f32DeltaDistance;
+         Local_f32TotalDistance += Lcoal_f32DeltaDistance;
         Local_f32OldLongitude = Local_f32CurrentLongitude;
         Lcoal_f32OldLatitude = Lcoal_f32CurrentLatitude;
         LCD_voidSendNumber(Local_f32TotalDistance);

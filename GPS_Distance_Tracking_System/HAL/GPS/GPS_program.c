@@ -24,12 +24,6 @@
 #include "../../HAL/LCD/LCD_interface.h"
 
 
-extern f32 GPS_f32Latitude,GPS_f32Longitude;
-extern f32 GPS_f32EndLatitude, GPS_f32EndLongitude;
-
-
-
-
 /**
  * Description :
  * Receive a complete NMEA sentence from GPS module
@@ -37,7 +31,7 @@ extern f32 GPS_f32EndLatitude, GPS_f32EndLongitude;
  */
 
 
-void GPS_voidReceiveSentence(void)
+void GPS_voidReceiveSentence(f64 *copy_f64Latitude,f64 *copy_f64Longitude)
 {
     static u8 Local_u8UART_InitFlag = 0;
     u8 Local_u8ReadCounter  = 0;
@@ -79,7 +73,7 @@ void GPS_voidReceiveSentence(void)
                                         UART_voidReceiveByte(UART2,&Local_u8ReceivedChar);
                                         Local_u8ReadCounter++;
                                     }
-                                    GPS_voidExtractCoordinates(Local_u8GPS_Sentence);
+                                    GPS_voidExtractCoordinates(Local_u8GPS_Sentence,copy_f64Latitude,copy_f64Longitude);
                                 }
                             }
                         }
@@ -94,13 +88,13 @@ void GPS_voidReceiveSentence(void)
  * return the coordinates of your current location using gps module
  */
 
-void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence)
+void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *copy_f64Longitude)
 {
     f32 Local_f32Deg,Lcoal_f32Min,Local_f32Sec;
     u8 Local_u8CommaCount = 0;
     u8 j = 0;
     u8 k = 0;
-    u8 longARR[15] = {0};
+    s8 longARR[15] = {0};
     u8 altitudeARR[15] = {0};
     u8 i = 0;
     while(Local_u8CommaCount<5)
@@ -114,7 +108,7 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence)
         {
             if (copy_pu8Sentence[i]!='A')
             {
-                GPS_voidReceiveSentence();
+                GPS_voidReceiveSentence(copy_f64Latitude,copy_f64Longitude);
             }
         }
         if(Local_u8CommaCount == 2)
@@ -127,17 +121,17 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence)
         }
         i++;
     }
-    GPS_f32Latitude = atof(altitudeARR);
-    Local_f32Deg = GPS_f32Latitude/100;
-    Lcoal_f32Min = GPS_f32Latitude - (f32)(Local_f32Deg*100);
+    *copy_f64Latitude = atof(altitudeARR);
+    Local_f32Deg = *copy_f64Latitude/100;
+    Lcoal_f32Min = *copy_f64Latitude - (f32)(Local_f32Deg*100);
     Local_f32Sec = Lcoal_f32Min/60.0;
-    GPS_f32Latitude = Local_f32Deg + Local_f32Sec;
+    *copy_f64Latitude = Local_f32Deg + Local_f32Sec;
 
-    GPS_f32Longitude = atof(longARR);
-    Local_f32Deg = GPS_f32Longitude/100;
-    Lcoal_f32Min = GPS_f32Longitude - (f32)(Local_f32Deg*100);
+    *copy_f64Longitude = atof(longARR);
+    Local_f32Deg = *copy_f64Longitude/100;
+    Lcoal_f32Min = *copy_f64Longitude - (f32)(Local_f32Deg*100);
     Local_f32Sec = Lcoal_f32Min/60.0;
-    GPS_f32Longitude = Local_f32Deg + Local_f32Sec;
+    *copy_f64Longitude = Local_f32Deg + Local_f32Sec;
 }
 
 /*
