@@ -13,7 +13,7 @@
  * \return
  *
  */
-void GPS_voidReceiveSentence(void);
+void GPS_voidReceiveSentence(f64 *copy_f64Latitude,f64 *copy_f64Longitude);
 
 /** \brief
  *
@@ -21,7 +21,7 @@ void GPS_voidReceiveSentence(void);
  * \return
  *
  */
-void GPS_voidExtractCoordinates(u8* sentence);
+void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *copy_f64Longitude);
 
 /** \brief
  *
@@ -30,14 +30,7 @@ void GPS_voidExtractCoordinates(u8* sentence);
  *
  */
 
-//f64 GPS_f64getDistance(void);
-
-/** \brief
- *
- * \param
- * \return
- *
- */
+//f64 GPS_f64GetDistance(void);
 
 
 #endif // __HAL_GPS_INTERFACE_H__
