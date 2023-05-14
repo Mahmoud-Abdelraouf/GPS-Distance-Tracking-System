@@ -10,6 +10,7 @@ APP/APP.obj: C:/ti/ccs1220/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/sys/
 APP/APP.obj: C:/ti/ccs1220/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_types.h
 APP/APP.obj: C:/ti/ccs1220/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_limits.h
 APP/APP.obj: ../LIB/STD_TYPES.h
+APP/APP.obj: ../LIB/BIT_MATH.h
 APP/APP.obj: ../HAL/LED/LED_interface.h
 APP/APP.obj: ../HAL/LCD/LCD_interface.h
 APP/APP.obj: ../APP/APP.h
@@ -33,6 +34,8 @@ C:/ti/ccs1220/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_types.h:
 C:/ti/ccs1220/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_limits.h:
 
 ../LIB/STD_TYPES.h:
+
+../LIB/BIT_MATH.h:
 
 ../HAL/LED/LED_interface.h:
 

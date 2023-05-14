@@ -570,13 +570,23 @@ void UART_voidSendString(u8 copy_u8UARTNo,u8 *copy_pu8SentString)
 void UART_voidReceiveString(u8 copy_u8UARTNo,u8 *copy_pu8Buffer)
 {
     u32 i = 0;
-    UART_voidReceiveByte(copy_u8UARTNo,copy_pu8Buffer);
-    while(copy_pu8Buffer[i] != '\0')
+    UART_voidReceiveByte(copy_u8UARTNo,&copy_pu8Buffer[i]);
+    if(copy_pu8Buffer[i] >= '0')
     {
-        i++;
-        copy_pu8Buffer++;
-        UART_voidReceiveByte(copy_u8UARTNo,copy_pu8Buffer);
+        while(copy_pu8Buffer[i] != 0x0A)
+            {
+                i++;
+                UART_voidReceiveByte(copy_u8UARTNo,&copy_pu8Buffer[i]);
+            }
     }
+    else
+    {
+        copy_pu8Buffer[i-1] = 0;
+        copy_pu8Buffer[i] = 0;
+        i--;
+    }
+    copy_pu8Buffer[i] = '\0';
+
 }
 
 

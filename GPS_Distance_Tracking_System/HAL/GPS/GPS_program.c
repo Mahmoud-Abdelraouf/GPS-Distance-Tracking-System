@@ -31,7 +31,7 @@
  */
 
 
-void GPS_voidReceiveSentence(f64 *copy_f64Latitude,f64 *copy_f64Longitude)
+void GPS_voidReceiveSentence(f64 *copy_f64Latitude,f64 *copy_f64Longitude, u8 *copy_u8Speed)
 {
     static u8 Local_u8UART_InitFlag = 0;
     u8 Local_u8ReadCounter  = 0;
@@ -73,7 +73,7 @@ void GPS_voidReceiveSentence(f64 *copy_f64Latitude,f64 *copy_f64Longitude)
                                         UART_voidReceiveByte(UART2,&Local_u8ReceivedChar);
                                         Local_u8ReadCounter++;
                                     }
-                                    GPS_voidExtractCoordinates(Local_u8GPS_Sentence,copy_f64Latitude,copy_f64Longitude);
+                                    GPS_voidExtractCoordinates(Local_u8GPS_Sentence,copy_f64Latitude,copy_f64Longitude,copy_u8Speed);
                                 }
                             }
                         }
@@ -88,16 +88,18 @@ void GPS_voidReceiveSentence(f64 *copy_f64Latitude,f64 *copy_f64Longitude)
  * return the coordinates of your current location using gps module
  */
 
-void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *copy_f64Longitude)
+void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *copy_f64Longitude, u8 *copy_u8Speed)
 {
     f32 Local_f32Deg,Lcoal_f32Min,Local_f32Sec;
     u8 Local_u8CommaCount = 0;
     u8 j = 0;
     u8 k = 0;
-    s8 longARR[15] = {0};
+    u8 l = 0;
+    u8 longARR[15] = {0};
     u8 altitudeARR[15] = {0};
     u8 i = 0;
-    while(Local_u8CommaCount<5)
+    u8 speedArr[10];
+    while(Local_u8CommaCount<7)
     {
         if (copy_pu8Sentence[i] == ',')
         {
@@ -108,7 +110,7 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
         {
             if (copy_pu8Sentence[i]!='A')
             {
-                GPS_voidReceiveSentence(copy_f64Latitude,copy_f64Longitude);
+                GPS_voidReceiveSentence(copy_f64Latitude,copy_f64Longitude,copy_u8Speed);
             }
         }
         if(Local_u8CommaCount == 2)
@@ -118,6 +120,10 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
         if(Local_u8CommaCount == 4)
         {
             longARR[k++]=copy_pu8Sentence[i];
+        }
+        if(Local_u8CommaCount == 6)
+        {
+            speedArr[l++]=copy_pu8Sentence[i];
         }
         i++;
     }
@@ -132,6 +138,8 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
     Lcoal_f32Min = *copy_f64Longitude - (f32)(Local_f32Deg*100);
     Local_f32Sec = Lcoal_f32Min/60.0;
     *copy_f64Longitude = Local_f32Deg + Local_f32Sec;
+
+    *copy_u8Speed = atof(speedArr);
 }
 
 /*
