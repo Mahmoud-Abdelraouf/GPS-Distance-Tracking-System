@@ -63,6 +63,7 @@ int main(void)
     UART_voidReceiveString(UART5,Local_u8EndLocationLongitudeArray);
     Local_f32EndLongitude = atof(Local_u8EndLocationLongitudeArray);
     /******************************< Super loop **********************************************/
+
     while(1)
     {
         GPS_voidReceiveSentence(&Local_f64Latitude,&Local_f64Longitude, &Local_u8Speed);
@@ -79,17 +80,19 @@ int main(void)
             Local_f32OldLatitude = Local_f32CurrentLatitude;
             LCD_voidGoToXYPos(0, 11); /**< New Line in LCD @ position:(1,0) */
             LCD_voidSendNumber(Local_f32TotalDistance);
-            if(Local_f32DistanceTilEnd < 3)
+            if(Local_f32DistanceTilEnd < 5)
             {
+                LED_voidLedOffAll();
                 LED_voidLedOn(LED_GREEN);
                 LCD_voidGoToXYPos(1, 0);
                 LCD_voidSendString("Mission Success!");
                 break;
             }
-            else if(Local_f32DistanceTilEnd < 10)
+            else if(Local_f32DistanceTilEnd < 15)
             {
+                /**< Green with Red makes Yellow */
                 LED_voidLedOn(LED_GREEN);
-                LED_voidLedOn(LED_RED);   /**< Green with Red makes Yellow */
+                LED_voidLedOn(LED_RED);
             }
             else
             {

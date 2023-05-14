@@ -24,68 +24,7 @@
 #include "../../HAL/LCD/LCD_interface.h"
 /******************************< Global Variables *****************/
 extern char GPS_u8SpeedArr[5];
-/******************************<  ******************************/
-
-// Reverses a string 'str' of length 'len'
-void reverse(char* str, int len)
-{
-    int i = 0, j = len - 1, temp;
-    while (i < j) {
-        temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-        i++;
-        j--;
-    }
-}
-
-// Converts a given integer x to string str[].
-// d is the number of digits required in the output.
-// If d is more than the number of digits in x,
-// then 0s are added at the beginning.
-int intToStr(int x, char str[], int d)
-{
-    int i = 0;
-    while (x) {
-        str[i++] = (x % 10) + '0';
-        x = x / 10;
-    }
-
-    // If number of digits required is more, then
-    // add 0s at the beginning
-    while (i < d)
-        str[i++] = '0';
-
-    reverse(str, i);
-    str[i] = '\0';
-    return i;
-}
-
-
-void ftoa(float n, char* res, int afterpoint)
-{
-    // Extract integer part
-    int ipart = (int)n;
-
-    // Extract floating part
-    float fpart = n - (float)ipart;
-
-    // convert integer part to string
-    int i = intToStr(ipart, res, 0);
-
-    // check for display option after point
-    if (afterpoint != 0) {
-        res[i] = '.'; // add dot
-
-        // Get the value of fraction part upto given no.
-        // of points after dot. The third parameter
-        // is needed to handle cases like 233.007
-        fpart = fpart * pow(10, afterpoint);
-
-        intToStr((int)fpart, res + i + 1, afterpoint);
-    }
-}
-/******************************<  ******************************/
+/******************************< Function Implementation ******************************/
 
 /**
  * Description :
@@ -207,32 +146,4 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
         GPS_u8SpeedArr[i] = speedArr[i];
     }
     *copy_u8Speed = atof(speedArr);
-
 }
-
-/*
- * Description :
- * calculate the distance from a constant starting latitude and longitude using haversine formula
- */
-//
-//f64 GPS_f64GetDistance(void){
-//    // convert all coordinates from Degrees into Radians
-//    f64 Local_f64startLat = startLatitude* M_PI/180;
-//    f64 Local_f64startLong = startlongitude* M_PI/180;
-//    f64 Local_f64endLat = latitude* M_PI/180;
-//    f64 Local_f64endLong = longitude* M_PI/180;
-//
-//    // calculate latitude difference and longitude difference
-//    f64 Local_f64latDifference = Local_f64endLat - Local_f64startLat;
-//    f64 Local_f64longDifference = Local_f64endLong - Local_f64startLong;
-//
-//    //use Haversine formula
-//    f64 Local_f64a = sin(Local_f64latDifference / 2) * sin(Local_f64latDifference / 2) + cos(Local_f64startLat) * cos(Local_f64endLat)
-//    * sin(Local_f64longDifference / 2) * sin(Local_f64longDifference / 2);
-//    f64 Local_f64c = 2 * atan2(sqrt(Local_f64a), sqrt(1 - Local_f64a));
-//
-//    //Multipy by Earth's Radius to get the distance
-//    f64 copy_pf64distance = Local_f64c * Earth_Radius;
-//    return copy_pf64distance;
-//}
-//
