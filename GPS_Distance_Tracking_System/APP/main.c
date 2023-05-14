@@ -20,6 +20,8 @@
 #include "../HAL/GPS/GPS_interface.h"
 /******************************< APP ******************************/
 #include "../APP/APP.h"
+/******************************< Global Variables *****************/
+u8 GPS_u8SpeedArr[10];
 /******************************< main *****************************/
 int main(void)
  {
@@ -47,7 +49,12 @@ int main(void)
     LED_voidLedInit();
     /****************************** Setup ****************************************************/
     LCD_voidSendString("Total Distance:");
+    LCD_voidGoToXYPos(1, 3);
+    LCD_voidSendString(",SPEED:");
+    LCD_voidGoToXYPos(1, 13);
+    LCD_voidSendString("m/s");
     LCD_voidGoToXYPos(1, 0);
+    STK_voidDelay(4000);
     /******************************< Bluetooth Module **********************************************/
     UART_voidSendString(UART5,"Enter latitude of your end location\n");
     UART_voidReceiveString(UART5,Local_u8EndLocationLatitudeArray);
@@ -58,30 +65,36 @@ int main(void)
     /******************************< Super loop **********************************************/
     while(1)
     {
-        LED_voidLedOff(LED_GREEN);
-        LED_voidLedOff(LED_RED);
         GPS_voidReceiveSentence(&Local_f64Latitude,&Local_f64Longitude, &Local_u8Speed);
         Local_f32CurrentLatitude = Local_f64Latitude;
         Local_f32CurrentLongitude = Local_f64Longitude;
         APP_voidGetDistance(Local_f32OldLatitude, Local_f32OldLongitude,Local_f32CurrentLatitude, Local_f32CurrentLongitude, &Local_f32DeltaDistance);
         APP_voidGetDistance(Local_f32EndLatitude, Local_f32EndLongitude,Local_f32CurrentLatitude, Local_f32CurrentLongitude, &Local_f32DistanceTilEnd);
-        if(Local_u8Speed > 0)
+        LCD_voidGoToXYPos(1, 10);
+        LCD_voidSendString(GPS_u8SpeedArr);
+        if(Local_u8Speed > 0.1)
         {
             Local_f32TotalDistance += Local_f32DeltaDistance;
             Local_f32OldLongitude = Local_f32CurrentLongitude;
             Local_f32OldLatitude = Local_f32CurrentLatitude;
+            LCD_voidGoToXYPos(1, 0); /**< New Line in LCD @ position:(1,0) */
             LCD_voidSendNumber(Local_f32TotalDistance);
-            LCD_voidGoToXYPos(1, 0);
-            if((((Local_f32EndLongitude-Local_f32CurrentLongitude)>0.01) || ((Local_f32EndLongitude-Local_f32CurrentLongitude)<0.01))   &&  (((Local_f32EndLatitude-Local_f32CurrentLatitude)>0.01) || ((Local_f32EndLatitude-Local_f32CurrentLatitude)<0.01)))
+            if(Local_f32TotalDistance>120)
             {
                 LED_voidLedOn(LED_GREEN);
                 LCD_voidSendString("Mission Success!");
                 break;
             }
+//            if((((Local_f32EndLongitude-Local_f32CurrentLongitude)>0.01) || ((Local_f32EndLongitude-Local_f32CurrentLongitude)<0.01))   &&  (((Local_f32EndLatitude-Local_f32CurrentLatitude)>0.01) || ((Local_f32EndLatitude-Local_f32CurrentLatitude)<0.01)))
+//            {
+//                LED_voidLedOn(LED_GREEN);
+//                LCD_voidSendString("Mission Success!");
+//                break;
+//            }
             else if (Local_f32TotalDistance > 100 && Local_f32TotalDistance<120)
             {
                 LED_voidLedOn(LED_GREEN);
-                LED_voidLedOn(LED_RED);   //green with red makes yellow
+                LED_voidLedOn(LED_RED);   /**< Green with Red makes Yellow */
             }
             else
             {

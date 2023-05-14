@@ -22,8 +22,8 @@
 #include "../../HAL/GPS/GPS_config.h"
 /**< LCD */
 #include "../../HAL/LCD/LCD_interface.h"
-
-
+/******************************< Global Variables *****************/
+extern u8 GPS_u8SpeedArr[10];
 /**
  * Description :
  * Receive a complete NMEA sentence from GPS module
@@ -139,7 +139,12 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
     Local_f32Sec = Lcoal_f32Min/60.0;
     *copy_f64Longitude = Local_f32Deg + Local_f32Sec;
 
+    for(u32 i = 0;i< 3 ; i++)
+    {
+        GPS_u8SpeedArr[i] = speedArr[i];
+    }
     *copy_u8Speed = atof(speedArr);
+    *copy_u8Speed = *copy_u8Speed/1.944;
 }
 
 /*
