@@ -52,9 +52,9 @@ int main(void)
     LCD_voidGoToXYPos(0, 14);
     LCD_voidSendString(" m");
     LCD_voidGoToXYPos(1, 0);
-    LCD_voidSendString(",SPEED:");
-    LCD_voidGoToXYPos(1, 10);
-    LCD_voidSendString(" kn");
+    LCD_voidSendString("SPEED:");
+    LCD_voidGoToXYPos(1, 12);
+    LCD_voidSendString("knot");
     /******************************< Bluetooth Module **********************************************/
     UART_voidSendString(UART5,"Enter latitude of your end location\n");
     UART_voidReceiveString(UART5,Local_u8EndLocationLatitudeArray);

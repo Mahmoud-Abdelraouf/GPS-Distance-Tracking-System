@@ -23,7 +23,7 @@
 /**< LCD */
 #include "../../HAL/LCD/LCD_interface.h"
 /******************************< Global Variables *****************/
-extern char GPS_u8SpeedArr[4];
+extern char GPS_u8SpeedArr[5];
 /******************************<  ******************************/
 
 // Reverses a string 'str' of length 'len'
@@ -202,7 +202,7 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
     Local_f32Sec = Lcoal_f32Min/60.0;
     *copy_f64Longitude = Local_f32Deg + Local_f32Sec;
 
-    for(int i = 0 ;i<4;i++)
+    for(int i = 0 ;i<5;i++)
     {
         GPS_u8SpeedArr[i] = speedArr[i];
     }
