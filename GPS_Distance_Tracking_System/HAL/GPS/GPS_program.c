@@ -23,7 +23,70 @@
 /**< LCD */
 #include "../../HAL/LCD/LCD_interface.h"
 /******************************< Global Variables *****************/
-extern u8 GPS_u8SpeedArr[10];
+extern char GPS_u8SpeedArr[4];
+/******************************<  ******************************/
+
+// Reverses a string 'str' of length 'len'
+void reverse(char* str, int len)
+{
+    int i = 0, j = len - 1, temp;
+    while (i < j) {
+        temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+        i++;
+        j--;
+    }
+}
+
+// Converts a given integer x to string str[].
+// d is the number of digits required in the output.
+// If d is more than the number of digits in x,
+// then 0s are added at the beginning.
+int intToStr(int x, char str[], int d)
+{
+    int i = 0;
+    while (x) {
+        str[i++] = (x % 10) + '0';
+        x = x / 10;
+    }
+
+    // If number of digits required is more, then
+    // add 0s at the beginning
+    while (i < d)
+        str[i++] = '0';
+
+    reverse(str, i);
+    str[i] = '\0';
+    return i;
+}
+
+
+void ftoa(float n, char* res, int afterpoint)
+{
+    // Extract integer part
+    int ipart = (int)n;
+
+    // Extract floating part
+    float fpart = n - (float)ipart;
+
+    // convert integer part to string
+    int i = intToStr(ipart, res, 0);
+
+    // check for display option after point
+    if (afterpoint != 0) {
+        res[i] = '.'; // add dot
+
+        // Get the value of fraction part upto given no.
+        // of points after dot. The third parameter
+        // is needed to handle cases like 233.007
+        fpart = fpart * pow(10, afterpoint);
+
+        intToStr((int)fpart, res + i + 1, afterpoint);
+    }
+}
+/******************************<  ******************************/
+
 /**
  * Description :
  * Receive a complete NMEA sentence from GPS module
@@ -95,10 +158,10 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
     u8 j = 0;
     u8 k = 0;
     u8 l = 0;
-    u8 longARR[15] = {0};
-    u8 altitudeARR[15] = {0};
+    char longARR[15] = {0};
+    char altitudeARR[15] = {0};
     u8 i = 0;
-    u8 speedArr[10];
+    char speedArr[10];
     while(Local_u8CommaCount<7)
     {
         if (copy_pu8Sentence[i] == ',')
@@ -139,12 +202,12 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
     Local_f32Sec = Lcoal_f32Min/60.0;
     *copy_f64Longitude = Local_f32Deg + Local_f32Sec;
 
-    for(u32 i = 0;i< 3 ; i++)
+    for(int i = 0 ;i<4;i++)
     {
         GPS_u8SpeedArr[i] = speedArr[i];
     }
     *copy_u8Speed = atof(speedArr);
-    *copy_u8Speed = *copy_u8Speed/1.944;
+
 }
 
 /*
