@@ -5,13 +5,13 @@
 // ********** Version : 1.0                    		***********
 // ************************************************************
 /**< LIB */
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
-#include "tm4c123gh6pm.h"
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+#include "../../LIB/tm4c123gh6pm.h"
 /**< HAL_UART */
-#include "UART_private.h"
-#include "UART_interface.h"
-#include "UART_config.h"
+#include "../../MCAL/UART/UART_private.h"
+#include "../../MCAL/UART/UART_interface.h"
+#include "../../MCAL/UART/UART_config.h"
 /****************************************< UART_FUNCTIONS_IMPLEMENTATION ****************************************/
 void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8 copy_u8Parity, u8 copy_u8StopBits)
 {
@@ -570,13 +570,23 @@ void UART_voidSendString(u8 copy_u8UARTNo,u8 *copy_pu8SentString)
 void UART_voidReceiveString(u8 copy_u8UARTNo,u8 *copy_pu8Buffer)
 {
     u32 i = 0;
-    UART_voidReceiveByte(copy_u8UARTNo,copy_pu8Buffer);
-    while(copy_pu8Buffer[i] != '\0')
+    UART_voidReceiveByte(copy_u8UARTNo,&copy_pu8Buffer[i]);
+    if(copy_pu8Buffer[i] >= '0')
     {
-        i++;
-        copy_pu8Buffer++;
-        UART_voidReceiveByte(copy_u8UARTNo,copy_pu8Buffer);
+        while(copy_pu8Buffer[i] != 0x0A)
+            {
+                i++;
+                UART_voidReceiveByte(copy_u8UARTNo,&copy_pu8Buffer[i]);
+            }
     }
+    else
+    {
+        copy_pu8Buffer[i-1] = 0;
+        copy_pu8Buffer[i] = 0;
+        i--;
+    }
+    copy_pu8Buffer[i] = '\0';
+
 }
 
 
