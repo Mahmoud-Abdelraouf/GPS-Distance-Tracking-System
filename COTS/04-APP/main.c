@@ -73,8 +73,6 @@ int main(void)
         APP_voidGetDistance(Local_f32EndLatitude, Local_f32EndLongitude,Local_f32CurrentLatitude, Local_f32CurrentLongitude, &Local_f32DistanceTilEnd);
         LCD_voidGoToXYPos(1, 6);
         LCD_voidSendString(GPS_u8SpeedArr);
-        LCD_voidGoToXYPos(1, 12);
-        LCD_voidSendString("knot");
         if(Local_u8Speed > 0.5)
         {
             Local_f32TotalDistance += Local_f32DeltaDistance;
