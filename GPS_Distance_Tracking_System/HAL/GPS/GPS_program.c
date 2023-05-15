@@ -141,9 +141,10 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
     Local_f32Sec = Lcoal_f32Min/60.0;
     *copy_f64Longitude = Local_f32Deg + Local_f32Sec;
 
-    for(int i = 0 ;i<5;i++)
+    for(int i = 0 ;i<4;i++)
     {
         GPS_u8SpeedArr[i] = speedArr[i];
     }
+    speedArr[i] = '\0';
     *copy_u8Speed = atof(speedArr);
 }
