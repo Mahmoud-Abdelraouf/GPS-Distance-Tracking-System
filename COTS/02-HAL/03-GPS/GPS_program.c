@@ -4,7 +4,7 @@
 //**** SWC     : HAL_GPS                  *********
 //**** Version : 1.0                      *********
 //*************************************************
-/******************************< System ******************************/
+/******************************< SYSTEM ****************************/
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
@@ -22,7 +22,9 @@
 #include "../../HAL/GPS/GPS_config.h"
 /**< LCD */
 #include "../../HAL/LCD/LCD_interface.h"
-
+/******************************< Global Variables *****************/
+extern char GPS_u8SpeedArr[5];
+/******************************< Function Implementation ******************************/
 
 /**
  * Description :
@@ -31,7 +33,7 @@
  */
 
 
-void GPS_voidReceiveSentence(f64 *copy_f64Latitude,f64 *copy_f64Longitude)
+void GPS_voidReceiveSentence(f64 *copy_f64Latitude,f64 *copy_f64Longitude, u8 *copy_u8Speed)
 {
     static u8 Local_u8UART_InitFlag = 0;
     u8 Local_u8ReadCounter  = 0;
@@ -73,7 +75,7 @@ void GPS_voidReceiveSentence(f64 *copy_f64Latitude,f64 *copy_f64Longitude)
                                         UART_voidReceiveByte(UART2,&Local_u8ReceivedChar);
                                         Local_u8ReadCounter++;
                                     }
-                                    GPS_voidExtractCoordinates(Local_u8GPS_Sentence,copy_f64Latitude,copy_f64Longitude);
+                                    GPS_voidExtractCoordinates(Local_u8GPS_Sentence,copy_f64Latitude,copy_f64Longitude,copy_u8Speed);
                                 }
                             }
                         }
@@ -88,16 +90,18 @@ void GPS_voidReceiveSentence(f64 *copy_f64Latitude,f64 *copy_f64Longitude)
  * return the coordinates of your current location using gps module
  */
 
-void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *copy_f64Longitude)
+void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *copy_f64Longitude, u8 *copy_u8Speed)
 {
     f32 Local_f32Deg,Lcoal_f32Min,Local_f32Sec;
     u8 Local_u8CommaCount = 0;
     u8 j = 0;
     u8 k = 0;
-    s8 longARR[15] = {0};
-    u8 altitudeARR[15] = {0};
+    u8 l = 0;
+    char longARR[15] = {0};
+    char altitudeARR[15] = {0};
     u8 i = 0;
-    while(Local_u8CommaCount<5)
+    char speedArr[10];
+    while(Local_u8CommaCount<7)
     {
         if (copy_pu8Sentence[i] == ',')
         {
@@ -108,7 +112,7 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
         {
             if (copy_pu8Sentence[i]!='A')
             {
-                GPS_voidReceiveSentence(copy_f64Latitude,copy_f64Longitude);
+                GPS_voidReceiveSentence(copy_f64Latitude,copy_f64Longitude,copy_u8Speed);
             }
         }
         if(Local_u8CommaCount == 2)
@@ -118,6 +122,10 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
         if(Local_u8CommaCount == 4)
         {
             longARR[k++]=copy_pu8Sentence[i];
+        }
+        if(Local_u8CommaCount == 6)
+        {
+            speedArr[l++]=copy_pu8Sentence[i];
         }
         i++;
     }
@@ -132,31 +140,11 @@ void GPS_voidExtractCoordinates(u8 *copy_pu8Sentence,f64 *copy_f64Latitude,f64 *
     Lcoal_f32Min = *copy_f64Longitude - (f32)(Local_f32Deg*100);
     Local_f32Sec = Lcoal_f32Min/60.0;
     *copy_f64Longitude = Local_f32Deg + Local_f32Sec;
-}
 
-/*
- * Description :
- * calculate the distance from a constant starting latitude and longitude using haversine formula
- */
-//
-//f64 GPS_f64GetDistance(void){
-//    // convert all coordinates from Degrees into Radians
-//    f64 Local_f64startLat = startLatitude* M_PI/180;
-//    f64 Local_f64startLong = startlongitude* M_PI/180;
-//    f64 Local_f64endLat = latitude* M_PI/180;
-//    f64 Local_f64endLong = longitude* M_PI/180;
-//
-//    // calculate latitude difference and longitude difference
-//    f64 Local_f64latDifference = Local_f64endLat - Local_f64startLat;
-//    f64 Local_f64longDifference = Local_f64endLong - Local_f64startLong;
-//
-//    //use Haversine formula
-//    f64 Local_f64a = sin(Local_f64latDifference / 2) * sin(Local_f64latDifference / 2) + cos(Local_f64startLat) * cos(Local_f64endLat)
-//    * sin(Local_f64longDifference / 2) * sin(Local_f64longDifference / 2);
-//    f64 Local_f64c = 2 * atan2(sqrt(Local_f64a), sqrt(1 - Local_f64a));
-//
-//    //Multipy by Earth's Radius to get the distance
-//    f64 copy_pf64distance = Local_f64c * Earth_Radius;
-//    return copy_pf64distance;
-//}
-//
+    for(int i = 0 ;i<4;i++)
+    {
+        GPS_u8SpeedArr[i] = speedArr[i];
+    }
+    speedArr[i] = '\0';
+    *copy_u8Speed = atof(speedArr);
+}
