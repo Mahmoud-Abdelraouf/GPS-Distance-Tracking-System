@@ -8,6 +8,7 @@
 #include <math.h>
 /******************************< LIB ******************************/
 #include "../LIB/STD_TYPES.h"
+#include "../LIB/BIT_MATH.h"
 /******************************< HAL ******************************/
 #include "../HAL/LED/LED_interface.h"
 #include "../HAL/LCD/LCD_interface.h"
@@ -17,10 +18,10 @@
 void APP_voidGetDistance(f32 copy_f32startLatitude, f32 copy_f32startLongitude,f32 copy_f32endLatitude, f32 copy_f32endLongitude, f32 *copy_pf32distance)
 {
     // convert all coordinates from Degrees into Radians
-    f32 Local_f32startLat = copy_f32startLatitude* M_PI/180;
-    f32 Local_f32startLong = copy_f32startLongitude* M_PI/180;
-    f32 Local_f32endLat = copy_f32endLatitude* M_PI/180;
-    f32 Local_f32endLong = copy_f32endLongitude* M_PI/180;
+    f32 Local_f32startLat = truncate(&copy_f32startLatitude)* M_PI/180;
+    f32 Local_f32startLong = truncate(&copy_f32startLongitude)* M_PI/180;
+    f32 Local_f32endLat = truncate(&copy_f32endLatitude)* M_PI/180;
+    f32 Local_f32endLong = truncate(&copy_f32endLongitude)* M_PI/180;
 
     // calculate latitude difference and longitude difference
     f32 Local_f32latDifference = Local_f32endLat - Local_f32startLat;
@@ -60,4 +61,10 @@ u8 APP_u8LightLED(f32 copy_f32startLatitude, f32 copy_f32startLongitude, f32 cop
         return 1;
     }
     return 0;
+}
+
+f32 truncate(f32 *copy_f32FloatValue)
+{
+    *copy_f32FloatValue = floor(*copy_f32FloatValue * 10000) / (f64)10000.0;
+    return *copy_f32FloatValue;
 }

@@ -23,7 +23,7 @@
  * \return
  *
  */
- void APP_voidGetDistance(f32 copy_f32startLatitude, f32 copy_f32startLongitude,f32 copy_f32endLatitude, f32 copy_f32endLongitude, f32 *copy_pf32distance);
+void APP_voidGetDistance(f32 copy_f32startLatitude, f32 copy_f32startLongitude,f32 copy_f32endLatitude, f32 copy_f32endLongitude, f32 *copy_pf32distance);
 
  /** \brief
  *
@@ -32,7 +32,6 @@
  *
  */
  void APP_voidGetTotalDistance(f32 copy_f32latitude, f32 copy_f32longitude, f32* copy_pf32distance);
-
  /** \brief
  *
  * \param
@@ -40,7 +39,11 @@
  *
  */
  u8 APP_u8LightLED(f32 copy_f32startLatitude, f32 copy_f32startLongitude, f32 copy_f32endLatitude, f32 copy_f32endLongitude);
-
-
-
-#endif /* __APP_APP_H__ */
+ /** \brief
+  *
+  * \param
+  * \return
+  *
+  */
+ f32 truncate(f32 *copy_f32FloatValue);
+ #endif /* __APP_APP_H__ */
