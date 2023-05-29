@@ -1,14 +1,14 @@
 // ************************************************************
-// ********** Name    : ASU_EMBEDDED_TEAM_NO?!		***********
-// ********** Date    : 14/04/2023              	***********
+// ********** Name    : ASU_EMBEDDED_TEAM_NO?!	    ***********
+// ********** Date    : 14/04/2023                  ***********
 // ********** SWC     : MCAL_UART                   ***********
-// ********** Version : 1.0                    		***********
+// ********** Version : 1.0                    	    ***********
 // ************************************************************
 /**< LIB */
 #include "../../LIB/STD_TYPES.h"
 #include "../../LIB/BIT_MATH.h"
 #include "../../LIB/tm4c123gh6pm.h"
-/**< HAL_UART */
+/**< MCAL_UART */
 #include "../../MCAL/UART/UART_private.h"
 #include "../../MCAL/UART/UART_interface.h"
 #include "../../MCAL/UART/UART_config.h"
