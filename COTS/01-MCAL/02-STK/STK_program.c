@@ -1,9 +1,9 @@
-// ************************************************************
+// ****************************************************************
 // ********** Name    : ASU_EMBEDDED_TEAM_NO?!		***********
 // ********** Date    : 14/04/2023              	***********
 // ********** SWC     : MCAL_STK                  	***********
 // ********** Version : 1.0                    		***********
-// ************************************************************
+// ****************************************************************
 
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
@@ -38,7 +38,7 @@ void STK_voidConfig(u32 copy_u32Ticks)
     SET_BIT(NVIC_ST_CTRL_R,STK_ENABLE_B);  /**< Enable the SysTick timer */
 }
 
-void STK_voidHandler(void)
+void SysTick_Handler(void)
 {
     /**< Handler SysTick interrupt */
     /**< This function can be implemented to perform periodic tasks or measure time intervals */
