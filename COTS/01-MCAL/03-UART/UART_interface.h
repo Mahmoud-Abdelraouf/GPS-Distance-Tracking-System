@@ -66,7 +66,7 @@
  *										6) UART5
  *										7) UART6
  *										8) UART7
- *			copy_u32BaudRate: YOUR_OPTIONS:
+ *	\param		copy_u32BaudRate: YOUR_OPTIONS:
  *										1) UART_BDR_2400
  *										2) UART_BDR_4800
  *										3) UART_BDR_9600
@@ -79,16 +79,16 @@
  *										10)UART_BDR_115200
  *										11)UART_BDR_230400
  *										12)UART_BDR_250000
- *			copy_u8DataBits: YOUR_OPTIONS:
+ *	\param		copy_u8DataBits: YOUR_OPTIONS:
  *										1) UART_DATA_5
  *										2) UART_DATA_6
  *										3) UART_DATA_7
  *										4) UART_DATA_8
- *			copy_u8Parity: YOUR_OPTIONS:
+ *	\param		copy_u8Parity: YOUR_OPTIONS:
  *										1) UART_PARITY_NONE
  *										2) UART_PARITY_ODD
  *										3) UART_PARITY_EVEN
- *			copy_u8StopBits: YOUR_OPTIONS:
+ *	\param		copy_u8StopBits: YOUR_OPTIONS:
  *										1) UART_STOP_BIT_1
  *										2) UART_STOP_BIT_2
  * \return 	void
@@ -162,7 +162,7 @@ void UART_voidSendByte(u8 copy_u8UARTNo,u8 copy_u8Data);
  *			for receiving the data. This parameter can have a value from 0 to 7, where 0 
  *			corresponds to UART0 and 7 corresponds to UART7.
  *
- *			copy_pu8ReceivedData: This is a pointer to an unsigned 8-bit integer that 
+ * \param	copy_pu8ReceivedData: This is a pointer to an unsigned 8-bit integer that 
  *			represents the memory location where the received data byte will be stored. 
  *			This parameter should be a valid memory address that points to a location where 
  *			the received data byte can be stored.

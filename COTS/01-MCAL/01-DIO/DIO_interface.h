@@ -116,24 +116,35 @@
 #define PF3_PIN         31
 #define PF4_PIN         5
 //*****************************************************************************
-//*****************************************************************************
-//
-// the functions of the DIO driver
-//
-//*****************************************************************************
-/** \brief 	
- *			
- * \param 	
- * \return 	
+/**
+ * @brief Initializes a GPIO port as digital input/output.
  *
- */ 
+ * This function enables the clock for the specified GPIO port, unlocks the GPIOCR
+ * register, and sets the GPIO pins to work as digital I/O. The function returns an
+ * error status if the input parameter is out of range or if there was an error in
+ * the initialization process.
+ *
+ * @param[in] copy_u8PortId The ID of the GPIO port to initialize.
+ *
+ * @return Returns STD_TYPES_OK if the port was successfully initialized, STD_TYPES_NOK
+ *         otherwise.
+ */
 u8 DIO_voidInit(u8 copy_u8PortId);
-/** \brief 	
- *			
- * \param 	
- * \return 	
+/**
+ * @brief Sets the direction of a GPIO pin as input or output.
  *
- */ 
+ * This function sets the direction of a specific GPIO pin in a specified GPIO port as
+ * either input or output. The function performs input validation to ensure that the
+ * input parameters are within the correct range before setting the direction of the pin.
+ * The function returns an error status to indicate whether the operation was successful
+ * or not.
+ *
+ * @param[in] copy_u8PortId The ID of the GPIO port to work with.
+ * @param[in] copy_u8PinId The ID of the GPIO pin to set its direction.
+ * @param[in] copy_u8PinDirection The direction of the GPIO pin (DIO_u8_INPUT or DIO_u8_OUTPUT).
+ *
+ * @return Returns STD_TYPES_OK if the pin direction was successfully set, STD_TYPES_NOK otherwise.
+ */
 u8 DIO_u8SetPinDirection (u8 copy_u8PortId, u8 copy_u8PinId,u8 copy_u8PinDirection);
 /** \brief 	
  *			
