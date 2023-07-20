@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //************************************************************
 //********** Name    : ASU_EMBEDDED_TEAM_NO?!		 *************
 //********** Date    : 14/04/2023                *************
@@ -5,6 +6,15 @@
 //********** Version : 1.0                    	 *************
 //************************************************************
 /**< LIB */
+=======
+// ****************************************************************
+// ********** Name    : ASU_EMBEDDED_TEAM_NO?!		***********
+// ********** Date    : 14/04/2023              	***********
+// ********** SWC     : MCAL_STK                  	***********
+// ********** Version : 1.0                    		***********
+// ****************************************************************
+
+>>>>>>> 7c5661d0d05e58af86d90b617067320208dfaaad
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 #include "tm4c123gh6pm.h"
@@ -38,7 +48,7 @@ void STK_voidConfig(u32 copy_u32Ticks)
     SET_BIT(NVIC_ST_CTRL_R,STK_ENABLE_B);  /**< Enable the SysTick timer */
 }
 
-void STK_voidHandler(void)
+void SysTick_Handler(void)
 {
     /**< Handler SysTick interrupt */
     /**< This function can be implemented to perform periodic tasks or measure time intervals */
