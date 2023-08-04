@@ -1,4 +1,4 @@
-# GPS Distance Tracking System
+![image](https://github.com/Mahmoud-Abdelraouf/GPS-Tracking-System/assets/90259729/8294eaee-2e4e-408e-a0b0-c9b001405c0e)# GPS Distance Tracking System
 
 The GPS Distance Tracking System is an embedded system developed using the TM4C123G LaunchPad. It allows users to track the distance they travel between two points using GPS coordinates. The system provides visual feedback to the user through built-in LEDs, indicating when they are close to their destination or have reached it.
 
@@ -120,9 +120,7 @@ You can find a video demonstration of the GPS Distance Tracking System at the fo
 
 The baseline path that should be followed for the GPS Distance Tracking System is shown below:
 
-![Image 1](Baseline%20Path/61gevd2mlaL._AC_SX466_.jpg)
-![Image 2](Baseline%20Path/HC-05.jpg)
-![Image 3](Baseline%20Path/lcd_2x16_blue_new.jpg)
-![Image 4](Baseline%20Path/TM4C123G.jpg)
+![Image 1](https://www.mdpi.com/ijgi/ijgi-11-00186/article_deploy/html/images/ijgi-11-00186-g001.png)
+
 
 ![Google Maps Image](https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png)
