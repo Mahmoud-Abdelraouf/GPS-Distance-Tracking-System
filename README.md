@@ -104,12 +104,12 @@ For any inquiries or support, please contact:
 
 - [Mahmoud Abdelraouf] - [mahmoud126125@gmail.com]
 - [Somay Ayman] - [somaya189ayman@gmail.com]
-- [Sara Ashraf] - [.email@example.com]
-- [Maya Sharaf] - [.email@example.com]
+- [Sara Ashraf] - [saraashrf1@icloud.com]
+- [Maya Sharaf] - [mayasharaf2@gmail.com]
 - [Mahmoud Hamdy] - [mahmoud-mahgoub1@hotmail.com]
-- [Nada Mohamed] - [email@example.com]
+- [Nada Mohamed] - [2001434@eng.asu.edu.eg]
 - [Mohamed Adham] - [mohamed.adhamnagiub@gmail.com]
-- [Mennatallah Abdel-Motaleb] - [ail@example.com]
+- [Mennatallah Abdel-Motaleb] - [mennaamr20024@gmail.com]
 - [Muhammad AbdelKhaleq] - [muhammadabdelkhaleq2@gmail.com]
 - [Mohamed Khaled] - [mohamedkhaled77765@gmail.com]
 
