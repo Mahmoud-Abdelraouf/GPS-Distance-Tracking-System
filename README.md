@@ -1,73 +1,120 @@
 # GPS Distance Tracking System
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Project Description](#project-description)
-4. [Requirements](#requirements)
-5. [Setup](#setup)
-6. [Usage](#usage)
-7. [Tools and Technologies Used](#tools-and-technologies-used)
-8. [Team Members](#team-members)
-9. [License](#license)
+The GPS Distance Tracking System is an embedded system developed using the TM4C123G LaunchPad. It allows users to track the distance they travel between two points using GPS coordinates. The system provides visual feedback to the user through built-in LEDs, indicating when they are close to their destination or have reached it.
 
-## Introduction
-This project involves developing a GPS Distance Tracking System using the TM4C123G LaunchPad. The system tracks the distance a user travels between two points using GPS coordinates and provides visual feedback to the user using built-in LEDs. The project was developed as part of the CSE 211 course at the Faculty of Engineering, Computer and Systems Engineering Department.
+## Table of Contents
+
+1. [Description](#description)
+2. [Features](#features)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Requirements](#requirements)
+6. [Contributing](#contributing)
+7. [License](#license)
+8. [Credits](#credits)
+9. [Contact](#contact)
+
+## Description
+
+The GPS Distance Tracking System is a project developed as part of the CSE 211 course at the Computer and Systems Engineering Department, Faculty of Engineering, during the Fall 2023 semester. The main objective of the project is to create an embedded system that accurately tracks the distance a user travels between two points using GPS coordinates. The system is implemented on the TM4C123G LaunchPad and provides real-time visual feedback to the user through LEDs.
 
 ## Features
-The GPS Distance Tracking System offers the following features:
+
+The GPS subsystem performs the following tasks:
+
 1. Stores the coordinates of the starting point.
 2. Stores the coordinates of the end point and calculates the total distance traveled by the user.
-3. Provides visual feedback to the user using built-in LEDs based on distance from the target destination:
+3. Provides visual feedback to the user using built-in LEDs:
    - Stage 1: Green LED turns on when the target destination is reached.
    - Stage 2: Yellow LED turns on when the target destination is about to be reached (less than 5 meters away).
-   - Stage 3: Red LED turns on when the target destination is far away by more than 5 meters.
-4. Ensures the total distance between the start and end points is greater than 100 meters.
-5. The path from the start point to the end point forms a non-straight line similar to the provided baseline path.
-6. Compares the calculated distance with Google Maps to ensure the error margin is less than or equal to 5%.
+   - Stage 3: Red LED turns on when the target destination is far away (more than 5 meters).
 
-## Project Description
-The GPS Distance Tracking System was developed as part of the CSE 211 [Fall 2023] course. The system calculates the distance traveled by the user and provides LED feedback based on the distance to the target destination. The trajectory of the distance satisfies specific criteria, and the system compares the calculated distance with Google Maps data.
+The trajectory of the distance traveled satisfies the following criteria:
 
-![Baseline Path](path_image.png)
-_Figure 1: Baseline path that you should follow_
+1. The total distance between the start and end points should be greater than 100 meters.
+2. The path from the start point to the end point should form a non-straight line similar to the provided baseline path.
 
-## Requirements
-To run the project, you will need the following:
-- TM4C123G LaunchPad.
-- GPS module configured to provide longitude and latitude coordinates.
-- Code Composer Studio for the development environment.
-- C programming language.
+The system calculates the distance between the starting point and the end point and compares it with the distance obtained from Google Maps. The error margin should be less than or equal to 5%.
 
-## Setup
-1. Clone the repository or download the project files from [GitHub](https://github.com/your_username/GPS_Distance_Tracking_System).
-2. Connect the TM4C123G LaunchPad to the GPS module.
-3. Open the project in Code Composer Studio.
-4. Build and flash the project to the LaunchPad.
+## Installation
+
+To use the GPS Distance Tracking System, follow these steps:
+
+1. Clone the repository to your local machine:
+   ```
+   git clone https://github.com/your-username/GPS-Distance-Tracking-System.git
+   ```
+
+2. Connect the TM4C123G LaunchPad to a GPS module and configure it to receive GPS coordinates.
+
+3. Open the project in Code Composer Studio (CMake is also required for building).
 
 ## Usage
+
+To use the GPS Distance Tracking System, follow these steps:
+
 1. Power on the GPS Distance Tracking System.
-2. The system will store the coordinates of the starting point.
-3. Travel to the target destination.
-4. Upon reaching the destination, the LED feedback will indicate the distance status:
+
+2. Select any starting point on Google Maps and mark it as the starting location.
+
+3. Walk or travel to the destination point.
+
+4. The system will provide visual feedback through the built-in LEDs as follows:
    - Green LED: Target destination reached.
-   - Yellow LED: Target destination is about to be reached (< 5 meters away).
-   - Red LED: Target destination is far away (> 5 meters).
-5. The system will store the coordinates of the end point and calculate the total distance traveled.
+   - Yellow LED: Target destination about to be reached (less than 5 meters away).
+   - Red LED: Target destination is far away (more than 5 meters).
 
-## Tools and Technologies Used
-- C Programming Language.
-- CMAKE for project build.
-- ARM KEIL for microcontroller configuration.
-- Code Composer Studio for development.
+5. Ensure that the calculated distance is within an error margin of 5% compared to Google Maps.
 
-## Team Members
-This project was developed by [Team Work] as part of [Introduction to Embedded Systems/GPS Tracking System].
-- Team Member 1: [Name]
-- Team Member 2: [Name]
-- Team Member 3: [Name]
-- Team Member 4: [Name]
-- Team Member 5: [Name]
+## Requirements
+
+To successfully run the GPS Distance Tracking System, you will need the following:
+
+- TM4C123G LaunchPad
+- GPS Module
+- Code Composer Studio (CCS) or CMake for building
+- UART configuration for GPS module communication
+
+## Contributing
+
+Contributions to the GPS Distance Tracking System project are welcome. To contribute, follow these steps:
+
+1. Fork the repository.
+
+2. Create a new branch for your feature or bug fix.
+
+3. Make your changes and commit them with a detailed description.
+
+4. Push to the branch and create a pull request on GitHub.
 
 ## License
-This project is licensed under the [License Name] License - see the [LICENSE](LICENSE) file for details.
+
+This project is licensed under the MIT License.
+
+## Credits
+
+This project was developed by [Team Work] as part of [Introduction to Embedded Systems/GPS Tracking System]. Special thanks to the faculty and staff at the Computer and Systems Engineering Department, Faculty of Engineering, for their support and guidance throughout the project.
+
+## Contact
+
+For any inquiries or support, please contact:
+
+- [Your Name] - [your.email@example.com]
+- [Team Member 1] - [team.member1@example.com]
+- [Team Member 2] - [team.member2@example.com]
+- ...
+
+## Video Demo
+
+You can find a video demonstration of the GPS Distance Tracking System at the following link: [Link to Video Demo](https://youtu.be/t8TfINgbRjQ)
+
+## Baseline Path
+
+The baseline path that should be followed for the GPS Distance Tracking System is shown below:
+
+![Baseline Path](path_image.png)
+
+![Google Maps Image](https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png)
+```
+
+Now the README.md includes the Google Maps image you wanted to add. Remember to replace `[your-username]`, `[your.email@example.com]`, `[Team Work]`, `[Introduction to Embedded Systems/GPS Tracking System]`, `[team.member1@example.com]`, etc., with appropriate information specific to your project. Also, ensure that you include the actual video demo link and the path to your `path_image.png` file.
