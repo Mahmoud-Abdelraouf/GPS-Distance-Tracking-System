@@ -92,7 +92,7 @@ Contributions to the GPS Distance Tracking System project are welcome. To contri
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 
 ## Credits
 
