@@ -1,48 +1,125 @@
-<h1>GPS Distance Tracking System</h1>
+# GPS Distance Tracking System
 
-<p>This project involves developing a system using the TM4C123G LaunchPad that tracks the distance a user travels between two points using GPS coordinates. The system will also provide visual feedback to the user using built-in LEDs, indicating when they are close to their destination or have reached it.</p>
+The GPS Distance Tracking System is an embedded system developed using the TM4C123G LaunchPad. It allows users to track the distance they travel between two points using GPS coordinates. The system provides visual feedback to the user through built-in LEDs, indicating when they are close to their destination or have reached it.
 
-<h2>Features</h2>
+## Table of Contents
 
-<p>The GPS subsystem will perform the following tasks:</p>
+- [Description](#description)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Requirements](#requirements)
+- [Contributing](#contributing)
+- [License](#license)
+- [Credits](#credits)
+- [Contact](#contact)
+- [Video Demo](#video-demo)
+- [Baseline Path](#baseline-path)
 
-<ol>
-  <li>Store the coordinates of the starting point.</li>
-  <li>Store the coordinates of the end point and calculate the total distance traveled by the user.</li>
-  <li>Provide visual feedback to the user using built-in LEDs:
-    <ol>
-      <li>Stage 1: Turn on the green LED when the target destination is reached.</li>
-      <li>Stage 2: Turn on the yellow LED when the target destination is about to be reached (less than 5 meters away).</li>
-      <li>Stage 3: Turn on the red LED when the target destination is far away by more than 5 meters.</li>
-    </ol>
-  </li>
-</ol>
+## Description
 
-<p>The trajectory of the distance traveled should satisfy the following criteria:</p>
+The GPS Distance Tracking System is a project developed as part of the CSE 211 course at the Computer and Systems Engineering Department, Faculty of Engineering, during the Fall 2023 semester. The main objective of the project is to create an embedded system that accurately tracks the distance a user travels between two points using GPS coordinates. The system is implemented on the TM4C123G LaunchPad and provides real-time visual feedback to the user through LEDs.
 
-<ol>
-  <li>The total distance between the start and end point should be greater than 100 meters.</li>
-  <li>The path from the start point to the end point should form a non-straight line similar to the provided baseline path.</li>
-  <li>The calculated distance should be compared with the distance obtained from Google Maps, and the error margin should be less than or equal to 5%.</li>
-</ol>
+## Features
 
-<h2>Usage</h2>
+The GPS subsystem performs the following tasks:
 
-<p>To use this system, you will need to connect the TM4C123G LaunchPad to a GPS module and configure it to receive GPS coordinates. Once the system is set up, you can use it to track your distance traveled and receive visual feedback using the built-in LEDs.</p>
+1. Stores the coordinates of the starting point.
+2. Stores the coordinates of the end point and calculates the total distance traveled by the user.
+3. Provides visual feedback to the user using built-in LEDs:
+   - Stage 1: Green LED turns on when the target destination is reached.
+   - Stage 2: Yellow LED turns on when the target destination is about to be reached (less than 5 meters away).
+   - Stage 3: Red LED turns on when the target destination is far away (more than 5 meters).
 
-<h2>Tools and Technologies Used</h2>
+The trajectory of the distance traveled satisfies the following criteria:
 
-<p>This project was developed using C programming language.</p>
+1. The total distance between the start and end points should be greater than 100 meters.
+2. The path from the start point to the end point should form a non-straight line similar to the provided baseline path.
 
-<div style="display: flex;">
- <a href="https://www.cprogramming.com"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C Programming Language Icon" width="48" height="48"></a>
-<a href="https://cmake.org"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Cmake.svg/1200px-Cmake.svg.png" alt="CMAKE" width="48" height="48"></a>
-<a href="https://www.keil.com/"><img src="https://media.digikey.com/Photos/Keil%20Photos/MFG_KEIL.jpg" alt="Code Composer Studio Icon" width="48" height="48"></a>
-<a href="https://www.ti.com/tool/CCSTUDIO"><img src="https://www.ti.com/diagrams/ccstudio_ccs_256.jpg" alt="Code Composer Studio Icon" width="48" height="48"></a>
-</div>
+The system calculates the distance between the starting point and the end point and compares it with the distance obtained from Google Maps. The error margin should be less than or equal to 5%.
 
-<h2>Credits</h2>
+## Installation
 
-<p>This project was developed by [Team Work] as part of [Introduction to Embedded
-Systems/GPS Tracking System].</p>
-<a href="https://youtu.be/t8TfINgbRjQ"><img src="https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png" alt="Google Maps Image"></a>
+To use the GPS Distance Tracking System, follow these steps:
+
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/your-username/GPS-Distance-Tracking-System.git
+   ```
+
+2. Connect the TM4C123G LaunchPad to a GPS module and configure it to receive GPS coordinates.
+
+3. Open the project in Code Composer Studio (CMake is also required for building).
+
+## Usage
+
+To use the GPS Distance Tracking System, follow these steps:
+
+1. Power on the GPS Distance Tracking System.
+
+2. Select any starting point on Google Maps and mark it as the starting location.
+
+3. Walk or travel to the destination point.
+
+4. The system will provide visual feedback through the built-in LEDs as follows:
+   - Green LED: Target destination reached.
+   - Yellow LED: Target destination about to be reached (less than 5 meters away).
+   - Red LED: Target destination is far away (more than 5 meters).
+
+5. Ensure that the calculated distance is within an error margin of 5% compared to Google Maps.
+
+## Requirements
+
+To successfully run the GPS Distance Tracking System, you will need the following:
+
+- TM4C123G LaunchPad
+- GPS Module
+- Code Composer Studio (CCS) or CMake for building
+- UART configuration for GPS module communication
+
+## Contributing
+
+Contributions to the GPS Distance Tracking System project are welcome. To contribute, follow these steps:
+
+1. Fork the repository.
+
+2. Create a new branch for your feature or bug fix.
+
+3. Make your changes and commit them with a detailed description.
+
+4. Push to the branch and create a pull request on GitHub.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Credits
+
+This project was developed by [Team Work] as part of [Introduction to Embedded Systems/GPS Tracking System]. Special thanks to the faculty and staff at the Computer and Systems Engineering Department, Faculty of Engineering, for their support and guidance throughout the project.
+
+## Contact
+
+For any inquiries or support, please contact:
+
+- [Mahmoud Abdelraouf] 
+- [Somay Ayman] 
+- [Sara Ashraf]
+- [Maya Sharaf]
+- [Mahmoud Hamdy]
+- [Nada Mohamed]
+- [Mohamed Adham]
+- [Mennatallah Abdel-Motaleb]
+- [Mohamed Khaled]
+
+## Video Demo
+
+You can find a video demonstration of the GPS Distance Tracking System at the following link: [Link to Video Demo](https://youtu.be/t8TfINgbRjQ)
+
+## Baseline Path
+
+The baseline path that should be followed for the GPS Distance Tracking System is shown below:
+
+![Baseline Path](path_image.png)
+
+![Google Maps Image](https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png)
