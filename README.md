@@ -111,7 +111,7 @@ For any inquiries or support, please contact:
 - [Mohamed Adham] - [mohamed.adhamnagiub@gmail.com]
 - [Mennatallah Abdel-Motaleb] - [ail@example.com]
 - [Muhammad AbdelKhaleq] - [muhammadabdelkhaleq2@gmail.com]
-- [Mohamed Khaled] - [mail@example.com]
+- [Mohamed Khaled] - [mohamedkhaled77765@gmail.com]
 
 ## Video Demo
 
