@@ -120,6 +120,9 @@ You can find a video demonstration of the GPS Distance Tracking System at the fo
 
 The baseline path that should be followed for the GPS Distance Tracking System is shown below:
 
-![Baseline Path](Baseline Path\61gevd2mlaL._AC_SX466_.jpg)
+![Image 1](Baseline%20Path/61gevd2mlaL._AC_SX466_.jpg)
+![Image 2](Baseline%20Path/HC-05.jpg)
+![Image 3](Baseline%20Path/lcd_2x16_blue_new.jpg)
+![Image 4](Baseline%20Path/TM4C123G.jpg)
 
 ![Google Maps Image](https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png)
