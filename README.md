@@ -106,10 +106,11 @@ For any inquiries or support, please contact:
 - [Somay Ayman] - [somaya189ayman@gmail.com]
 - [Sara Ashraf] - [.email@example.com]
 - [Maya Sharaf] - [.email@example.com]
-- [Mahmoud Hamdy] - [.email@example.com]
+- [Mahmoud Hamdy] - [mahmoud-mahgoub1@hotmail.com]
 - [Nada Mohamed] - [email@example.com]
 - [Mohamed Adham] - [mohamed.adhamnagiub@gmail.com]
 - [Mennatallah Abdel-Motaleb] - [ail@example.com]
+- [Muhammad AbdelKhaleq] - [muhammadabdelkhaleq2@gmail.com]
 - [Mohamed Khaled] - [mail@example.com]
 
 ## Video Demo
