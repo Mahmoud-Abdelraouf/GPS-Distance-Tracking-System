@@ -1,48 +1,73 @@
-<h1>GPS Distance Tracking System</h1>
+# GPS Distance Tracking System
 
-<p>This project involves developing a system using the TM4C123G LaunchPad that tracks the distance a user travels between two points using GPS coordinates. The system will also provide visual feedback to the user using built-in LEDs, indicating when they are close to their destination or have reached it.</p>
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Project Description](#project-description)
+4. [Requirements](#requirements)
+5. [Setup](#setup)
+6. [Usage](#usage)
+7. [Tools and Technologies Used](#tools-and-technologies-used)
+8. [Team Members](#team-members)
+9. [License](#license)
 
-<h2>Features</h2>
+## Introduction
+This project involves developing a GPS Distance Tracking System using the TM4C123G LaunchPad. The system tracks the distance a user travels between two points using GPS coordinates and provides visual feedback to the user using built-in LEDs. The project was developed as part of the CSE 211 course at the Faculty of Engineering, Computer and Systems Engineering Department.
 
-<p>The GPS subsystem will perform the following tasks:</p>
+## Features
+The GPS Distance Tracking System offers the following features:
+1. Stores the coordinates of the starting point.
+2. Stores the coordinates of the end point and calculates the total distance traveled by the user.
+3. Provides visual feedback to the user using built-in LEDs based on distance from the target destination:
+   - Stage 1: Green LED turns on when the target destination is reached.
+   - Stage 2: Yellow LED turns on when the target destination is about to be reached (less than 5 meters away).
+   - Stage 3: Red LED turns on when the target destination is far away by more than 5 meters.
+4. Ensures the total distance between the start and end points is greater than 100 meters.
+5. The path from the start point to the end point forms a non-straight line similar to the provided baseline path.
+6. Compares the calculated distance with Google Maps to ensure the error margin is less than or equal to 5%.
 
-<ol>
-  <li>Store the coordinates of the starting point.</li>
-  <li>Store the coordinates of the end point and calculate the total distance traveled by the user.</li>
-  <li>Provide visual feedback to the user using built-in LEDs:
-    <ol>
-      <li>Stage 1: Turn on the green LED when the target destination is reached.</li>
-      <li>Stage 2: Turn on the yellow LED when the target destination is about to be reached (less than 5 meters away).</li>
-      <li>Stage 3: Turn on the red LED when the target destination is far away by more than 5 meters.</li>
-    </ol>
-  </li>
-</ol>
+## Project Description
+The GPS Distance Tracking System was developed as part of the CSE 211 [Fall 2023] course. The system calculates the distance traveled by the user and provides LED feedback based on the distance to the target destination. The trajectory of the distance satisfies specific criteria, and the system compares the calculated distance with Google Maps data.
 
-<p>The trajectory of the distance traveled should satisfy the following criteria:</p>
+![Baseline Path](path_image.png)
+_Figure 1: Baseline path that you should follow_
 
-<ol>
-  <li>The total distance between the start and end point should be greater than 100 meters.</li>
-  <li>The path from the start point to the end point should form a non-straight line similar to the provided baseline path.</li>
-  <li>The calculated distance should be compared with the distance obtained from Google Maps, and the error margin should be less than or equal to 5%.</li>
-</ol>
+## Requirements
+To run the project, you will need the following:
+- TM4C123G LaunchPad.
+- GPS module configured to provide longitude and latitude coordinates.
+- Code Composer Studio for the development environment.
+- C programming language.
 
-<h2>Usage</h2>
+## Setup
+1. Clone the repository or download the project files from [GitHub](https://github.com/your_username/GPS_Distance_Tracking_System).
+2. Connect the TM4C123G LaunchPad to the GPS module.
+3. Open the project in Code Composer Studio.
+4. Build and flash the project to the LaunchPad.
 
-<p>To use this system, you will need to connect the TM4C123G LaunchPad to a GPS module and configure it to receive GPS coordinates. Once the system is set up, you can use it to track your distance traveled and receive visual feedback using the built-in LEDs.</p>
+## Usage
+1. Power on the GPS Distance Tracking System.
+2. The system will store the coordinates of the starting point.
+3. Travel to the target destination.
+4. Upon reaching the destination, the LED feedback will indicate the distance status:
+   - Green LED: Target destination reached.
+   - Yellow LED: Target destination is about to be reached (< 5 meters away).
+   - Red LED: Target destination is far away (> 5 meters).
+5. The system will store the coordinates of the end point and calculate the total distance traveled.
 
-<h2>Tools and Technologies Used</h2>
+## Tools and Technologies Used
+- C Programming Language.
+- CMAKE for project build.
+- ARM KEIL for microcontroller configuration.
+- Code Composer Studio for development.
 
-<p>This project was developed using C programming language.</p>
+## Team Members
+This project was developed by [Team Work] as part of [Introduction to Embedded Systems/GPS Tracking System].
+- Team Member 1: [Name]
+- Team Member 2: [Name]
+- Team Member 3: [Name]
+- Team Member 4: [Name]
+- Team Member 5: [Name]
 
-<div style="display: flex;">
- <a href="https://www.cprogramming.com"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C Programming Language Icon" width="48" height="48"></a>
-<a href="https://cmake.org"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Cmake.svg/1200px-Cmake.svg.png" alt="CMAKE" width="48" height="48"></a>
-<a href="https://www.keil.com/"><img src="https://download.logo.wine/logo/Keil_(company)/Keil_(company)-Logo.wine.png" alt="ARM KEIL" width="48" height="48"></a>
-<a href="https://www.ti.com/tool/CCSTUDIO"><img src="https://www.ti.com/diagrams/ccstudio_ccs_256.jpg" alt="Code Composer Studio Icon" width="48" height="48"></a>
-</div>
-
-<h2>Credits</h2>
-
-<p>This project was developed by [Team Work] as part of [Introduction to Embedded
-Systems/GPS Tracking System].</p>
-<a href="https://youtu.be/t8TfINgbRjQ"><img src="https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png" alt="Google Maps Image"></a>
+## License
+This project is licensed under the [License Name] License - see the [LICENSE](LICENSE) file for details.
