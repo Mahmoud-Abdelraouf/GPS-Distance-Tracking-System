@@ -4,15 +4,17 @@ The GPS Distance Tracking System is an embedded system developed using the TM4C1
 
 ## Table of Contents
 
-1. [Description](#description)
-2. [Features](#features)
-3. [Installation](#installation)
-4. [Usage](#usage)
-5. [Requirements](#requirements)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Credits](#credits)
-9. [Contact](#contact)
+- [Description](#description)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Requirements](#requirements)
+- [Contributing](#contributing)
+- [License](#license)
+- [Credits](#credits)
+- [Contact](#contact)
+- [Video Demo](#video-demo)
+- [Baseline Path](#baseline-path)
 
 ## Description
 
@@ -41,7 +43,8 @@ The system calculates the distance between the starting point and the end point 
 To use the GPS Distance Tracking System, follow these steps:
 
 1. Clone the repository to your local machine:
-   ```
+
+   ```bash
    git clone https://github.com/your-username/GPS-Distance-Tracking-System.git
    ```
 
@@ -99,10 +102,15 @@ This project was developed by [Team Work] as part of [Introduction to Embedded S
 
 For any inquiries or support, please contact:
 
-- [Your Name] - [your.email@example.com]
-- [Team Member 1] - [team.member1@example.com]
-- [Team Member 2] - [team.member2@example.com]
-- ...
+- [Mahmoud Abdelraouf] 
+- [Somay Ayman] 
+- [Sara Ashraf]
+- [Maya Sharaf]
+- [Mahmoud Hamdy]
+- [Nada Mohamed]
+- [Mohamed Adham]
+- [Mennatallah Abdel-Motaleb]
+- [Mohamed Khaled]
 
 ## Video Demo
 
@@ -115,6 +123,3 @@ The baseline path that should be followed for the GPS Distance Tracking System i
 ![Baseline Path](path_image.png)
 
 ![Google Maps Image](https://developers.google.com/static/maps/images/docs-landing-get-started-hero.png)
-```
-
-Now the README.md includes the Google Maps image you wanted to add. Remember to replace `[your-username]`, `[your.email@example.com]`, `[Team Work]`, `[Introduction to Embedded Systems/GPS Tracking System]`, `[team.member1@example.com]`, etc., with appropriate information specific to your project. Also, ensure that you include the actual video demo link and the path to your `path_image.png` file.
