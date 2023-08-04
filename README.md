@@ -103,12 +103,12 @@ This project was developed by [Team Work] as part of [Introduction to Embedded S
 For any inquiries or support, please contact:
 
 - [Mahmoud Abdelraouf] - [mahmoud126125@gmail.com]
-- [Somay Ayman] - [mohamed.adhamnagiub@gmail.com]
+- [Somay Ayman] - [somaya189ayman@gmail.com]
 - [Sara Ashraf] - [.email@example.com]
 - [Maya Sharaf] - [.email@example.com]
 - [Mahmoud Hamdy] - [.email@example.com]
 - [Nada Mohamed] - [email@example.com]
-- [Mohamed Adham] - [mail@example.com]
+- [Mohamed Adham] - [mohamed.adhamnagiub@gmail.com]
 - [Mennatallah Abdel-Motaleb] - [ail@example.com]
 - [Mohamed Khaled] - [mail@example.com]
 
