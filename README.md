@@ -110,8 +110,8 @@ For any inquiries or support, please contact:
 - Nada Mohamed - 2001434@eng.asu.edu.eg
 - Mohamed Adham - mohamed.adhamnagiub@gmail.com
 - Mennatallah Abdel-Motaleb - mennaamr20024@gmail.com
-- Muhammad AbdelKhaleq - [muhammadabdelkhaleq2@gmail.com
-- Mohamed Khaled - [mohamedkhaled77765@gmail.com
+- Muhammad AbdelKhaleq - muhammadabdelkhaleq2@gmail.com
+- Mohamed Khaled - mohamedkhaled77765@gmail.com
 
 ## Video Demo
 
