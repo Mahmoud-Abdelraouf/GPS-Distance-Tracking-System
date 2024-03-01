@@ -4,7 +4,8 @@
         "stdint.h": "c",
         "std_types.h": "c",
         "tm4c123gh6pm.h": "c",
-        "bit_math.h": "c"
+        "bit_math.h": "c",
+        "uart_interface.h": "c"
     },
     "cSpell.words": [
         "PCTL"

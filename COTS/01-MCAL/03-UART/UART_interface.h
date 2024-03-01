@@ -42,7 +42,7 @@
 #define UART_BDR_230400			230400
 #define UART_BDR_250000			250000
 /************************************< FUNCTIONS ***********************************************/
-/** \brief 	This function UART_voidInit initializes a UART (Universal Asynchronous Receiver/Transmitter) 
+/** @brief 	This function UART_voidInit initializes a UART (Universal Asynchronous Receiver/Transmitter) 
  *			module for a specified UART number, with the specified baud rate, data bits, 
  *			parity, and stop bits. The function first calculates the divisor value for the 
  *			specified baud rate and sets the clock for the UART and GPIO pins. 
@@ -57,7 +57,7 @@
  *			copy_u8Parity: specifies the parity type (None, Even, or Odd).
  *			copy_u8StopBits: specifies the number of stop bits (1 or 2 bits).
  *			
- * \param 	copy_u8UARTNo: YOUR_OPTIONS:
+ * @param 	copy_u8UARTNo: YOUR_OPTIONS:
  *										1) UART0
  *										2) UART1
  *										3) UART2
@@ -66,7 +66,7 @@
  *										6) UART5
  *										7) UART6
  *										8) UART7
- *	\param		copy_u32BaudRate: YOUR_OPTIONS:
+ *	@param		copy_u32BaudRate: YOUR_OPTIONS:
  *										1) UART_BDR_2400
  *										2) UART_BDR_4800
  *										3) UART_BDR_9600
@@ -79,23 +79,23 @@
  *										10)UART_BDR_115200
  *										11)UART_BDR_230400
  *										12)UART_BDR_250000
- *	\param		copy_u8DataBits: YOUR_OPTIONS:
+ *	@param		copy_u8DataBits: YOUR_OPTIONS:
  *										1) UART_DATA_5
  *										2) UART_DATA_6
  *										3) UART_DATA_7
  *										4) UART_DATA_8
- *	\param		copy_u8Parity: YOUR_OPTIONS:
+ *	@param		copy_u8Parity: YOUR_OPTIONS:
  *										1) UART_PARITY_NONE
  *										2) UART_PARITY_ODD
  *										3) UART_PARITY_EVEN
- *	\param		copy_u8StopBits: YOUR_OPTIONS:
+ *	@param		copy_u8StopBits: YOUR_OPTIONS:
  *										1) UART_STOP_BIT_1
  *										2) UART_STOP_BIT_2
- * \return 	void
+ * @return 	void
  *
  */ 
 void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8 copy_u8Parity, u8 copy_u8StopBits);
-/** \brief 	This is a function in C programming language that is used to send a byte of data via UART 
+/** @brief 	This is a function in C programming language that is used to send a byte of data via UART 
  *			(Universal Asynchronous Receiver/Transmitter) communication protocol. 
  *			The function takes two arguments: the first argument is the UART number to be used, 
  *			and the second argument is the data byte to be sent.
@@ -119,7 +119,7 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
  *			that ensures data is not lost due to buffer overflow and helps in efficient data 
  *			transmission over the
  *			
- * \param 	copy_u8UARTNo: This is an unsigned 8-bit integer that represents the UART 
+ * @param 	copy_u8UARTNo: This is an unsigned 8-bit integer that represents the UART 
  *			(Universal Asynchronous Receiver/Transmitter) interface number to be used for transmitting 
  *			the data. This parameter can have a value from 0 to 7, where 0 corresponds to UART0 and 7 
  *			corresponds to UART7.
@@ -128,11 +128,11 @@ void UART_voidInit(u8 copy_u8UARTNo,u32 copy_u32BaudRate, u8 copy_u8DataBits, u8
  *			be transmitted over the selected UART interface. This parameter can have a value 
  *			from 0x00 to 0xFF, where 0x00 is the lowest possible value and 0xFF is the highest 
  *			possible value for an 8-bit unsigned integer.
- * \return 	void
+ * @return 	void
  *
  */ 
 void UART_voidSendByte(u8 copy_u8UARTNo,u8 copy_u8Data);
-/** \brief	This is a function in C programming language that is used to receive a byte of 
+/** @brief	This is a function in C programming language that is used to receive a byte of 
  *			data via UART (Universal Asynchronous Receiver/Transmitter) communication protocol. 
  *			The function takes two arguments: the first argument is the UART number to be used, and the 
  *			second argument is a pointer to a variable where the received data byte will be stored.
@@ -157,35 +157,35 @@ void UART_voidSendByte(u8 copy_u8UARTNo,u8 copy_u8Data);
  *			was successful or not. A return value of 1 indicates success, while a return value of 0 
  *			indicates failure.	
  *			
- * \param 	copy_u8UARTNo: This is an unsigned 8-bit integer that represents the UART 
+ * @param 	copy_u8UARTNo: This is an unsigned 8-bit integer that represents the UART 
  *			(Universal Asynchronous Receiver/Transmitter) interface number to be used 
  *			for receiving the data. This parameter can have a value from 0 to 7, where 0 
  *			corresponds to UART0 and 7 corresponds to UART7.
  *
- * \param	copy_pu8ReceivedData: This is a pointer to an unsigned 8-bit integer that 
+ * @param	copy_pu8ReceivedData: This is a pointer to an unsigned 8-bit integer that 
  *			represents the memory location where the received data byte will be stored. 
  *			This parameter should be a valid memory address that points to a location where 
  *			the received data byte can be stored.
  *
  *
- * \return 	void
+ * @return 	void
  *
  */ 
 void UART_voidReceiveByte(u8 copy_u8UARTNo,u8 *copy_pu8ReceivedData);
-/** \brief 	
+/** @brief 	
  *			
- * \param 	
- * \return 	
+ * @param 	
+ * @return 	
  *
  */ 
 void UART_voidSendString(u8 copy_u8UARTNo,u8 *copy_pu8SentString);
-/** \brief 	
+/** @brief 	
  *			
- * \param 	
- * \return 	
+ * @param 	
+ * @return 	
  *
  */ 
 void UART_voidReceiveString(u8 copy_u8UARTNo,u8 *copy_pu8Buffer);
 
 
-#endif // __MCAL_UART_INTERFACE_H__
+#endif /**< __MCAL_UART_INTERFACE_H__ */ 

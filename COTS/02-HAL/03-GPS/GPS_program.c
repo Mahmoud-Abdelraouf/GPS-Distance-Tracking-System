@@ -18,11 +18,11 @@
 
 /******************************< HAL ******************************/
 /**< GPS */
-#include "../../HAL/GPS/GPS_private.h"
-#include "../../HAL/GPS/GPS_interface.h"
-#include "../../HAL/GPS/GPS_config.h"
+#include "GPS_private.h"
+#include "GPS_interface.h"
+#include "GPS_config.h"
 /**< LCD */
-#include "../../HAL/LCD/LCD_interface.h"
+#include "LCD_interface.h"
 /******************************< Global Variables *****************/
 extern char GPS_u8SpeedArr[5];
 /******************************< Function Implementation ******************************/

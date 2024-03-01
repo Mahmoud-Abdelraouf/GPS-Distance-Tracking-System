@@ -101,10 +101,4 @@ void STK_voidDelayTicks(u32 copy_u32Ticks);
 
 
 
-
-
-
-
-
-
-#endif
+#endif /**< __MCAL_STK_INTERFACE_H__ */

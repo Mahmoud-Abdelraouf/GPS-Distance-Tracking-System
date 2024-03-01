@@ -16,4 +16,4 @@
 
 
 
-#endif
+#endif /**< __NVIC_PRIVATE_H__ */

@@ -64,7 +64,7 @@ void STK_voidGetCurrentValue(u32 *copy_pu32CurrVal)
 
 u8 STK_voidSetReloadValue(u32 copy_u32Ticks)
 {
-	u8 Local_ErrorState = STD_TYPES_OK;
+	u8 Local_ErrorState = E_OK;
 	if(copy_u32Ticks<=STK_MAX_RELOAD_VAL)
 	{
 		NVIC_ST_RELOAD_R = copy_u32Ticks-1;
@@ -72,7 +72,7 @@ u8 STK_voidSetReloadValue(u32 copy_u32Ticks)
   else
 	{
 		/**< Return Error State */
-		Local_ErrorState = STD_TYPES_NOK;
+		Local_ErrorState = E_NOT_OK;
 	}
 	return Local_ErrorState;
 }

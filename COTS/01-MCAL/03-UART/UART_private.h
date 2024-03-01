@@ -47,4 +47,4 @@
 
 
 
-#endif // __MCAL_UART_INTERFACE_H__
+#endif /**< __MCAL_UART_INTERFACE_H__ */ 

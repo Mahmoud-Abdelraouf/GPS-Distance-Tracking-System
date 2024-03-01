@@ -20,4 +20,4 @@ u8 NVIC_u8GetActiveFlag(u8 Copy_u8IntNumber, u8 *Copy_pu8Result);
 
 
 
-#endif
+#endif /**< __NVIC_INTERFACE_H__ */
