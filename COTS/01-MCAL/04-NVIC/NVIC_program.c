@@ -1,9 +1,9 @@
-//*************************************************************
-//********** Name    : Mahmoud Abdelraouf    		***********
-//********** Date    : 23/05/2023              	    ***********
-//********** SWC     : MCAL_NVIC                    ***********
-//********** Version : 1.0                    		***********
-//*************************************************************
+/**************************************************************/
+/********** Name    : Mahmoud Abdelraouf    		***********/
+/********** Date    : 23/05/2023              	    ***********/
+/********** SWC     : MCAL_NVIC                     ***********/
+/********** Version : 1.0                    		***********/
+/**************************************************************/
 /**< _LIB */
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
@@ -154,7 +154,7 @@ u8 NVIC_u8ClearPendingFlag(u8 Copy_u8IntNumber)
 	else if(Copy_u8IntNumber >= 96 && Copy_u8IntNumber <= 127)
 	{
 		Copy_u8IntNumber -= 96;
-		NVIC_NVIC_UNPEND3_R = (1 << Copy_u8IntNumber); /**< _Atomic_Access */
+		NVIC_UNPEND3_R = (1 << Copy_u8IntNumber); /**< _Atomic_Access */
 		Local_u8ErrorStatus = 0;		/**< _CLR_ERROR_STATUS */
 	}
 	else if(Copy_u8IntNumber >= 128 && Copy_u8IntNumber <= 138)
