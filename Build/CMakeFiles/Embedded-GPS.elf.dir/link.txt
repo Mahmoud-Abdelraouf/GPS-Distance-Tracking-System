@@ -1,1 +1,0 @@
-/usr/bin/cc  -T /home/mohamed/EmbeddedProj/Embedded-GPS/COTS/linker_script.ld CMakeFiles/Embedded-GPS.elf.dir/04-APP/main.c.o -o Embedded-GPS.elf  -l01-MCAL/01-DIO -l01-MCAL/02-STK -l01-MCAL/03-UART -l02-HAL/01-LCD -l02-HAL/01-LCD -l02-HAL/02-LED -l02-HAL/03-GPS -l03-SERVICE -l04-APP -l05-LIB 

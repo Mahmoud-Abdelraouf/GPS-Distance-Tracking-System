@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblcd.a CMakeFiles/lcd.dir/LCD_program.c.o
-/usr/bin/ranlib liblcd.a

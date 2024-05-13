@@ -1,2 +1,0 @@
-/usr/bin/ar qc libstk.a CMakeFiles/stk.dir/STK_program.c.o
-/usr/bin/ranlib libstk.a
