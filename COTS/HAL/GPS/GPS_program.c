@@ -84,7 +84,7 @@ void GPS_ReceiveSentence(f64 *Latitude,f64 *Longitude, u8 *Speed)
     }while(Local_ReadCounter == 0);
 }
 
-void GPS_ExtractCoordinates(u8 *Sentence, f64 *Latitude, f64 *Longitude, u8 *Speed)
+static void GPS_ExtractCoordinates(u8 *Sentence, f64 *Latitude, f64 *Longitude, u8 *Speed)
 {
     f32 Local_f32Deg,Lcoal_f32Min,Local_f32Sec;
     u8 Local_u8CommaCount = 0;
