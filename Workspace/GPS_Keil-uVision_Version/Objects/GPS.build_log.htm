@@ -1,0 +1,82 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.39.0.0
+Copyright (C) 2023 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Mahmoud Abdelraouf, Non, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.39.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.21
+Assembler:       Armasm.exe V6.21
+Linker/Locator:  ArmLink.exe V6.21
+Library Manager: ArmAr.exe V6.21
+Hex Converter:   FromElf.exe V6.21
+CPU DLL:         SARMCM3.DLL V5.39.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.9.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+C:\Users\karim\OneDrive\Desktop\GPS\GPS.uvprojx
+Project File Date:  05/13/2024
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.21', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+APP.c(61): warning: passing 'char[9]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+   61 |         LCD_SendString(LCD, "Arrived!");
+      |                             ^~~~~~~~~~
+./CLCD_interface.h(127): note: passing argument to parameter 'string' here
+  127 | void LCD_SendString(const LCD_Config_t *config, const uint8_t *string);
+      |                                                                ^
+1 warning generated.
+compiling APP.c...
+compiling main.c...
+compiling STK_program.c...
+CLCD_program.c(186): warning: comparison of array 'customChar->pattern' equal to a null pointer is always false [-Wtautological-pointer-compare]
+  186 |     if (customChar->pattern == NULL) {
+      |         ~~~~~~~~~~~~^~~~~~~    ~~~~
+1 warning generated.
+compiling CLCD_program.c...
+compiling LED_program.c...
+compiling GPIO_program.c...
+compiling UART_program.c...
+linking...
+Program Size: Code=5008 RO-data=664 RW-data=0 ZI-data=616  
+".\Objects\GPS.axf" - 0 Error(s), 2 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.0.0.pack
+                ARM::CMSIS@6.0.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.0.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil::TM4C_DFP@1.1.0
+                Texas Instruments Tiva C Series Device Support and Examples
+   * Component: Startup Version: 1.0.1
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/karim/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include
+  C:/Users/karim/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.0.0
+
+   * Component: Keil::Device:Startup@1.0.1
+      Source file:   Device/Source/system_TM4C123.c
+      Source file:   Device/Source/ARM/startup_TM4C123.s
+      Include file:  Device/Include/TM4C123/TM4C123.h
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
