@@ -13,7 +13,6 @@ The GPS Distance Tracking System is an embedded system developed using the TM4C1
 - [License](#license)
 - [Credits](#credits)
 - [Contact](#contact)
-- [Video Demo](#video-demo)
 - [Baseline Path](#baseline-path)
 
 ## Description
@@ -112,10 +111,6 @@ For any inquiries or support, please contact:
 - Mennatallah Abdel-Motaleb - mennaamr20024@gmail.com
 - Muhammad AbdelKhaleq - muhammadabdelkhaleq2@gmail.com
 - Mohamed Khaled - mohamedkhaled77765@gmail.com
-
-## Video Demo
-
-You can find a video demonstration of the GPS Distance Tracking System at the following link: [Link to Video Demo](https://youtu.be/t8TfINgbRjQ)
 
 ## Baseline Path
 
