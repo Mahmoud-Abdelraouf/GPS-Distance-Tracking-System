@@ -92,11 +92,11 @@ Contributions to the GPS Distance Tracking System project are welcome. To contri
 
 ## License
 
-This project is licensed under the GNU AGPLv3 LICENSE.
+This project is licensed under the GPL-3.0 LICENSE.
 
 ## Credits
 
-This project was developed by [Team Work] as part of [Introduction to Embedded Systems/GPS Tracking System]. Special thanks to the faculty and staff at the Computer and Systems Engineering Department, Faculty of Engineering, for their support and guidance throughout the project.
+This project was developed by `Team Work` as part of `Introduction to Embedded Systems/GPS Tracking System`. Special thanks to the faculty and staff at the Computer and Systems Engineering Department, Faculty of Engineering, for their support and guidance throughout the project.
 
 ## Contact
 
